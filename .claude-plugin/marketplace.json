@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "obsidian-scribe",
+  "version": "1.0.0",
+  "description": "Claude Code plugins for Obsidian knowledge management and automation",
+  "owner": {
+    "name": "Ben Cassie",
+    "github": "bencassie"
+  },
+  "metadata": {
+    "homepage": "https://github.com/bencassie/obsidian-scribe",
+    "repository": "https://github.com/bencassie/obsidian-scribe"
+  },
+  "plugins": [
+    "plugins/obsidian-scribe"
+  ]
+}

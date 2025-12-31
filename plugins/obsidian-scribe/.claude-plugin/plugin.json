@@ -1,0 +1,30 @@
+{
+  "name": "obsidian-scribe",
+  "version": "1.0.0",
+  "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
+  "author": {
+    "name": "Ben Cassie",
+    "github": "bencassie"
+  },
+  "homepage": "https://github.com/bencassie/obsidian-scribe",
+  "repository": "https://github.com/bencassie/obsidian-scribe",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "wikilinks",
+    "knowledge-management",
+    "periodic-notes",
+    "vault-health",
+    "automation"
+  ],
+  "dependencies": {
+    "python": ">=3.8"
+  },
+  "optionalDependencies": {
+    "smoking-mirror": "For advanced vault analysis features"
+  },
+  "hooks": "../hooks/hooks.json",
+  "skills": "../skills",
+  "rules": "../rules",
+  "agents": "../agents"
+}

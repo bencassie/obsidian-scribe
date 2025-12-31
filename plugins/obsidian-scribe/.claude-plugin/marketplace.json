@@ -1,0 +1,11 @@
+{
+  "name": "obsidian-scribe",
+  "description": "Wikilink automation, periodic note rollups, and vault health for Obsidian",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "id": "obsidian-scribe",
+      "path": "."
+    }
+  ]
+}
