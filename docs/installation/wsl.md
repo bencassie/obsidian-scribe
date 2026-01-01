@@ -66,9 +66,9 @@ claude
 
 ---
 
-## MCP Server Setup (Optional)
+## MCP Server Setup (Required for vault intelligence)
 
-The 15 vault-* skills require smoking-mirror MCP.
+The 16 vault-* skills require smoking-mirror MCP.
 
 ### Add to `.mcp.json`
 

@@ -254,10 +254,18 @@ No clicking. No switching apps. Your vault responds to conversation.
 
 ## Quick Start
 
-### 1. Install smoking-mirror MCP (Required)
+### Step 1: Install the Plugin
+
+In Claude Code:
+```
+/install bencassie/obsidian-scribe
+```
+
+### Step 2: Configure smoking-mirror MCP
 
 Create `.mcp.json` in your vault root:
 
+**WSL / macOS / Linux:**
 ```json
 {
   "mcpServers": {
@@ -266,14 +274,14 @@ Create `.mcp.json` in your vault root:
       "command": "npx",
       "args": ["-y", "smoking-mirror@latest"],
       "env": {
-        "OBSIDIAN_VAULT_PATH": "/absolute/path/to/your/vault"
+        "OBSIDIAN_VAULT_PATH": "/mnt/c/Users/you/obsidian/vault"
       }
     }
   }
 }
 ```
 
-**Windows users**: Use `cmd` wrapper:
+**Windows (native):**
 ```json
 {
   "mcpServers": {
@@ -289,24 +297,25 @@ Create `.mcp.json` in your vault root:
 }
 ```
 
-### 2. Install obsidian-scribe
+| Platform | Command | Path Format |
+|----------|---------|-------------|
+| WSL/Linux/macOS | `"command": "npx"` | `/mnt/c/...` or `/home/...` |
+| Windows | `"command": "cmd"` with `"/c", "npx"` args | `C:/Users/...` (forward slashes) |
 
-```bash
-/install bencassie/obsidian-scribe
-```
-
-### 3. Verify
+### Step 3: Verify
 
 ```bash
 cd /path/to/your/vault
 claude
 
-# Check vault health (uses smoking-mirror)
-/vault-health
+# Natural language:
+> How's my vault looking?
 
-# Log something
-/auto-log Started working on new feature
+# Or slash commands:
+> /vault-health
 ```
+
+**Detailed guides:** [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP](docs/installation/mcp-servers.md)
 
 ---
 

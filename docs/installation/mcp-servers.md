@@ -1,41 +1,39 @@
-# MCP Server Configuration 🦉🔌
+# MCP Server Configuration
 
-*Hoot! Let me help You connect the owl's Intelligence to the wider world through MCP.*
-
-Model Context Protocol (MCP) Servers extend Claude Code's Capabilities. Obsidian Scribe uses **smoking-Mirror** for Vault Intelligence.
+Model Context Protocol (MCP) servers extend Claude Code's capabilities. Obsidian Scribe uses **smoking-mirror** for vault intelligence.
 
 ## What is smoking-mirror?
 
 smoking-mirror is an MCP server that provides:
-- 📊 Real-time Vault Graph analysis
-- 🔗 Backlink and forward Link tracking
-- 🔍 Orphan Note Detection
-- 🧠 Knowledge gap identification
-- 📈 Link density patterns
+- Real-time vault graph analysis
+- Backlink and forward link tracking
+- Orphan note detection
+- Knowledge gap identification
+- Link density patterns
 
-**15 vault-* Skills** depend on This server.
+**16 vault-* skills** depend on this server.
 
 ## When Do You Need It?
 
 ### With smoking-mirror (Full Intelligence)
 
-All 20+ skills Available:
-- ✅ `/vault-health` - Comprehensive diagnostics
-- ✅ `/vault-orphans` - Find isolated Notes
-- ✅ `/vault-hubs` - Find highly connected notes
-- ✅ `/vault-fix-links` - Repair broken Wikilinks
-- ✅ *...and 11 more vault-* skills!*
+All 33 skills available:
+- `vault-health` - Comprehensive diagnostics
+- `vault-orphans` - Find isolated notes
+- `vault-hubs` - Find highly connected notes
+- `vault-fix-links` - Repair broken wikilinks
+- ...and 12 more vault-* skills
 
 ### Without smoking-mirror (Core Features Only)
 
-5 skills still work:
-- ✅ `/auto-log` - Daily Logging
-- ✅ `/task-add` - Task Management
-- ✅ `/rollup` - Periodic summarization
-- ✅ `/rebuild-wikilink-cache` - Wikilink cache
-- ✅ `/wikilink-apply` - Apply wikilink Suggestions
+17 skills still work:
+- `auto-log` - Daily logging
+- `task-add` - Task management
+- `rollup` - Periodic summarization
+- `rebuild-wikilink-cache` - Wikilink cache
+- `wikilink-apply` - Apply wikilink suggestions
 
-*The owl can still help, But its full wisdom requires smoking-mirror.*
+Full vault intelligence requires smoking-mirror.
 
 ## Configuration by Platform
 
@@ -107,7 +105,7 @@ mcp__smoking-mirror__search_notes
 ...
 ```
 
-*If you see these, the owl's intelligence network is active!* 🦉
+If you see these, smoking-mirror is active.
 
 ### Test a Vault Skill
 
@@ -141,7 +139,6 @@ smoking-mirror works alongside other MCP servers:
 }
 ```
 
-*The owl plays well with others!*
 
 ## Troubleshooting
 
@@ -210,10 +207,8 @@ smoking-mirror supports:
 
 ## Next Steps
 
-With MCP configured, the owl's full intelligence awakens:
+With MCP configured, full vault intelligence is available:
 
-- **[Vault Intelligence Guide](../features/vault-intelligence.md)** - Explore 15 vault-* skills
-- **[Vault Analysis Example](../examples/vault-analysis.md)** - See it in Action
+- **[Skills Reference](../skills-reference.md)** - All 33 skills with examples
+- **[Use Cases](../use-cases.md)** - Real-world examples with tool invocations
 - **[Getting Started](../getting-started.md)** - If you're new here
-
-*The owl's eyes glow brighter with Each connection, dear scholar!* 🦉✨
