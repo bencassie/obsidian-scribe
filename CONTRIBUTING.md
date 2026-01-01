@@ -66,6 +66,52 @@ grep -n '"version":' .claude-plugin/marketplace.json \
 - New features: Minor version (1.X.0)
 - Breaking changes: Major version (X.0.0)
 
+## Development Workflow
+
+### Making Changes
+
+1. **Make your changes** to skills, hooks, or agents
+2. **Bump version** in all 3 manifest files (see Version Management above)
+3. **Test locally** (see Testing Procedures below)
+4. **Commit and push** to GitHub
+5. **Update local installation** (see next section)
+
+### Updating Your Local Plugin After Push
+
+**IMPORTANT**: After pushing to GitHub, the plugin does NOT automatically update. You must manually pull and update:
+
+```bash
+# 1. Pull latest from GitHub marketplace clone
+cd ~/.claude/plugins/marketplaces/obsidian-scribe
+git pull origin main
+
+# 2. Update installed plugin (use --scope local for local-scoped plugins)
+# NOTE: Command is "plugin" (singular), not "plugins"
+claude plugin update --scope local obsidian-scribe@obsidian-scribe
+
+# 3. Restart Claude Code session
+```
+
+**Verification:**
+
+```bash
+# Check installed version
+cat ~/.claude/plugins/installed_plugins.json | grep -A 10 obsidian-scribe
+
+# After restart, check debug log
+cat ~/.claude/debug/<session-id>.txt | grep "Found.*plugins"
+```
+
+Expected output:
+- `Found 2 plugins (2 enabled, 0 disabled)`
+- `Registered X hooks from 2 plugins`
+
+**Common Issues:**
+
+- **Hooks not loading**: Check that `plugin.json` includes `"hooks": "./hooks/hooks.json"`
+- **Old version persists**: The marketplace clone may not have pulled latest - verify with `git log -1`
+- **Wrong command syntax**: It's `claude plugin` (singular), NOT `claude plugins`
+
 ## Testing Procedures
 
 ### Hook Testing

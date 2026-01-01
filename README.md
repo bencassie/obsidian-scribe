@@ -146,53 +146,89 @@ If plugins don't load:
 
 ### Plugin Version Updates
 
-If the plugin is stuck on an old version after updates:
+**After pushing a new version to GitHub**, the plugin won't automatically update. Follow these steps:
 
-**Symptom**: `~/.claude/plugins/installed_plugins.json` shows old version even though GitHub has newer version.
+#### Standard Update Process
 
-**Root Cause**: Marketplace source configured as `directory` instead of `github`, preventing auto-updates.
-
-**Solution**:
-
-1. **Check marketplace source:**
+1. **Pull latest from GitHub marketplace clone:**
    ```bash
-   cat ~/.claude/plugins/known_marketplaces.json | grep -A 5 obsidian-scribe
+   cd ~/.claude/plugins/marketplaces/obsidian-scribe
+   git pull origin main
    ```
 
-2. **If it shows `"source": "directory"`, switch to GitHub source:**
-
-   Edit `~/.claude/plugins/known_marketplaces.json`:
-   ```json
-   "obsidian-scribe": {
-     "source": {
-       "source": "github",
-       "owner": "bencassie",
-       "repo": "obsidian-scribe"
-     },
-     "installLocation": "/home/ben/.claude/plugins/marketplaces/obsidian-scribe",
-     "lastUpdated": "2026-01-01T10:14:00.000Z"
-   }
-   ```
-
-3. **Update installed plugin registry** (`~/.claude/plugins/installed_plugins.json`):
-   - Change `version` to latest (e.g., "1.0.11")
-   - Change `installPath` to match new version
-   - Change `gitCommitSha` to latest commit from GitHub
-   - Update `lastUpdated` timestamp
-
-4. **Create cache directory and copy latest files:**
+2. **Update installed plugin** (use `--scope local` for local-scoped plugins):
    ```bash
-   mkdir -p ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/1.0.11
-   cp -r /path/to/obsidian-scribe/plugins/obsidian-scribe/* \
-     ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/1.0.11/
+   # NOTE: Command is "plugin" (singular), not "plugins"
+   claude plugin update --scope local obsidian-scribe@obsidian-scribe
    ```
 
-5. **Restart Claude Code session**
+3. **Restart Claude Code session**
 
-**Prevention**: Always use GitHub source for automatic updates:
+#### Verification
+
+Check that the update worked:
+
 ```bash
-claude plugins add bencassie/obsidian-scribe
+# Check installed version
+cat ~/.claude/plugins/installed_plugins.json | grep -A 10 obsidian-scribe
+
+# Verify marketplace version
+cat ~/.claude/plugins/marketplaces/obsidian-scribe/plugins/obsidian-scribe/.claude-plugin/plugin.json | grep version
+
+# After restart, check debug log
+cat ~/.claude/debug/<session-id>.txt | grep "Found.*plugins"
 ```
+
+Expected output after restart:
+- `Found 2 plugins (2 enabled, 0 disabled)`
+- `Loaded plugins - Enabled: 2`
+- `Registered X hooks from 2 plugins`
+
+#### Important Notes
+
+- **Command syntax**: `claude plugin` (singular), NOT `claude plugins`
+- **Local scope**: Local-scoped plugins require `--scope local` flag
+- **Auto-enabling**: Local-scoped plugins are automatically enabled after update
+- **Manual pull required**: The marketplace clone does NOT auto-update from GitHub
+- The `enable` command only works for disabled plugins, not for newly installed plugins
+
+#### Troubleshooting
+
+**Problem**: Plugin shows old version even after update
+
+**Diagnosis:**
+```bash
+# Check if marketplace clone is stale
+cd ~/.claude/plugins/marketplaces/obsidian-scribe && git log -1 --oneline
+
+# Compare with GitHub
+# Visit https://github.com/bencassie/obsidian-scribe/commits/main
+```
+
+**Solution**: If marketplace is behind, run the 3-step update process above.
+
+**Problem**: Hooks not loading
+
+**Check debug log:**
+```bash
+cat ~/.claude/debug/<latest-session-id>.txt | grep -E "Found|Registered|hooks"
+```
+
+If you see "Registered 0 hooks", the plugin version likely doesn't include the hooks configuration. Verify:
+```bash
+cat ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/<version>/.claude-plugin/plugin.json | grep hooks
+```
+
+If missing, the cache has an old version. Re-run the update process.
+
+#### Development Workflow
+
+When developing the plugin:
+
+1. Make changes and bump version in all 3 manifest files
+2. Commit and push to GitHub
+3. Run the standard update process (above)
+4. Test in a fresh Claude session
 
 ### WSL Setup
 
