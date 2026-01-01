@@ -141,13 +141,22 @@ def main():
         achievements = get_recent_achievements(config)
         cache_status = rebuild_wikilink_cache()
 
-        # Simple print statements - easier for Claude to parse and mention in greetings
-        print(f"Obsidian Scribe - Session started: {current_time}")
-        print()
-        print(daily_status)
-        print(cache_status)
-        print()
-        print(achievements)
+        # Build context string
+        context = f"""Obsidian Scribe - Session started: {current_time}
+
+{daily_status}
+{cache_status}
+
+{achievements}"""
+
+        # Output in Claude Code's expected JSON format
+        output = {
+            "hookSpecificOutput": {
+                "hookEventName": "SessionStart",
+                "additionalContext": context
+            }
+        }
+        print(json.dumps(output))
 
         sys.exit(0)
 
