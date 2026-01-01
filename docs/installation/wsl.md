@@ -1,14 +1,14 @@
-# [[WSL]] (Ubuntu) Installation 🦉🐧
+# WSL (Ubuntu) Installation
 
-*Hoot! A [[Linux]] scholar! The owl appreciates your choice of perch.*
+Setup Obsidian Scribe on WSL (Windows Subsystem for Linux).
 
-[[This]] [[Guide]] helps [[You]] set up [[Obsidian Scribe]] on WSL ([[Windows]] Subsystem for Linux).
+---
 
 ## Prerequisites
 
-### 1. [[Python]] Setup
+### Python 3.8+
 
-WSL Ubuntu doesn't symlink `python` to `python3` by default, [[But]] the owl's [[Hooks]] [[Need]] it!
+WSL Ubuntu doesn't symlink `python` to `python3` by default:
 
 ```bash
 # Install the python symlink
@@ -19,45 +19,60 @@ python --version
 # Should show: Python 3.x.x
 ```
 
-*Without this, the owl's hooks won't be able to fly!*
-
-### 2. Claude Code
-
-Ensure Claude Code CLI is installed:
+### Claude Code
 
 ```bash
 claude --version
 ```
 
-## Installation Steps
+---
 
-### Step 1: Add the Marketplace
+## Installation
 
-```bash
-claude plugin marketplace add bencassie/obsidian-scribe
-```
-
-### Step 2: Install the Plugin
+### Option 1: From GitHub (Recommended)
 
 ```bash
-claude plugin install obsidian-scribe@obsidian-scribe
+/install bencassie/obsidian-scribe
 ```
 
-### Step 3: Verify Installation
+### Option 2: Manual Configuration
+
+Add to your project's `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "obsidian-scribe": {
+      "source": {
+        "source": "github",
+        "repo": "bencassie/obsidian-scribe"
+      }
+    }
+  }
+}
+```
+
+This config can be committed to git (works for all WSL users).
+
+### Verify Installation
 
 ```bash
-claude skills | grep obsidian-scribe -A 30
+cd /mnt/c/Users/<you>/obsidian/<vault>
+claude
+
+# Check skills loaded
+/vault-health
 ```
 
-*You should see 20+ skills! The owl's full wisdom is now at your disposal.*
+---
 
-## MCP Server Setup (Optional but Recommended)
+## MCP Server Setup (Optional)
 
-The vault intelligence features (15 vault-* skills) require the smoking-mirror MCP server.
+The 15 vault-* skills require smoking-mirror MCP.
 
-### Add to Your Project `.[[MCP]].json`
+### Add to `.mcp.json`
 
-Navigate to your vault directory and create/edit `.mcp.json`:
+In your vault directory, create/edit `.mcp.json`:
 
 ```json
 {
@@ -67,23 +82,18 @@ Navigate to your vault directory and create/edit `.mcp.json`:
       "command": "npx",
       "args": ["-y", "smoking-mirror@latest"],
       "env": {
-        "OBSIDIAN_VAULT_PATH": "/mnt/c/Users/YOUR_USERNAME/obsidian/YOUR_VAULT"
+        "OBSIDIAN_VAULT_PATH": "/mnt/c/Users/<you>/obsidian/<vault>"
       }
     }
   }
 }
 ```
 
-**Replace:**
-- `YOUR_USERNAME` → Your Windows username
-- `YOUR_VAULT` → Your vault folder name
-
 **Path Format:** WSL uses `/mnt/c/` prefix for Windows drives.
 
-### Verify MCP Server
+### Verify MCP
 
 ```bash
-# In your vault directory
 claude tools
 
 # Look for smoking-mirror tools like:
@@ -91,45 +101,35 @@ claude tools
 # - mcp__smoking-mirror__find_orphan_notes
 ```
 
-*If you see these, the owl's intelligence is fully activated!* 🦉
+---
 
-## Testing Your Installation
-
-### Test Core Features
+## Testing
 
 ```bash
-# In your vault with Claude Code
-/auto-log Testing WSL installation with the wise owl
+# Test logging
+/auto-log Testing WSL installation
 
-# Check vault health
+# Test vault health (requires MCP)
 /vault-health
+
+# Test hooks
+python /mnt/c/Users/.../obsidian-scribe/plugins/obsidian-scribe/hooks/session-start.py
 ```
 
-### Test Hooks
+---
 
-Hooks run automatically, but you can test them manually:
-
-```bash
-cd /mnt/c/Users/.../obsidian-scribe/plugins/obsidian-scribe
-
-# Test session start hook
-python hooks/session-start.py
-
-# Should show vault status
-```
-
-## Common Issues
+## Troubleshooting
 
 ### "python: command not found"
 
 ```bash
-# Install the symlink
 sudo apt install python-is-python3
 ```
 
 ### "MCP server not found"
 
 Check your `.mcp.json`:
+
 - Path uses `/mnt/c/...` format
 - Vault path is absolute and correct
 - `npx` command is available (`npm install -g npx`)
@@ -137,15 +137,15 @@ Check your `.mcp.json`:
 ### Hooks not firing
 
 Ensure:
-- Python 3.8+ is installed
+
+- Python 3.8+ installed
 - `python` command works (not just `python3`)
 - Hook files have execute permissions: `chmod +x hooks/*.py`
 
-## [[Next]] Steps
+---
 
-Your perch is [[Prepared]]! [[Explore]]:
-- **[Getting Started](../getting-started.md)** - [[First]] flights
-- **[Daily Logging](../features/daily-logging.md)** - Capture your work
-- **[Vault Intelligence](../features/vault-intelligence.md)** - [[Analyze]] your [[Vault]]
+## Next Steps
 
-*The wise owl awaits your commands, dear Linux scholar!* 🦉✨
+- [Getting Started](../getting-started.md)
+- [MCP Servers Guide](mcp-servers.md)
+- [Skills Reference](../skills-reference.md)

@@ -1,60 +1,80 @@
-# [[Windows]] Installation 🦉🪟
+# Windows Installation
 
-*Hoot! A Windows [[Scribe]]! Let me help [[You]] prepare your nest with care.*
+Setup Obsidian Scribe on Windows (PowerShell).
 
-[[This]] [[Guide]] covers [[Obsidian Scribe]] installation on Windows ([[PowerShell]]).
+---
 
 ## Prerequisites
 
-### 1. [[Python]] Setup
-
-Ensure Python 3.8+ is installed and [[Available]] as `python`:
+### Python 3.8+
 
 ```powershell
-# Verify Python is installed
 python --version
 # Should show: Python 3.x.x
 ```
 
-If `python` command doesn't work, install from [python.org](https://www.python.org/downloads/) and ensure "Add to PATH" is checked.
+If `python` doesn't work, install from [python.org](https://www.python.org/downloads/) and check "Add to PATH".
 
-### 2. Claude Code
-
-Ensure Claude Code CLI is installed:
+### Claude Code
 
 ```powershell
 claude --version
 ```
 
-## Installation Steps
+---
 
-### Step 1: Add the Marketplace
+## Installation
 
-```powershell
-claude plugin marketplace add bencassie/obsidian-scribe
-```
-
-### Step 2: Install the Plugin
+### Option 1: From GitHub (Recommended)
 
 ```powershell
-claude plugin install obsidian-scribe@obsidian-scribe
+/install bencassie/obsidian-scribe
 ```
 
-### Step 3: Verify Installation
+### Option 2: Manual Configuration
+
+Add to your global `C:\Users\<you>\.claude.json`:
+
+```json
+{
+  "projects": {
+    "C:/Users/<you>/obsidian/<vault>": {
+      "extraKnownMarketplaces": {
+        "obsidian-scribe": {
+          "source": {
+            "source": "github",
+            "repo": "bencassie/obsidian-scribe"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Replace:**
+- `<you>` → Your Windows username
+- `<vault>` → Your vault folder name
+
+**Critical:** Use forward slashes `/` in all paths.
+
+### Verify Installation
 
 ```powershell
-claude skills
+cd C:/Users/<you>/obsidian/<vault>
+claude
 
-# Look for obsidian-scribe skills
+# Check skills loaded
+/vault-health
 ```
 
-*The owl should now be perched in your Claude Code installation!* 🦉
+---
 
-## MCP Server Setup (Optional but Recommended)
+## MCP Server Setup (Optional)
 
-The vault intelligence features (15 vault-* skills) require smoking-mirror MCP.
+The 15 vault-* skills require smoking-mirror MCP.
 
-### CRITICAL: Windows `npx` Wrapper
+### Windows npx Wrapper (Required)
 
 On Windows, MCP servers using `npx` **must** be wrapped with `cmd /c`:
 
@@ -67,11 +87,9 @@ On Windows, MCP servers using `npx` **must** be wrapped with `cmd /c`:
 
 Direct `npx` fails with "Connection closed" errors on Windows.
 
-### Global `.[[Claude]].json` Configuration
+### Full Configuration
 
-The owl recommends using a global `.claude.json` with project-specific settings.
-
-**Location:** `C:\Users\YOUR_USERNAME\.claude.json`
+Add to `C:\Users\<you>\.claude.json`:
 
 ```json
 {
@@ -80,14 +98,22 @@ The owl recommends using a global `.claude.json` with project-specific settings.
     "playwright": { /* ... */ }
   },
   "projects": {
-    "C:/Users/YOUR_USERNAME/obsidian/YOUR_VAULT": {
+    "C:/Users/<you>/obsidian/<vault>": {
+      "extraKnownMarketplaces": {
+        "obsidian-scribe": {
+          "source": {
+            "source": "github",
+            "repo": "bencassie/obsidian-scribe"
+          }
+        }
+      },
       "mcpServers": {
         "smoking-mirror": {
           "type": "stdio",
           "command": "cmd",
           "args": ["/c", "npx", "-y", "smoking-mirror@latest"],
           "env": {
-            "OBSIDIAN_VAULT_PATH": "C:/Users/YOUR_USERNAME/obsidian/YOUR_VAULT"
+            "OBSIDIAN_VAULT_PATH": "C:/Users/<you>/obsidian/<vault>"
           }
         }
       }
@@ -96,58 +122,41 @@ The owl recommends using a global `.claude.json` with project-specific settings.
 }
 ```
 
-**Replace:**
-- `YOUR_USERNAME` → Your Windows username
-- `YOUR_VAULT` → Your vault folder name
-
-**CRITICAL Notes:**
-- Project key uses **forward slashes**: `C:/Users/...` (not `C:\\Users\\...`)
-- Path values use **forward slashes**: `"OBSIDIAN_VAULT_PATH": "C:/Users/..."`
-- Always use `cmd /c npx` wrapper on Windows
-
-### Verify MCP Server
+### Verify MCP
 
 ```powershell
-# In your vault directory
+cd C:/Users/<you>/obsidian/<vault>
 claude tools
 
 # Look for smoking-mirror tools
 ```
 
-*If you see them, the owl's intelligence is ready to soar!* 🦉
+---
 
-## Testing Your Installation
-
-### Test Core Features
+## Testing
 
 ```powershell
-# In your vault with Claude Code
+# Test logging
 /auto-log Testing Windows installation
 
-# Check vault health
+# Test vault health (requires MCP)
 /vault-health
+
+# Test hooks
+python C:\Users\<you>\src\obsidian-scribe\plugins\obsidian-scribe\hooks\session-start.py
 ```
 
-### Test Hooks (PowerShell)
+---
 
-```powershell
-cd C:\Users\...\obsidian-scribe\plugins\obsidian-scribe
-
-# Test session start hook
-python hooks\session-start.py
-
-# Should show vault status
-```
-
-## Common Issues
+## Troubleshooting
 
 ### "python: command not found"
 
-Install Python from [python.org](https://www.python.org/downloads/) and check "Add to PATH" during installation.
+Install Python from [python.org](https://www.python.org/downloads/) and check "Add to PATH".
 
 ### "MCP server connection closed"
 
-You forgot the `cmd /c` wrapper! Update your config:
+Add the `cmd /c` wrapper:
 
 ```json
 {
@@ -156,25 +165,17 @@ You forgot the `cmd /c` wrapper! Update your config:
 }
 ```
 
-### Hooks not working
-
-Ensure:
-- Python 3.8+ installed
-- `python` command works (check with `python --version`)
-- Paths use forward slashes in configs
-
 ### Path format confusion
 
-**Windows configs use forward slashes:**
-- ✅ `C:/Users/benca/[[Obsidian]]/Ben`
-- ❌ `C:\\Users\\benca\\obsidian\\Ben`
-- ❌ `C:\Users\benca\obsidian\Ben`
+Windows configs use **forward slashes**:
+- ✅ `C:/Users/alice/obsidian/MyVault`
+- ❌ `C:\\Users\\alice\\obsidian\\MyVault`
+- ❌ `C:\Users\alice\obsidian\MyVault`
 
-## [[Next]] Steps
+---
 
-Your Windows perch is [[Ready]]! [[Explore]]:
-- **[Getting Started](../getting-started.md)** - Begin your journey
-- **[MCP Servers Guide](mcp-servers.md)** - [[Deep]] [[Dive]] into configuration
-- **[Daily Logging](../features/daily-logging.md)** - Start capturing work
+## Next Steps
 
-*The wise owl is ready to assist, dear Windows scribe!* 🦉✨
+- [Getting Started](../getting-started.md)
+- [MCP Servers Guide](mcp-servers.md)
+- [Skills Reference](../skills-reference.md)

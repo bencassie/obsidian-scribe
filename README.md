@@ -1,10 +1,12 @@
 <div align="center">
 
-<img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="280">
+<img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="200">
 
-### Unlock Deeper Insights in Your Knowledge Vault
+# Obsidian Scribe
 
-*A wise owl companion for Obsidian vault automation and intelligence*
+**Your entire Obsidian vault, accessible from the command line.**
+
+21 skills • 4 smart hooks • 5 rollup agents • Full vault intelligence
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
@@ -15,243 +17,276 @@
 
 <img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%">
 
-## Features
+## Why This Exists
 
-<img src="docs/assets/feature-icons.png" alt="Features" align="right" width="200">
+Obsidian is powerful. But maintaining a vault at scale is *work*:
+- Manually linking notes gets tedious at 1000+ notes
+- Finding orphans, broken links, knowledge gaps = clicking around
+- Summarizing weekly/monthly progress = copy-paste hell
+- Tracking achievements for reviews = hoping you remember
 
-- **Wikilink Automation** - Auto-suggest and apply `[[wikilinks]]` to your notes
-- **Periodic Note Rollups** - Chain daily → weekly → monthly → quarterly → yearly summaries
-- **Vault Health Tools** - Orphan detection, broken link repair, link density analysis
-- **Privacy Protection** - Person name format enforcement, protected folders
+**Obsidian Scribe brings your vault into Claude Code.** Query it. Analyze it. Automate it. All from your terminal.
 
-## Installation
+---
+
+## What You Get
+
+| Category | Commands | What It Does |
+|----------|----------|--------------|
+| **Daily Capture** | `/auto-log`, `/task-add` | Timestamped logging, task creation with natural dates |
+| **Vault Analysis** | 15 `/vault-*` commands | Orphans, hubs, clusters, gaps, broken links, stale notes |
+| **Wikilink Automation** | `/wikilink-apply`, hooks | Auto-suggest links, syntax validation, cache management |
+| **Periodic Rollups** | `/rollup` + 5 agents | Daily → Weekly → Monthly → Quarterly → Yearly summaries |
+| **Achievement Tracking** | Auto-detect hook | 126 patterns to capture wins from logs |
+
+**Total: 21 skills, 4 hooks, 5 specialized agents**
+
+---
+
+## How It Works
+
+```
+You: /vault-health
+
+Scribe: 🔍 Vault Health Report
+        Notes: 2,847
+        Links: 8,234 (2.89 avg/note)
+        Orphans: 43 (1.5%)
+        Hubs: 12 highly-connected notes
+
+        ⚠️ Knowledge gaps detected:
+        - "API authentication" mentioned 15x, no dedicated note
+        - "Database optimization" mentioned 9x, undocumented
+
+You: /vault-orphans
+
+Scribe: Found 43 orphan notes. Top candidates for linking:
+        - projects/old-mvp-notes.md (created 6mo ago)
+        - research/llm-fine-tuning.md (has valuable content)
+        ...
+
+You: /auto-log Fixed the authentication bug, deployed v2.1
+
+Scribe: ✓ Added to daily note (14:32)
+        🏆 Achievement detected: "Fixed authentication bug"
+        → Added to Achievements.md
+```
+
+No clicking. No switching apps. Your vault responds to conversation.
+
+---
+
+## Quick Start
+
+### Install
 
 ```bash
-/plugin marketplace add bencassie/obsidian-scribe
+/install bencassie/obsidian-scribe
 ```
 
-## Multi-Platform Configuration
-
-**CRITICAL**: This plugin is designed to work seamlessly across WSL and Windows using dual-config architecture.
-
-### The Pattern
-
-All platform-specific configurations follow the same pattern to enable cross-platform collaboration:
-
-| Platform | Configuration Location | Path Format | Status |
-|----------|------------------------|-------------|--------|
-| **WSL** | Project `.claude/settings.json` | `/mnt/c/...` | Checked into git |
-| **Windows** | Global `.claude.json` project override | `C:/...` | Local only (not committed) |
-
-### Why This Matters
-
-- **Team Collaboration**: WSL users commit configs that work for them; Windows users override locally
-- **No Environment Variables**: Platform differences handled through config structure
-- **Single Source of Truth**: WSL config in git; Windows overrides stay local
-- **Automatic Switching**: Claude Code automatically uses the right config for your platform
-
-### Windows Setup (Step-by-Step)
-
-**1. Locate your global config file:**
-   - Path: `C:\Users\<YourUsername>\.claude.json`
-   - Example: `C:\Users\alice\.claude.json`
-   - This file is in your Windows user directory (NOT in the vault)
-
-**2. Open the file in a text editor** (VSCode, Notepad++, etc.)
-
-**3. Find or create the `projects` section:**
-   - Look for `"projects": {` in the file
-   - If it doesn't exist, add it after the `mcpServers` section (or at the end before the final `}`)
-
-**4. Add your vault configuration:**
-
-Replace the placeholders with your actual paths:
-
-```json
-{
-  "projects": {
-    "C:/Users/<YourUsername>/obsidian/<YourVaultName>": {
-      "extraKnownMarketplaces": {
-        "obsidian-scribe": {
-          "source": {
-            "source": "directory",
-            "path": "C:/Users/<YourUsername>/src/obsidian-scribe"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-**Example with real values:**
-
-```json
-{
-  "projects": {
-    "C:/Users/alice/obsidian/MyVault": {
-      "extraKnownMarketplaces": {
-        "obsidian-scribe": {
-          "source": {
-            "source": "directory",
-            "path": "C:/Users/alice/src/obsidian-scribe"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-**5. If you already have other projects configured:**
-
-Add the new vault entry inside the existing `projects` object:
-
-```json
-{
-  "projects": {
-    "C:/Users/alice/src/other-project": {
-      // ... existing config ...
-    },
-    "C:/Users/alice/obsidian/MyVault": {
-      "extraKnownMarketplaces": {
-        "obsidian-scribe": {
-          "source": {
-            "source": "directory",
-            "path": "C:/Users/alice/src/obsidian-scribe"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-**6. Save the file and restart Claude Code**
-
-**Critical Notes:**
-- Use forward slashes `/` in ALL paths (not backslashes `\`)
-- Project key must match your vault's full path: `C:/Users/.../obsidian/VaultName`
-- Plugin path must match where you cloned obsidian-scribe
-- NEVER modify `.claude/settings.json` with Windows paths (it breaks WSL)
-- The global `.claude.json` is gitignored - Windows configs stay local
-
-**Troubleshooting:**
-
-If plugins don't load:
-1. Verify paths use forward slashes: `C:/Users/...` not `C:\Users\...`
-2. Check vault path matches exactly (use `pwd` in your vault directory)
-3. Ensure obsidian-scribe path points to the repository root (contains `.claude-plugin/`)
-4. Look for errors in debug logs: `C:\Users\<you>\.claude\debug\`
-
-### Plugin Version Updates
-
-**After pushing a new version to GitHub**, the plugin won't automatically update. Follow these steps:
-
-#### Standard Update Process
-
-1. **Pull latest from GitHub marketplace clone:**
-   ```bash
-   cd ~/.claude/plugins/marketplaces/obsidian-scribe
-   git pull origin main
-   ```
-
-2. **Update installed plugin** (use `--scope local` for local-scoped plugins):
-   ```bash
-   # NOTE: Command is "plugin" (singular), not "plugins"
-   claude plugin update --scope local obsidian-scribe@obsidian-scribe
-   ```
-
-3. **Restart Claude Code session**
-
-#### Verification
-
-Check that the update worked:
+### Try It
 
 ```bash
-# Check installed version
-cat ~/.claude/plugins/installed_plugins.json | grep -A 10 obsidian-scribe
+cd /path/to/your/vault
+claude
 
-# Verify marketplace version
-cat ~/.claude/plugins/marketplaces/obsidian-scribe/plugins/obsidian-scribe/.claude-plugin/plugin.json | grep version
+# Check vault health
+/vault-health
 
-# After restart, check debug log
-cat ~/.claude/debug/<session-id>.txt | grep "Found.*plugins"
+# Log something
+/auto-log Started working on new feature
+
+# Run a weekly rollup
+/rollup-weekly 2026-W01
 ```
 
-Expected output after restart:
-- `Found 2 plugins (2 enabled, 0 disabled)`
-- `Loaded plugins - Enabled: 2`
-- `Registered X hooks from 2 plugins`
+---
 
-#### Important Notes
+## Graph-First Workflow
 
-- **Command syntax**: `claude plugin` (singular), NOT `claude plugins`
-- **Local scope**: Local-scoped plugins require `--scope local` flag
-- **Auto-enabling**: Local-scoped plugins are automatically enabled after update
-- **Manual pull required**: The marketplace clone does NOT auto-update from GitHub
-- The `enable` command only works for disabled plugins, not for newly installed plugins
+Obsidian Scribe works best with the **graph-first** mental model. Instead of treating your vault as files to search, treat it as a knowledge graph to navigate.
 
-#### Troubleshooting
+### The Three-Layer Architecture
 
-**Problem**: Plugin shows old version even after update
+```
+Layer 1: INTELLIGENCE (smoking-mirror MCP)
+  - Your eyes: Navigate, discover, understand relationships
+  - Query backlinks, hubs, orphans, clusters
+  - Search by tags, frontmatter, semantic meaning
 
-**Diagnosis:**
-```bash
-# Check if marketplace clone is stale
-cd ~/.claude/plugins/marketplaces/obsidian-scribe && git log -1 --oneline
+Layer 2: WORKFLOWS (obsidian-scribe skills)
+  - Your brain: Execute patterns, maintain health
+  - Daily logging, rollups, vault maintenance
 
-# Compare with GitHub
-# Visit https://github.com/bencassie/obsidian-scribe/commits/main
+Layer 3: CONTENT (Read/Edit/Write)
+  - Your hands: Only touch what navigation identified
+  - Surgical reads after graph queries
 ```
 
-**Solution**: If marketplace is behind, run the 3-step update process above.
+### The Key Insight
 
-**Problem**: Hooks not loading
+> **smoking-mirror gives Claude the map, not the territory.**
 
-**Check debug log:**
-```bash
-cat ~/.claude/debug/<latest-session-id>.txt | grep -E "Found|Registered|hooks"
-```
+**Old way (file-centric)**: Grep → Read 50 files → 50K tokens → shallow understanding
 
-If you see "Registered 0 hooks", the plugin version likely doesn't include the hooks configuration. Verify:
-```bash
-cat ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/<version>/.claude-plugin/plugin.json | grep hooks
-```
+**New way (graph-first)**: Query graph → Read 3 key files → 5K tokens → deep understanding
 
-If missing, the cache has an old version. Re-run the update process.
+See [WORKFLOW.md](WORKFLOW.md) for the complete guide, or copy [CLAUDE.md.example](CLAUDE.md.example) to your vault.
 
-#### Development Workflow
+---
 
-When developing the plugin:
+## All Skills
 
-1. Make changes and bump version in all 3 manifest files
-2. Commit and push to GitHub
-3. Run the standard update process (above)
-4. Test in a fresh Claude session
+### Core Workflows (5 skills)
 
-### WSL Setup
+| Skill | Description |
+|-------|-------------|
+| `/auto-log <text>` | Add timestamped entry to today's daily note |
+| `/task-add <text>` | Create task with natural language due date |
+| `/rollup` | Execute full rollup chain (last 2 months) |
+| `/rebuild-wikilink-cache` | Rebuild entity cache from vault |
+| `/wikilink-apply <file>` | Apply wikilink suggestions to a note |
 
-WSL users can commit plugin configuration directly to `.claude/settings.json`:
+### Vault Health (16 skills) — requires [smoking-mirror MCP](docs/installation/mcp-servers.md)
+
+| Skill | Description |
+|-------|-------------|
+| `/vault-health` | Comprehensive vault diagnostics |
+| `/vault-stats` | Quick note/link/tag statistics |
+| `/vault-orphans` | Find notes with no backlinks |
+| `/vault-hubs` | Find highly-connected notes |
+| `/vault-clusters` | Detect topic clusters |
+| `/vault-gaps` | Find mentioned but undocumented topics |
+| `/vault-stale` | Find important notes not updated recently |
+| `/vault-dead-ends` | Notes with backlinks but no outlinks |
+| `/vault-backlinks <note>` | Show all notes linking to a note |
+| `/vault-related <note>` | Find similar notes |
+| `/vault-fix-links` | Repair broken wikilinks |
+| `/vault-unlinked-mentions <term>` | Find unlinked mentions of a term |
+| `/vault-link-density` | Analyze link patterns |
+| `/vault-folder-health` | Check folder organization |
+| `/vault-search` | Advanced search with filters |
+| `/vault-suggest` | Suggest wikilinks for a note |
+
+### Periodic Rollups (4 additional skills)
+
+| Skill | Description |
+|-------|-------------|
+| `/rollup-weekly <week>` | Summarize week (e.g., `2026-W01`) |
+| `/rollup-monthly <month>` | Summarize month (e.g., `2026-01`) |
+| `/rollup-quarterly <quarter>` | Summarize quarter (e.g., `2026-Q1`) |
+| `/rollup-yearly <year>` | Summarize year (e.g., `2026`) |
+
+---
+
+## Smart Hooks
+
+These run automatically on every edit:
+
+| Hook | Trigger | What It Does |
+|------|---------|--------------|
+| `session-start` | Session start | Shows vault status, recent achievements |
+| `achievement-detect` | After edits | Detects wins from logs (126 patterns) |
+| `wikilink-suggest` | After edits | Auto-applies wikilinks to known entities |
+| `syntax-validate` | After edits | Warns about syntax issues |
+
+---
+
+## Achievement Detection
+
+The achievement hook watches for patterns like:
+- **Actions**: Built, created, deployed, fixed, shipped
+- **Progress**: Completed, finished, launched
+- **Success signals**: Works, passed, all tests green
+- **Milestones**: v1.0, first time, breakthrough
+- **Bold text**: `**Anything in bold**` = important
+- **Emojis**: ✅ 🎉 🚀 💪 🏆
+
+When detected, achievements auto-add to your `Achievements.md` for performance reviews.
+
+---
+
+## Dependencies
+
+### Required
+- **Python 3.8+** — Hooks are written in Python
+
+### Optional (for vault intelligence)
+- **[smoking-mirror MCP](docs/installation/mcp-servers.md)** — Enables 15 vault analysis skills
+
+---
+
+## Cross-Platform Setup
+
+This plugin works on both WSL and Windows using dual-config architecture.
+
+### WSL (Committed to Git)
+
+Configure in `.claude/settings.json`:
 
 ```json
 {
   "extraKnownMarketplaces": {
     "obsidian-scribe": {
       "source": {
-        "source": "directory",
-        "path": "/mnt/c/Users/<you>/src/obsidian-scribe"
+        "source": "github",
+        "repo": "bencassie/obsidian-scribe"
       }
     }
   }
 }
 ```
 
-This approach ensures WSL and Windows users can collaborate without conflicts.
+### Windows (Local Override)
 
-## Plugins
+Configure in `C:\Users\<you>\.claude.json`:
 
-Coming soon...
+```json
+{
+  "projects": {
+    "C:/Users/<you>/obsidian/<vault>": {
+      "extraKnownMarketplaces": {
+        "obsidian-scribe": {
+          "source": {
+            "source": "github",
+            "repo": "bencassie/obsidian-scribe"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Note**: Use forward slashes `/` in all paths on Windows.
+
+See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installation/wsl.md) for detailed instructions.
+
+---
+
+## Comparison
+
+| Feature | Obsidian Scribe | Copilot | Smart Connections |
+|---------|-----------------|---------|-------------------|
+| Full vault analysis | ✅ 15 skills | ❌ Chat only | ❌ Semantic only |
+| Achievement tracking | ✅ 126 patterns | ❌ | ❌ |
+| Hierarchical rollups | ✅ 5 agents | ❌ | ❌ |
+| Works from terminal | ✅ Claude Code | ❌ In-Obsidian | ❌ In-Obsidian |
+| Long context (200K) | ✅ Claude | Limited | ❌ |
+| Local-first | ✅ | ✅ | ✅ |
+| Price | Free (MIT) | Free + Pro | Free + Pro |
+
+---
+
+## Documentation
+
+- **[Quick Start](docs/getting-started.md)** — Get running in 5 minutes
+- **[Skills Reference](docs/skills-reference.md)** — All 21 skills documented
+- **[Workflows](docs/workflows.md)** — Real examples and use cases
+- **[Comparison](docs/comparison.md)** — vs other tools
+- **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)
+
+---
 
 ## License
 

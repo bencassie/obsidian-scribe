@@ -1,0 +1,562 @@
+# My Obsidian Vault - Claude Code Instructions
+
+## 1. Core Philosophy: Graph-First Navigation
+
+### The Paradigm Shift
+
+This vault uses **smoking-mirror MCP** as its primary navigation layer. Think of your vault as a **knowledge graph**, not a file system.
+
+**The OLD way (file-centric)**:
+```
+User: "Find notes about Project Alpha"
+Claude: Grep("Project Alpha") → 47 matches
+         Read all 47 files → 50K+ tokens
+         Manual synthesis of relationships
+```
+
+**The NEW way (graph-first)**:
+```
+User: "Find notes about Project Alpha"
+Claude: search_notes(title_contains="Project Alpha") → 3 core notes
+         get_backlinks("Project Alpha.md") → 12 references
+         get_unlinked_mentions("Project Alpha") → 8 opportunities
+         Surgically read the 3 core notes → 5K tokens
+```
+
+### The Key Insight
+
+> **smoking-mirror gives Claude the map, not the territory.**
+
+**smoking-mirror provides** (Layer 1: Intelligence):
+- What notes exist and how they connect
+- Which notes are hubs, orphans, or dead-ends
+- What entities (titles, aliases) can be linked
+- How to find notes by tags, frontmatter, or relationships
+- Task and section extraction without full file reads
+- Vault structure understanding (graph position, backlinks, clusters)
+
+**obsidian-scribe skills provide** (Layer 2: Workflows):
+- User workflows (auto-log, rollup, task-add)
+- Vault maintenance (health, orphans, fix-links)
+- Summarization (weekly/monthly/quarterly agents)
+
+**Filesystem tools provide** (Layer 3: Content Operations):
+- Reading specific note content (AFTER smoking-mirror identifies it)
+- Writing or editing note content
+- Creating new notes
+- Only used when navigation identifies targets
+
+### The Mental Model
+
+```
+YOUR EYES (smoking-mirror MCP)
+  - Navigate: Where are things?
+  - Discover: What exists?
+  - Understand: How do things relate?
+  ↓
+YOUR BRAIN (obsidian-scribe skills)
+  - Execute workflows
+  - Maintain vault health
+  - Automate patterns
+  ↓
+YOUR HANDS (Read/Edit/Write)
+  - Read content
+  - Edit text
+  - Write files
+```
+
+**Use your eyes to see where to go. Only use your hands when you know what to touch.**
+
+---
+
+## 2. Tool Hierarchy
+
+**Priority 1: smoking-mirror MCP** (Discovery & Navigation)
+- Use for: Finding notes, understanding relationships, discovering structure
+- Examples: `search_notes()`, `get_backlinks()`, `find_orphan_notes()`
+
+**Priority 2: obsidian-scribe skills** (Workflows)
+- Use for: Executing vault workflows, maintenance tasks
+- Examples: `/vault-health`, `/auto-log`, `/rollup`
+
+**Priority 3: Read/Edit/Write** (Content Operations)
+- Use for: Reading/writing specific content after navigation identifies targets
+- Examples: `Read(path)`, `Edit(path, old, new)`, `Write(path, content)`
+
+**AVOID: Grep/Glob for discovery**
+- Only use as last resort when semantic navigation fails
+- Filesystem exploration should be rare
+
+---
+
+## 3. smoking-mirror Quick Reference
+
+### Graph Intelligence
+| Tool | Purpose | Returns |
+|------|---------|---------|
+| `get_backlinks(path)` | Who links TO this note | Source paths, line numbers, context |
+| `get_forward_links(path)` | What this note links TO | Target paths, existence status |
+| `find_orphan_notes()` | Notes with no backlinks | Disconnected notes needing integration |
+| `find_hub_notes(min=5)` | Highly connected notes | Central concepts in your vault |
+| `get_link_path(from, to)` | Shortest path between notes | Connection chain (A → B → C) |
+| `get_connection_strength(a, b)` | How related two notes are | Score based on links, tags, folder |
+| `find_bidirectional_links()` | Mutual links (A ↔ B) | Strong relationships |
+| `find_dead_ends()` | Notes with backlinks but no outlinks | Consumers that don't contribute |
+
+### Search & Discovery
+| Tool | Purpose | Filters |
+|------|---------|---------|
+| `search_notes()` | Dataview-like queries | where (frontmatter), has_tag, folder, title_contains |
+| `get_recent_notes(days)` | Recently modified | days, folder, limit |
+| `get_stale_notes(days)` | Important but neglected | days, min_backlinks |
+| `get_all_entities()` | All linkable things | Titles + aliases from vault index |
+| `get_unlinked_mentions(entity)` | Where X mentioned but not linked | Files + line numbers for linking opportunities |
+
+### Structure Analysis
+| Tool | Purpose | Returns |
+|------|---------|---------|
+| `get_note_structure(path)` | Heading tree | Full section hierarchy |
+| `get_section_content(path, heading)` | Extract section | Content under specific heading |
+| `find_sections(pattern)` | Find headings across vault | All notes with "## References" sections |
+| `get_note_metadata(path)` | Quick stats without reading content | Frontmatter, tags, link counts, word count |
+| `get_folder_structure()` | Vault organization | Folder tree with note counts |
+
+### Tasks
+| Tool | Purpose | Filters |
+|------|---------|---------|
+| `get_all_tasks()` | Every task in vault | status (open/completed/cancelled), folder, tag |
+| `get_tasks_with_due_dates()` | Due date sorted | status, folder |
+| `get_tasks_from_note(path)` | Tasks from specific note | All task statuses |
+
+### Wikilink Services
+| Tool | Purpose | Returns |
+|------|---------|---------|
+| `suggest_wikilinks(text)` | Find linking opportunities | Entities + confidence scores |
+| `find_broken_links()` | Invalid wikilinks | Sources + fuzzy-match suggestions |
+| `validate_links(path)` | Check wikilinks in note | Broken links with fix suggestions |
+| `get_unlinked_mentions(entity)` | Where X mentioned but not linked | Files + line numbers |
+
+### System
+| Tool | Purpose | When to Use |
+|------|---------|-------------|
+| `refresh_index()` | Rebuild vault index | After bulk external changes (Obsidian edits) |
+| `get_vault_stats()` | Comprehensive overview | Health check, session start |
+
+---
+
+## 4. Tool Selection Guide
+
+### "Where is X?" Questions
+
+| Question Type | DO Use | DON'T Use |
+|--------------|--------|-----------|
+| "Where is Project Alpha discussed?" | `search_notes(title_contains="Project Alpha")` | `Grep("Project Alpha")` |
+| "What links to this note?" | `get_backlinks(path)` | `Grep("[[Note Name]]")` |
+| "What does this note reference?" | `get_forward_links(path)` | `Read` + parse manually |
+| "What's the vault structure?" | `get_folder_structure()` | `tree` command |
+| "Where are all the tasks?" | `get_all_tasks()` | `Grep("- [ ]")` |
+
+### "What should I work on?" Questions
+
+| Question Type | DO Use | DON'T Use |
+|--------------|--------|-----------|
+| "What did I work on recently?" | `get_recent_notes(days=7)` | `ls daily-notes/` |
+| "What important notes need attention?" | `get_stale_notes(days=30, min_backlinks=3)` | Manual review |
+| "What tasks are due?" | `get_tasks_with_due_dates()` | `Grep("due:")` |
+| "What's disconnected from my vault?" | `find_orphan_notes()` | Manual checking |
+| "What should I link?" | `get_unlinked_mentions(entity)` | `Grep` then filter manually |
+
+### "How are things related?" Questions
+
+| Question Type | DO Use | DON'T Use |
+|--------------|--------|-----------|
+| "How does Note A connect to Note B?" | `get_link_path(from, to)` | Manual tracing |
+| "What do A and B both reference?" | `get_common_neighbors(A, B)` | Compare files manually |
+| "What are my vault's key concepts?" | `find_hub_notes(min_links=5)` | Guess based on titles |
+| "What mentions Claude Code but doesn't link?" | `get_unlinked_mentions("Claude Code")` | `Grep("Claude Code")` + filter |
+| "What notes reference each other?" | `find_bidirectional_links()` | Manual backlink checking |
+
+### Content Operations (When to Use Filesystem Tools)
+
+| Scenario | Tool | Prerequisite |
+|----------|------|-------------|
+| Read note content | `Read(path)` | Path identified via smoking-mirror query |
+| Edit specific text | `Edit(path, old, new)` | Content read and exact target identified |
+| Write new note | `Write(path, content)` | Path determined by naming convention |
+| Extract section content | `get_section_content(path, heading)` | **Prefer smoking-mirror MCP** (no full file read) |
+
+---
+
+## 5. Example Workflows
+
+### Finding Context for a Topic
+
+**GOAL**: Understand everything about "Claude Code" in the vault
+
+**WRONG WAY** (File-centric):
+```
+Grep("Claude Code")
+  → 47 files with matches
+  → Read each one sequentially
+  → Manual synthesis
+Token cost: ~50K+ tokens
+Time: High
+Understanding: Shallow (no relationships)
+```
+
+**RIGHT WAY** (Graph-first):
+```
+search_notes(title_contains="Claude Code")
+  → 3 notes directly about it
+
+get_backlinks("tech/tools/Claude Code.md")
+  → 12 notes that reference it
+
+find_hub_notes()
+  → See if "Claude Code" is a hub (highly connected)
+
+get_unlinked_mentions("Claude Code")
+  → 8 places it's mentioned but not linked
+
+NOW selectively Read the 3 core notes for content
+  Token cost: ~5K tokens
+  Time: Low
+  Understanding: Deep (relationships, connections, context)
+```
+
+### Daily Navigation Pattern
+
+**Morning workflow**:
+```
+1. Session starts → See vault intelligence from session-start hook
+   - Daily note status (habits, food, log entries)
+   - Orphan count, broken links, stale hubs
+   - Recent activity
+
+2. Check what needs attention:
+   get_stale_notes(days=7, min_backlinks=2)
+   → Important notes untouched this week
+
+3. Review recent work:
+   get_recent_notes(days=3)
+   → Context for today's focus
+
+4. Check tasks:
+   get_tasks_with_due_dates()
+   → What's due today/this week
+
+5. Log work:
+   Use /auto-log skill to record activity
+```
+
+### Maintenance Workflow
+
+**GOAL**: Clean up vault disconnections and broken links
+
+**WRONG WAY**:
+```
+Read every file manually
+Manually check for orphans
+Manually find broken links
+Manually trace relationships
+```
+
+**RIGHT WAY**:
+```
+find_orphan_notes()
+  → List of 23 disconnected notes
+
+find_broken_links()
+  → 4 invalid wikilinks with fix suggestions
+
+find_dead_ends(min_backlinks=2)
+  → Notes that should link out but don't
+
+For each issue:
+  - Use /vault-fix-links for automated repair
+  - Use /vault-suggest for linking opportunities
+  - Selectively Read only the notes needing attention
+```
+
+### Rollup/Summarization Pattern
+
+**Weekly/Monthly rollup workflow** (automated via obsidian-scribe agents):
+```
+/rollup
+  → Triggers rollup-agent
+  → Chains to weekly-agent for each week
+  → Each weekly-agent:
+      - Calculates date range (Python)
+      - Uses smoking-mirror to find daily notes:
+        get_notes_in_range(start_date, end_date)
+      - Reads only daily notes for that week
+      - Extracts data (habits, macros, achievements)
+      - Writes/updates weekly note
+  → Monthly/quarterly/yearly agents follow similar pattern
+```
+
+**Note**: Rollup agents use **date-based paths** (not semantic search) because they know exact file patterns. This is appropriate for structured time-series data.
+
+---
+
+## 6. Environment & Configuration
+
+### Platform Detection
+
+**CRITICAL**: Always check the environment info in system tags:
+- `Platform: win32` → Windows (use `C:\...` paths, quote spaces)
+- `Platform: linux` → WSL (use `/mnt/c/...` paths, Unix conventions)
+
+**Example**: If `Platform: win32`, use `cd "C:\path"`, NOT `cd /mnt/c/path`
+
+### Vault Location
+
+- **Windows**: `C:\Users\<username>\obsidian\<vault>`
+- **WSL**: `/mnt/c/Users/<username>/obsidian/<vault>`
+
+### MCP Servers
+
+| Server | Level | Purpose | Dependency |
+|--------|-------|---------|------------|
+| **smoking-mirror** | Project | Vault intelligence (graph, search, tasks) | Required by 16 vault-* skills |
+
+**Configuration**:
+- WSL: `.mcp.json` with Unix paths, direct `npx`
+- Windows: `C:\Users\<user>\.claude.json` project override with Windows paths, `cmd /c npx` wrapper
+
+### Plugins
+
+| Plugin | Source | Skills | Hooks | Agents |
+|--------|--------|--------|-------|--------|
+| **obsidian-scribe** | GitHub: `bencassie/obsidian-scribe` | 21 | 4 | 5 |
+
+**obsidian-scribe skills**:
+- Core: auto-log, task-add, rollup, rebuild-wikilink-cache, wikilink-apply
+- Vault Health: vault-health, vault-orphans, vault-backlinks, vault-fix-links, vault-hubs, vault-clusters, vault-gaps, vault-stale, vault-bidirectional, vault-unlinked-mentions, vault-search, vault-related, vault-dead-ends, vault-link-density, vault-folder-health, vault-suggest (all require smoking-mirror MCP)
+
+### Permissions
+
+**4-layer system** (priority: lowest → highest):
+1. User-level (`~/.claude.json` → permissions.allow)
+2. Project (`.claude/settings.json`)
+3. Local (`.claude/settings.local.json`)
+4. Session (runtime user approvals)
+
+**Recommended vault permissions**:
+- Denied: `.obsidian/**`, `.git/**`
+- Allowed: Vault markdown files, all plugin skills, smoking-mirror MCP tools
+
+### Cross-Platform Pattern
+
+**WSL**: Configs in git (`.mcp.json`, `.claude/settings.json`)
+**Windows**: Project overrides in `C:\Users\<user>\.claude.json` (NOT committed)
+
+This allows:
+- WSL uses checked-in files (Unix paths)
+- Windows uses project overrides (Windows paths, `cmd /c` wrapper)
+- Single source of truth in git
+- Platform-specific configs stay local
+
+---
+
+## 7. File Paths & Conventions
+
+### Structured Notes (Date-based paths)
+
+| Type | Path Pattern | When to Use |
+|------|--------------|-------------|
+| Daily | `daily-notes/YYYY-MM-DD.md` | Journal, logs, habits |
+| Weekly | `weekly-notes/YYYY-WXX.md` | Weekly summaries (rollup) |
+| Monthly | `monthly-notes/YYYY-MM.md` | Monthly summaries (rollup) |
+| Quarterly | `quarterly-notes/YYYY-QX.md` | Quarterly summaries (rollup) |
+| Yearly | `yearly-notes/YYYY.md` | Yearly summaries (rollup) |
+
+**When to use paths vs search**:
+- **Paths**: When you know the exact date/structure (daily note today = `daily-notes/2026-01-01.md`)
+- **Search**: When discovering unknown notes (`get_recent_notes(days=7)`)
+
+### Special Files
+
+| Type | Path | Purpose |
+|------|------|---------|
+| Achievements | `personal/goals/Achievements.md` | Auto-updated by achievement-detect hook |
+| Templates | `templates/` | Note templates |
+
+### Folder Organization
+
+**Protected folders** (must contain subfolders, not files):
+- `personal/` → `personal/goals/`, `personal/health/`
+- `work/` → `work/projects/`, `work/notes/`
+- `tech/` → `tech/frameworks/`, `tech/tools/`
+
+**Folders that can contain files directly**:
+- `daily-notes/`, `weekly-notes/`, `monthly-notes/`, `quarterly-notes/`, `yearly-notes/`, `templates/`
+
+---
+
+## 8. Hooks & Automation
+
+### Session Start Hook (Enhanced with Vault Intelligence)
+
+**Triggers**: When Claude Code session starts
+
+**Hook provides** (basic stats):
+- Daily note status (habits, food, log entries)
+- Wikilink cache entity count
+- Recent achievements (last 5)
+
+**CRITICAL - Your Greeting Workflow**:
+
+1. **Read hook output** from system-reminder tags (not visible to user)
+2. **Augment with smoking-mirror** queries in parallel:
+   - `mcp__smoking-mirror__find_orphan_notes()` → Count disconnected notes
+   - `mcp__smoking-mirror__find_broken_links()` → Count invalid wikilinks
+   - `mcp__smoking-mirror__get_stale_notes(days=30, min_backlinks=3)` → Count neglected hubs
+   - `mcp__smoking-mirror__get_recent_notes(days=7)` → Count recent activity
+3. **Greet the user** with BOTH hook stats + vault intelligence
+
+**Example greeting format**:
+```
+Good morning! Here's your vault status:
+
+Daily note: 2026-01-01.md exists
+  Habits: 0/3 completed
+  Food entries: 1
+  Log entries: 57
+
+Vault Intelligence:
+  Wikilink cache: 1155 entities
+  Orphan notes: 23 (disconnected)
+  Broken links: 4 (need repair)
+  Stale hubs: 2 (important, untouched >30 days)
+  Recent activity: 12 notes modified this week
+
+Recent achievements:
+  2025: Phase 2 Complete: 9 components delivered
+  ...
+```
+
+**Why this matters**: Hook data goes to your context but isn't visible to users. You MUST proactively share it plus enhanced intelligence from smoking-mirror.
+
+### Wikilink Suggest Hook
+
+**Triggers**: After Edit/Write operations
+
+**Behavior**: Auto-applies `[[brackets]]` to text matching known entities
+- Uses local cache (`.claude/wikilink-entities.json`)
+- Cache rebuilt at session start (via session-start hook → wikilink-cache.py)
+- Immediate application (no MCP round-trip delay)
+- Includes all note titles and aliases from vault scan
+
+**Protected zones** (never wikilinked):
+- YAML frontmatter
+- Code blocks (``` and `)
+- Existing wikilinks
+- Markdown links, URLs
+- Hashtags, HTML tags
+- Obsidian comments (%% ... %%)
+- Math expressions ($ ... $)
+
+### Achievement Detect Hook
+
+**Triggers**: After Edit/Write operations
+
+**Behavior**: Detects significant accomplishments and adds to `Achievements.md`
+- Looks for markers like "completed", "delivered", "achieved"
+- Graph-aware: Detects new hub notes, orphan reduction, broken link repairs
+
+### Syntax Validate Hook
+
+**Triggers**: After Edit/Write operations
+
+**Behavior**: Warns about:
+- Angle brackets in content (breaks wikilinks)
+- Wrapped wikilinks like `**[[Link]]**` (breaks hyperlinks)
+- Wikilinks in YAML frontmatter (corrupts metadata)
+
+---
+
+## 9. Development & Troubleshooting
+
+### Operating Principles
+
+1. **Navigate First**: Use smoking-mirror to discover targets before reading
+2. **Graph-Aware**: Consider backlinks, connections when understanding context
+3. **Minimal Reads**: Use metadata/structure queries when full content unnecessary
+4. **Surgical Edits**: Extract sections with MCP, edit only what's needed
+5. **Semantic Discovery**: Search by meaning (tags, relationships) not just text
+6. **Date-Based Paths**: Construct paths programmatically for time-series notes (rollup workflows)
+7. **Index-Fresh**: Call `refresh_index()` after bulk external changes
+8. **No Invention**: Only use existing entries and written content
+9. **Privacy**: All content is personal data - handle with care
+
+### Plugin Version Management
+
+**obsidian-scribe** (GitHub):
+```bash
+# Update plugin
+/install bencassie/obsidian-scribe
+
+# Restart Claude Code session
+```
+
+**CRITICAL**: All 3 version files must match:
+1. `.claude-plugin/marketplace.json`
+2. `plugins/<plugin>/.claude-plugin/marketplace.json`
+3. `plugins/<plugin>/.claude-plugin/plugin.json`
+
+### Debug Log Locations
+
+- **WSL**: `/home/<user>/.claude/debug/<session-id>.txt`
+- **Windows**: `C:\Users\<user>\.claude\debug\<session-id>.txt`
+
+**Key indicators**:
+- `Found 5 plugins (5 enabled, 0 disabled)` → Plugins loaded
+- `Registered 4 hooks from 5 plugins` → Hooks active
+- `MCP server "smoking-mirror": Successfully connected` → MCP working
+- `Total plugin skills loaded: 43` → Skills available
+
+### Common Issues
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| "Connection closed" (MCP) | Missing `cmd /c` wrapper on Windows | Wrap `npx` with `cmd /c` in Windows config |
+| "Found 0 plugins" | Project path mismatch | Check `projectPath` in `installed_plugins.json` |
+| SSH authentication failed | Marketplace using separate owner/repo fields | Use combined `repo: "owner/repo"` format |
+| Plugin version not updating | Marketplace clone stale | `git pull` in marketplace directory |
+| Hooks not loading | Version mismatch in manifest files | Ensure all 3 version files match |
+
+### Verification Commands
+
+```bash
+# Check plugin status
+/plugins
+
+# Check debug log for key indicators
+cat ~/.claude/debug/<session-id>.txt | grep -E "Found|Registered|Successfully connected"
+```
+
+### Error Handling
+
+**If "Tool not found"**:
+1. Check permissions in `.claude/settings.local.json`
+2. Restart Claude Code session
+
+**Never**: Suggest alternatives, ask for manual copy-paste, or claim tools unavailable
+
+---
+
+## Summary: The Revolution
+
+| Aspect | Before (File-centric) | After (Graph-first) |
+|--------|----------------------|---------------------|
+| **Mental model** | Vault = files to search | Vault = knowledge graph |
+| **Claude's role** | File processor | Graph navigator |
+| **Navigation** | grep, glob, read all | Semantic queries, surgical reads |
+| **Token cost** | High (read everything) | Minimal (read only what's needed) |
+| **Understanding** | Shallow (no relationships) | Deep (connections, context) |
+| **Discovery** | Text matching | Graph position, tags, frontmatter |
+
+**The key phrase**:
+> **smoking-mirror is your eyes, file tools are your hands.**
+> Use your eyes to see where to go. Only use your hands when you know what to touch.

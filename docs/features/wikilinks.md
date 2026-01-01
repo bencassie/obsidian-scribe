@@ -1,26 +1,26 @@
-# [[Wikilinks]] 🦉🔗
+# Wikilinks 🦉🔗
 
-*Hoot! A well-linked [[Vault]] is a wise vault. Let the owl help [[You]] connect your [[Knowledge]].*
+*Hoot! A well-linked Vault is a wise vault. Let the owl help You connect your Knowledge.*
 
-[[Wikilink]] [[Features]] automatically [[Suggest]], [[Apply]], and validate [[Links]] in your [[Notes]].
+Wikilink Features automatically Suggest, Apply, and validate Links in your Notes.
 
-## Features in [[This]] [[Domain]]
+## Features in This Domain
 
-| [[Feature]] | Type | Purpose |
+| Feature | Type | Purpose |
 |---------|------|---------|
-| `/rebuild-wikilink-cache` | [[Skill]] | Rebuild [[Entity]] cache |
-| `/wikilink-apply` | Skill | Apply [[Link]] [[Suggestions]] to a [[Note]] |
-| `syntax-validate` | [[Hook]] | Warn about [[Syntax]] issues |
-| `wikilink-suggest` | Hook | [[Auto]]-apply wikilinks [[After]] [[Edits]] |
+| `/rebuild-wikilink-cache` | Skill | Rebuild Entity cache |
+| `/wikilink-apply` | Skill | Apply Link Suggestions to a Note |
+| `syntax-validate` | Hook | Warn about Syntax issues |
+| `wikilink-suggest` | Hook | Auto-apply wikilinks After Edits |
 
-**Requires:** smoking-[[Mirror]] [[MCP]] (for `/wikilink-apply` suggestions)
+**Requires:** smoking-Mirror MCP (for `/wikilink-apply` suggestions)
 
 ## How It Works
 
-The owl maintains a cache of wikilink [[Entities]] (note titles and aliases) and automatically:
-1. **Detects** [[When]] you write [[Text]] [[Matching]] [[Existing]] notes
-2. **Suggests** adding `[[brackets]]` around [[Matches]]
-3. **Validates** syntax to [[Prevent]] broken links
+The owl maintains a cache of wikilink Entities (note titles and aliases) and automatically:
+1. **Detects** When you write Text Matching Existing notes
+2. **Suggests** adding `brackets` around Matches
+3. **Validates** syntax to Prevent broken links
 
 ## `/rebuild-wikilink-cache`
 
@@ -62,7 +62,7 @@ Apply wikilink suggestions to a specific note.
 
 1. Reads the note content
 2. Uses smoking-mirror to detect entity mentions
-3. Suggests adding `[[brackets]]` around matches
+3. Suggests adding `brackets` around matches
 4. Applies changes automatically
 
 ### Example
@@ -74,7 +74,7 @@ I use Claude Code with Obsidian for knowledge management.
 
 **After:**
 ```markdown
-I use [[Claude Code]] with [[Obsidian]] for knowledge management.
+I use Claude Code with Obsidian for knowledge management.
 ```
 
 *The owl sees connections you might have missed!* 🦉
@@ -88,11 +88,11 @@ Runs automatically after Edit/Write operations to prevent common syntax errors.
 **1. Wrapped Wikilinks**
 
 ```markdown
-❌ **[[Link]]**  (breaks hyperlink)
-✅ [[Link]]      (works correctly)
+❌ **Link**  (breaks hyperlink)
+✅ Link      (works correctly)
 
-❌ *[[Link]]*    (breaks hyperlink)
-✅ [[Link]]      (works correctly)
+❌ *Link*    (breaks hyperlink)
+✅ Link      (works correctly)
 ```
 
 **2. Angle Brackets in Content**
@@ -110,10 +110,10 @@ Runs automatically after Edit/Write operations to prevent common syntax errors.
 **3. Wikilinks in Frontmatter**
 
 ```markdown
-❌ title: "[[Some]] [[Text]]"
+❌ title: "Some Text"
 ✅ title: "Some Text"
 
-❌ [[Key]]: value
+❌ Key: value
 ✅ key: value
 ```
 
@@ -127,8 +127,8 @@ Runs automatically after Edit/Write operations to prevent common syntax errors.
 File: daily-notes/2026-01-01.md
 
 Issue: Wrapped wikilink detected
-  Line: **[[Important Note]]**
-  Fix: Remove formatting around [[brackets]]
+  Line: **Important Note**
+  Fix: Remove formatting around brackets
 
 Wrapped wikilinks break Obsidian's hyperlink functionality.
 ```
@@ -142,7 +142,7 @@ Runs automatically after Edit/Write operations to apply wikilinks.
 1. Reads the file you just edited
 2. Checks wikilink entity cache
 3. Finds text matching note titles/aliases
-4. Auto-applies `[[brackets]]` around matches
+4. Auto-applies `brackets` around matches
 
 ### Example
 
@@ -153,14 +153,14 @@ Today I learned about Model Context Protocol and Claude Code.
 
 The owl auto-converts to:
 ```markdown
-Today I learned about [[Model Context Protocol]] and [[Claude Code]].
+Today I learned about Model Context Protocol and Claude Code.
 ```
 
 *Automatic linking as you write - no manual work needed!* 🦉✨
 
 ### Configuration
 
-Control sensitivity in `.[[Obsidian]]-scribe.json`:
+Control sensitivity in `.Obsidian-scribe.json`:
 
 ```json
 {
@@ -186,7 +186,7 @@ Control sensitivity in `.[[Obsidian]]-scribe.json`:
 /wikilink-apply new-note.md
 ```
 
-The owl adds [[brackets]] around all matching entities.
+The owl adds brackets around all matching entities.
 
 ### Vault-Wide Link Cleanup
 
@@ -227,9 +227,9 @@ The hook is helpful but not perfect - review suggestions:
 
 ### 3. Avoid Syntax Traps
 
-- Don't wrap wikilinks: `[[Link]]` not `**[[Link]]**`
+- Don't wrap wikilinks: `Link` not `**Link**`
 - No angle brackets: `ILogger(T)` not `ILogger<T>`
-- Plain text in frontmatter: `title: "Note"` not `title: "[[Note]]"`
+- Plain text in frontmatter: `title: "Note"` not `title: "Note"`
 
 ## Troubleshooting
 
@@ -238,7 +238,7 @@ The hook is helpful but not perfect - review suggestions:
 **Check:**
 - Cache is built: `/rebuild-wikilink-cache`
 - Hook is enabled in plugin config
-- Python is available as `[[Python]]` command
+- Python is available as `Python` command
 
 ### Too many false positives
 
@@ -252,19 +252,19 @@ The hook is helpful but not perfect - review suggestions:
 }
 ```
 
-### Syntax warnings [[Not]] showing
+### Syntax warnings Not showing
 
 **Ensure:**
-- [[Hooks]] [[Are]] enabled
-- You're editing markdown [[Files]] in vault
+- Hooks Are enabled
+- You're editing markdown Files in vault
 - Hook has correct permissions
 
-## [[Related]] Features
+## Related Features
 
-- **[Vault Intelligence](vault-intelligence.md)** - [[Analyze]] link patterns
-- **[Daily Logging](daily-logging.md)** - Wikilinks in [[Log]] entries
-- **[Examples](../examples/)** - [[See]] wikilink [[Workflows]] in [[Action]]
+- **[Vault Intelligence](vault-intelligence.md)** - Analyze link patterns
+- **[Daily Logging](daily-logging.md)** - Wikilinks in Log entries
+- **[Examples](../examples/)** - See wikilink Workflows in Action
 
 ---
 
-*"A thousand links begin with a single [[bracket]], dear scholar!"* 🦉🔗
+*"A thousand links begin with a single bracket, dear scholar!"* 🦉🔗

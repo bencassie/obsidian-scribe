@@ -285,6 +285,24 @@ def main():
         if '.claude' in file_path:
             sys.exit(0)
 
+        # Skip CLAUDE.md files (case-insensitive)
+        if file_path.lower().endswith('claude.md'):
+            sys.exit(0)
+
+        # Skip documentation/ directory
+        if '/documentation/' in file_path or '\\documentation\\' in file_path:
+            sys.exit(0)
+
+        # Skip docs/ directory (repo documentation)
+        if '/docs/' in file_path or '\\docs\\' in file_path:
+            sys.exit(0)
+
+        # Skip root-level documentation files
+        root_skip = ['README.md', 'CONTRIBUTING.md', 'LICENSE.md', 'CHANGELOG.md']
+        file_name = Path(file_path).name
+        if file_name in root_skip:
+            sys.exit(0)
+
         # Check if file exists
         path = Path(file_path)
         if not path.exists():

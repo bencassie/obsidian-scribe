@@ -1,77 +1,77 @@
-<div align="center">
+# Documentation
 
-<img src="assets/logo.png" alt="Obsidian Scribe" width="120">
-
-# [[Obsidian Scribe]] [[Documentation]]
-
-*Hoot hoot! Welcome to the nest of [[Knowledge]], dear scholar.*
-
-</div>
+Obsidian Scribe — Your Obsidian vault, accessible from the command line.
 
 ---
 
-[[Obsidian]] [[Scribe]] is your wise companion for Obsidian [[Vault]] [[Automation]] and [[Intelligence]]. Let [[This]] owl [[Guide]] [[You]] through the wisdom contained within.
+## Quick Links
 
-## 📚 Documentation Index
+| Topic | Description |
+|-------|-------------|
+| [Getting Started](getting-started.md) | Get running in 5 minutes |
+| [Skills Reference](skills-reference.md) | All 21 skills documented |
+| [Workflows](workflows.md) | Real examples and use cases |
+| [Comparison](comparison.md) | vs Copilot, Smart Connections |
 
-### [[Getting]] Started
-- **[Quick Start Guide](getting-started.md)** - Begin your journey with the wise owl
+---
 
-### Installation
-Platform-[[Specific]] setup guides:
-- **[WSL (Ubuntu)](installation/wsl.md)** - For the [[Linux]] scholars
-- **[Windows](installation/windows.md)** - For the [[Windows]] scribes
-- **[MCP Servers](installation/mcp-servers.md)** - Configuring smoking-[[Mirror]] intelligence
+## Installation
 
-### [[Features]] by [[Domain]]
+| Platform | Guide |
+|----------|-------|
+| Windows | [Windows Setup](installation/windows.md) |
+| WSL/Linux | [WSL Setup](installation/wsl.md) |
+| MCP (vault intelligence) | [MCP Servers](installation/mcp-servers.md) |
 
-The owl's wisdom is organized into [[Five]] domains:
+---
 
-- **[Daily Logging](features/daily-logging.md)** 📝
-  *Capture your thoughts with [[Auto]]-[[Log]], task-add, and [[Session]] awareness*
+## Features
 
-- **[Wikilinks](features/wikilinks.md)** 🔗
-  *Automatic [[Link]] [[Suggestions]] and [[Syntax]] [[Validation]] for a well-connected vault*
+### Daily Capture
+- `/auto-log` — Timestamped logging
+- `/task-add` — Task creation with natural dates
+- `/food` — Food tracking
 
-- **[Rollup Summarization](features/rollup.md)** 📊
-  *[[Multi]]-agent summarization from daily → weekly → [[Monthly]] → [[Quarterly]] → yearly*
+### Vault Intelligence (15 skills)
+- `/vault-health` — Comprehensive diagnostics
+- `/vault-orphans` — Find isolated notes
+- `/vault-gaps` — Find undocumented topics
+- [Full list →](skills-reference.md#vault-intelligence)
 
-- **[Vault Intelligence](features/vault-intelligence.md)** 🧠
-  *15 [[Skills]] for analyzing your knowledge [[Graph]] (requires smoking-mirror)*
+### Wikilink Automation
+- `/rebuild-wikilink-cache` — Rebuild entity cache
+- `/wikilink-apply` — Apply links to a note
+- Auto-suggest hook
 
-- **[Achievements](features/achievements.md)** 🏆
-  *Automatic [[Detection]] and tracking of your accomplishments*
+### Periodic Rollups
+- `/rollup` — Full chain (daily → yearly)
+- `/rollup-weekly`, `/rollup-monthly`, etc.
+- 5 specialized agents
 
-### [[Examples]] & [[Workflows]]
+### Achievement Tracking
+- 126 pattern detection
+- Auto-add to Achievements.md
+- Works with daily logs
 
-Real-world usage patterns:
-- **[Daily Workflow](examples/daily-workflow.md)** - Typical day with the owl
-- **[Vault Analysis](examples/vault-analysis.md)** - Health [[Checks]] and [[Optimization]]
-- **[Rollup Chain](examples/rollup-chain.md)** - Periodic summarization in [[Action]]
+---
 
-### Development
+## Architecture
 
-For those who wish to help the owl grow wiser:
-- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Development guide
-- **[TEST-HOOKS.md](../TEST-HOOKS.md)** - [[Hook]] [[Testing]] [[Reference]]
+```
+21 skills + 4 hooks + 5 agents
+         ↓
+    Claude Code
+         ↓
+   Your Obsidian Vault
+```
 
-## 🦉 The Sage Owl's Promise
+**Dependencies:**
+- Python 3.8+ (for hooks)
+- smoking-mirror MCP (for vault-* skills)
 
-*"A well-linked vault is a wise vault, and this owl shall help you tend it with care."*
+---
 
-Obsidian Scribe provides:
-- ✨ **20+ Skills** for vault operations
-- 🪝 **4 [[Smart]] [[Hooks]]** that work behind the scenes
-- 🤖 **5 [[Rollup]] Agents** for intelligent summarization
-- 🔍 **[[Vault Intelligence]]** [[Powered]] by smoking-mirror [[MCP]]
-- 🏆 **[[Achievement]] Tracking** to celebrate your progress
+## Support
 
-## [[Need]] Help?
-
-Even the wisest owl sometimes needs a branch to perch on:
-
-- 📖 Check the [Getting Started Guide](getting-started.md)
-- 🐛 [Report issues](https://github.com/bencassie/obsidian-scribe/issues)
-- 💡 [Suggest features](https://github.com/bencassie/obsidian-scribe/discussions)
-
-*Hoot! Happy knowledge [[Management]], dear scholar.* 🦉
+- [Report Issues](https://github.com/bencassie/obsidian-scribe/issues)
+- [Feature Requests](https://github.com/bencassie/obsidian-scribe/discussions)
