@@ -4,9 +4,9 @@
 
 # Obsidian Scribe
 
-**Your entire Obsidian vault, accessible from the command line.**
+**Your Obsidian vault as a queryable knowledge graph.**
 
-21 skills • 4 smart hooks • 5 rollup agents • Full vault intelligence
+smoking-mirror MCP + 21 skills + 4 hooks + 5 agents = Graph-first PKM
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
@@ -17,29 +17,72 @@
 
 <img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%">
 
-## Why This Exists
+## The Problem
 
-Obsidian is powerful. But maintaining a vault at scale is *work*:
-- Manually linking notes gets tedious at 1000+ notes
+Obsidian at scale is *work*:
 - Finding orphans, broken links, knowledge gaps = clicking around
+- Understanding how notes connect = manual backlink checking
 - Summarizing weekly/monthly progress = copy-paste hell
-- Tracking achievements for reviews = hoping you remember
+- Tracking achievements = hoping you remember
 
-**Obsidian Scribe brings your vault into Claude Code.** Query it. Analyze it. Automate it. All from your terminal.
+**Traditional AI tools read your vault file-by-file.** 50 files × 1000 tokens = 50K tokens consumed. Shallow understanding. No relationships.
+
+---
+
+## The Solution: Graph-First Navigation
+
+Obsidian Scribe + [smoking-mirror MCP](https://github.com/bencassie/smoking-mirror) treats your vault as a **knowledge graph**, not a file system.
+
+```
+OLD WAY (file-centric):
+  User: "Find notes about Project Alpha"
+  Claude: Grep → 47 matches → Read all files → 50K+ tokens
+          Manual synthesis, no relationships
+
+NEW WAY (graph-first):
+  User: "Find notes about Project Alpha"
+  Claude: search_notes(title_contains="Project Alpha") → 3 core notes
+          get_backlinks() → 12 notes that reference it
+          get_unlinked_mentions() → 8 linking opportunities
+          Surgically read 3 notes → 5K tokens
+          Deep understanding with connections
+```
+
+> **smoking-mirror gives Claude the map, not the territory.**
+
+---
+
+## The Three-Layer Architecture
+
+```
+YOUR EYES (smoking-mirror MCP)
+  - Navigate: Where are things?
+  - Discover: What exists?
+  - Understand: How do things relate?
+  ↓
+YOUR BRAIN (obsidian-scribe skills)
+  - Execute workflows
+  - Maintain vault health
+  - Automate patterns
+  ↓
+YOUR HANDS (Read/Edit/Write)
+  - Read content
+  - Edit text
+  - Write files
+```
+
+**Use your eyes to see where to go. Only use your hands when you know what to touch.**
 
 ---
 
 ## What You Get
 
-| Category | Commands | What It Does |
-|----------|----------|--------------|
-| **Daily Capture** | `/auto-log`, `/task-add` | Timestamped logging, task creation with natural dates |
-| **Vault Analysis** | 15 `/vault-*` commands | Orphans, hubs, clusters, gaps, broken links, stale notes |
-| **Wikilink Automation** | `/wikilink-apply`, hooks | Auto-suggest links, syntax validation, cache management |
-| **Periodic Rollups** | `/rollup` + 5 agents | Daily → Weekly → Monthly → Quarterly → Yearly summaries |
-| **Achievement Tracking** | Auto-detect hook | 126 patterns to capture wins from logs |
-
-**Total: 21 skills, 4 hooks, 5 specialized agents**
+| Layer | Component | What It Provides |
+|-------|-----------|------------------|
+| **Intelligence** | smoking-mirror MCP | 20+ graph queries: backlinks, hubs, orphans, clusters, tasks, sections |
+| **Workflows** | 21 obsidian-scribe skills | Daily logging, vault health, rollups, wikilink automation |
+| **Automation** | 4 smart hooks | Achievement detection, wikilink suggestions, syntax validation |
+| **Summarization** | 5 rollup agents | Daily → Weekly → Monthly → Quarterly → Yearly summaries |
 
 ---
 
@@ -58,12 +101,19 @@ Scribe: 🔍 Vault Health Report
         - "API authentication" mentioned 15x, no dedicated note
         - "Database optimization" mentioned 9x, undocumented
 
-You: /vault-orphans
+You: Find all notes about Claude Code and how they connect
 
-Scribe: Found 43 orphan notes. Top candidates for linking:
-        - projects/old-mvp-notes.md (created 6mo ago)
-        - research/llm-fine-tuning.md (has valuable content)
-        ...
+Scribe: [uses smoking-mirror graph queries]
+
+        Core notes (3):
+        - tech/tools/Claude Code.md (hub: 15 backlinks)
+        - projects/claude-plugin.md
+        - daily-notes/2026-01-01.md
+
+        References (12 notes link to these)
+        Unlinked mentions (8 opportunities to add [[wikilinks]])
+
+        [reads only the 3 core notes for content]
 
 You: /auto-log Fixed the authentication bug, deployed v2.1
 
@@ -78,64 +128,98 @@ No clicking. No switching apps. Your vault responds to conversation.
 
 ## Quick Start
 
-### Install
+### 1. Install smoking-mirror MCP (Required)
+
+Create `.mcp.json` in your vault root:
+
+```json
+{
+  "mcpServers": {
+    "smoking-mirror": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "smoking-mirror@latest"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "/absolute/path/to/your/vault"
+      }
+    }
+  }
+}
+```
+
+**Windows users**: Use `cmd` wrapper:
+```json
+{
+  "mcpServers": {
+    "smoking-mirror": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "smoking-mirror@latest"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "C:/Users/you/obsidian/vault"
+      }
+    }
+  }
+}
+```
+
+### 2. Install obsidian-scribe
 
 ```bash
 /install bencassie/obsidian-scribe
 ```
 
-### Try It
+### 3. Verify
 
 ```bash
 cd /path/to/your/vault
 claude
 
-# Check vault health
+# Check vault health (uses smoking-mirror)
 /vault-health
 
 # Log something
 /auto-log Started working on new feature
-
-# Run a weekly rollup
-/rollup-weekly 2026-W01
 ```
 
 ---
 
-## Graph-First Workflow
+## smoking-mirror: Your Eyes
 
-Obsidian Scribe works best with the **graph-first** mental model. Instead of treating your vault as files to search, treat it as a knowledge graph to navigate.
+The power of this product comes from smoking-mirror MCP. It turns your vault into a queryable graph.
 
-### The Three-Layer Architecture
+### Graph Intelligence
+| Tool | Purpose |
+|------|---------|
+| `get_backlinks(path)` | Who links TO this note |
+| `get_forward_links(path)` | What this note links TO |
+| `find_orphan_notes()` | Disconnected notes |
+| `find_hub_notes(min=5)` | Central concepts |
+| `get_link_path(from, to)` | Shortest path between notes |
+| `find_bidirectional_links()` | Strong relationships (A ↔ B) |
+| `find_dead_ends()` | Notes that should link out |
 
-```
-Layer 1: INTELLIGENCE (smoking-mirror MCP)
-  - Your eyes: Navigate, discover, understand relationships
-  - Query backlinks, hubs, orphans, clusters
-  - Search by tags, frontmatter, semantic meaning
+### Search & Discovery
+| Tool | Purpose |
+|------|---------|
+| `search_notes()` | Dataview-like queries (tags, frontmatter, folders) |
+| `get_recent_notes(days)` | Recently modified |
+| `get_stale_notes(days)` | Important but neglected |
+| `get_unlinked_mentions(entity)` | Linking opportunities |
 
-Layer 2: WORKFLOWS (obsidian-scribe skills)
-  - Your brain: Execute patterns, maintain health
-  - Daily logging, rollups, vault maintenance
+### Structure Analysis
+| Tool | Purpose |
+|------|---------|
+| `get_section_content(path, heading)` | Extract section without reading whole file |
+| `get_note_metadata(path)` | Stats without content read |
+| `get_all_tasks()` | Every task in vault |
+| `get_folder_structure()` | Vault organization |
 
-Layer 3: CONTENT (Read/Edit/Write)
-  - Your hands: Only touch what navigation identified
-  - Surgical reads after graph queries
-```
-
-### The Key Insight
-
-> **smoking-mirror gives Claude the map, not the territory.**
-
-**Old way (file-centric)**: Grep → Read 50 files → 50K tokens → shallow understanding
-
-**New way (graph-first)**: Query graph → Read 3 key files → 5K tokens → deep understanding
-
-See [WORKFLOW.md](WORKFLOW.md) for the complete guide, or copy [CLAUDE.md.example](CLAUDE.md.example) to your vault.
+**Full reference**: [smoking-mirror documentation](https://github.com/bencassie/smoking-mirror)
 
 ---
 
-## All Skills
+## obsidian-scribe: Your Brain
 
 ### Core Workflows (5 skills)
 
@@ -147,7 +231,7 @@ See [WORKFLOW.md](WORKFLOW.md) for the complete guide, or copy [CLAUDE.md.exampl
 | `/rebuild-wikilink-cache` | Rebuild entity cache from vault |
 | `/wikilink-apply <file>` | Apply wikilink suggestions to a note |
 
-### Vault Health (16 skills) — requires [smoking-mirror MCP](docs/installation/mcp-servers.md)
+### Vault Health (16 skills)
 
 | Skill | Description |
 |-------|-------------|
@@ -168,7 +252,7 @@ See [WORKFLOW.md](WORKFLOW.md) for the complete guide, or copy [CLAUDE.md.exampl
 | `/vault-search` | Advanced search with filters |
 | `/vault-suggest` | Suggest wikilinks for a note |
 
-### Periodic Rollups (4 additional skills)
+### Periodic Rollups (4 skills + 5 agents)
 
 | Skill | Description |
 |-------|-------------|
@@ -181,7 +265,7 @@ See [WORKFLOW.md](WORKFLOW.md) for the complete guide, or copy [CLAUDE.md.exampl
 
 ## Smart Hooks
 
-These run automatically on every edit:
+These run automatically:
 
 | Hook | Trigger | What It Does |
 |------|---------|--------------|
@@ -190,9 +274,7 @@ These run automatically on every edit:
 | `wikilink-suggest` | After edits | Auto-applies wikilinks to known entities |
 | `syntax-validate` | After edits | Warns about syntax issues |
 
----
-
-## Achievement Detection
+### Achievement Detection
 
 The achievement hook watches for patterns like:
 - **Actions**: Built, created, deployed, fixed, shipped
@@ -206,31 +288,30 @@ When detected, achievements auto-add to your `Achievements.md` for performance r
 
 ---
 
-## Dependencies
+## Requirements
 
-### Required
-- **Python 3.8+** — Hooks are written in Python
-
-### Optional (for vault intelligence)
-- **[smoking-mirror MCP](docs/installation/mcp-servers.md)** — Enables 15 vault analysis skills
+| Component | Required | Purpose |
+|-----------|----------|---------|
+| **Claude Code** | Yes | Runtime environment |
+| **smoking-mirror MCP** | Yes | Graph intelligence (16 vault-* skills depend on this) |
+| **Python 3.8+** | Yes | Hooks are written in Python |
 
 ---
 
 ## Cross-Platform Setup
 
-This plugin works on both WSL and Windows using dual-config architecture.
-
 ### WSL (Committed to Git)
 
-Configure in `.claude/settings.json`:
-
+`.mcp.json`:
 ```json
 {
-  "extraKnownMarketplaces": {
-    "obsidian-scribe": {
-      "source": {
-        "source": "github",
-        "repo": "bencassie/obsidian-scribe"
+  "mcpServers": {
+    "smoking-mirror": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "smoking-mirror@latest"],
+      "env": {
+        "OBSIDIAN_VAULT_PATH": "/mnt/c/Users/you/obsidian/vault"
       }
     }
   }
@@ -239,17 +320,18 @@ Configure in `.claude/settings.json`:
 
 ### Windows (Local Override)
 
-Configure in `C:\Users\<you>\.claude.json`:
-
+In `C:\Users\<you>\.claude.json`:
 ```json
 {
   "projects": {
     "C:/Users/<you>/obsidian/<vault>": {
-      "extraKnownMarketplaces": {
-        "obsidian-scribe": {
-          "source": {
-            "source": "github",
-            "repo": "bencassie/obsidian-scribe"
+      "mcpServers": {
+        "smoking-mirror": {
+          "type": "stdio",
+          "command": "cmd",
+          "args": ["/c", "npx", "-y", "smoking-mirror@latest"],
+          "env": {
+            "OBSIDIAN_VAULT_PATH": "C:/Users/<you>/obsidian/<vault>"
           }
         }
       }
@@ -258,7 +340,7 @@ Configure in `C:\Users\<you>\.claude.json`:
 }
 ```
 
-**Note**: Use forward slashes `/` in all paths on Windows.
+**Note**: Use forward slashes `/` in all paths. Windows requires `cmd /c` wrapper for npx.
 
 See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installation/wsl.md) for detailed instructions.
 
@@ -266,25 +348,38 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 
 ## Comparison
 
-| Feature | Obsidian Scribe | Copilot | Smart Connections |
-|---------|-----------------|---------|-------------------|
-| Full vault analysis | ✅ 15 skills | ❌ Chat only | ❌ Semantic only |
-| Achievement tracking | ✅ 126 patterns | ❌ | ❌ |
-| Hierarchical rollups | ✅ 5 agents | ❌ | ❌ |
-| Works from terminal | ✅ Claude Code | ❌ In-Obsidian | ❌ In-Obsidian |
-| Long context (200K) | ✅ Claude | Limited | ❌ |
-| Local-first | ✅ | ✅ | ✅ |
-| Price | Free (MIT) | Free + Pro | Free + Pro |
+| Feature | Obsidian Scribe + smoking-mirror | Copilot | Smart Connections |
+|---------|----------------------------------|---------|-------------------|
+| **Graph navigation** | ✅ Full vault graph | ❌ | ❌ |
+| **Backlink queries** | ✅ Instant | ❌ | ❌ |
+| **Orphan/hub detection** | ✅ Automated | ❌ | ❌ |
+| **Vault health analysis** | ✅ 16 skills | ❌ | ❌ |
+| **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ |
+| **Hierarchical rollups** | ✅ 5 agents | ❌ | ❌ |
+| **Works from terminal** | ✅ Claude Code | ❌ In-Obsidian | ❌ In-Obsidian |
+| **Token efficiency** | ✅ 10x reduction | ❌ Reads everything | ❌ |
+| **Semantic search** | ✅ Tags, frontmatter | ✅ | ✅ Embeddings |
+| **Long context (200K)** | ✅ Claude | Limited | ❌ |
+| **Price** | Free (MIT) | Free + Pro | Free + Pro |
 
 ---
 
 ## Documentation
 
-- **[Quick Start](docs/getting-started.md)** — Get running in 5 minutes
+- **[WORKFLOW.md](WORKFLOW.md)** — Complete graph-first workflow guide
+- **[CLAUDE.md.example](CLAUDE.md.example)** — Template for your vault's CLAUDE.md
 - **[Skills Reference](docs/skills-reference.md)** — All 21 skills documented
 - **[Workflows](docs/workflows.md)** — Real examples and use cases
-- **[Comparison](docs/comparison.md)** — vs other tools
 - **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)
+
+---
+
+## The Key Phrase
+
+> **smoking-mirror is your eyes, file tools are your hands.**
+> Use your eyes to see where to go. Only use your hands when you know what to touch.
+
+Welcome to graph-first Obsidian PKM.
 
 ---
 
