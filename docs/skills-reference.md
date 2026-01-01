@@ -1,6 +1,9 @@
 # Skills Reference
 
-Complete reference for all 33 skills in Obsidian Scribe. Each skill shows **how you actually ask** (natural language), **what Claude does**, and **what changes in your vault**.
+Complete reference for all 28 skills in Obsidian Scribe. Each skill shows:
+- **Triggers** — keywords that activate the skill
+- **Examples** — how you might phrase it
+- **What changes** — whether files are modified
 
 ---
 
@@ -10,9 +13,9 @@ Complete reference for all 33 skills in Obsidian Scribe. Each skill shows **how 
 
 Add timestamped entries to your daily note.
 
-**User Story**: As a daily note user, I want to quickly log activities without leaving my workflow.
+**Triggers:** `log`, `captains log`, `dictate`, `record`, `note this`, `write this down`, `document this`, `track this`, `remember this`, `add to log`, `make a note`, `take note`
 
-**You say:**
+**Examples:**
 > "Log that I fixed the authentication bug"
 > "Add to my daily: deployed v2.1 to production"
 > "Note: meeting with Sarah about Q1 roadmap"
@@ -41,7 +44,9 @@ Add timestamped entries to your daily note.
 
 Create tasks with natural language due dates.
 
-**You say:**
+**Triggers:** `add a task`, `add task`, `create task`, `create a task`, `task to do`, `new task`, `task for`, `task due`, `task by`
+
+**Examples:**
 > "Add a task: review PR #123 by tomorrow"
 > "Task: finish quarterly report by January 15th"
 > "Remind me to call the client by Friday"
@@ -70,7 +75,9 @@ Create tasks with natural language due dates.
 
 Log food entries to your daily note.
 
-**You say:**
+**Triggers:** `log food`, `food`, `I ate`, `breakfast`, `lunch`, `dinner`, `snack`, `meal`
+
+**Examples:**
 > "Log food: chicken salad with quinoa"
 > "I ate a burrito for lunch"
 > "Food: oatmeal with berries for breakfast"
@@ -105,9 +112,9 @@ All vault health skills are **read-only** - they analyze and report without chan
 
 Get a comprehensive vault diagnostic report.
 
-**User Story**: As a vault maintainer, I want comprehensive vault statistics, so I can understand overall health.
+**Triggers:** `vault health`, `health report`, `vault diagnostics`, `vault status`, `vault report`, `how is my vault`, `vault overview`, `vault checkup`, `how's my vault`, `vault condition`, `knowledge base health`, `vault stats`, `check vault`, `diagnose vault`, `vault summary`
 
-**You say:**
+**Examples:**
 > "How's my vault looking?"
 > "Give me a vault health check"
 > "What's the state of my knowledge base?"
@@ -142,7 +149,9 @@ Hubs: 12 highly-connected notes
 
 Quick numbers without deep analysis.
 
-**You say:**
+**Triggers:** `vault stats`, `how many notes`, `quick vault summary`, `vault metrics`, `vault numbers`
+
+**Examples:**
 > "How many notes do I have?"
 > "Vault stats"
 > "Give me the numbers on my vault"
@@ -171,9 +180,9 @@ Average links per note: 2.89
 
 Find notes with no incoming links (knowledge islands).
 
-**User Story**: As a knowledge worker, I want to find orphaned notes, so I can integrate disconnected knowledge.
+**Triggers:** `orphans`, `orphan notes`, `disconnected notes`, `isolated notes`, `unlinked notes`, `notes with no backlinks`, `notes with no links`, `find orphans`, `show orphans`, `lonely notes`, `notes nobody links to`, `floating notes`, `unconnected`, `stranded notes`
 
-**You say:**
+**Examples:**
 > "Find orphan notes"
 > "What notes aren't linked to anything?"
 > "Show me disconnected notes"
@@ -202,9 +211,9 @@ Find notes with no incoming links (knowledge islands).
 
 Find your most connected notes (knowledge centers).
 
-**User Story**: As a knowledge worker, I want to find my vault's most connected notes, so I can identify key concepts.
+**Triggers:** `hubs`, `hub notes`, `most connected`, `popular notes`, `highly connected`, `most linked`, `top notes`, `important notes`, `central notes`, `find hubs`, `key concepts`, `well-linked`, `core ideas`, `knowledge hubs`
 
-**You say:**
+**Examples:**
 > "What are my hub notes?"
 > "Find my most connected notes"
 > "Which notes have the most backlinks?"
@@ -233,7 +242,9 @@ Find your most connected notes (knowledge centers).
 
 Find topics mentioned frequently but lacking dedicated notes.
 
-**You say:**
+**Triggers:** `knowledge gaps`, `content gaps`, `missing notes`, `gaps`, `find gaps`, `show gaps`, `missing topics`, `undocumented`, `missing links`, `linking opportunities`, `connection gaps`, `should document`, `what's missing`, `topic holes`
+
+**Examples:**
 > "What topics am I missing notes for?"
 > "Find knowledge gaps"
 > "What concepts should I document?"
@@ -262,7 +273,9 @@ Find topics mentioned frequently but lacking dedicated notes.
 
 Find important notes that haven't been updated recently.
 
-**You say:**
+**Triggers:** `stale notes`, `old notes`, `neglected notes`, `outdated notes`, `find stale`, `inactive notes`, `forgotten notes`, `show stale`, `need attention`, `dusty notes`, `need review`, `haven't touched`, `untouched notes`, `what needs updating`, `old important notes`
+
+**Examples:**
 > "What important notes are stale?"
 > "Find neglected documentation"
 > "Which hub notes need updating?"
@@ -290,7 +303,9 @@ Find important notes that haven't been updated recently.
 
 Find notes others link to but that link nowhere themselves.
 
-**You say:**
+**Triggers:** `dead ends`, `dead end notes`, `endpoint notes`, `dead end pages`, `notes with no outlinks`, `terminal notes`, `find dead ends`, `leaf notes`, `sink notes`, `don't link out`, `only receive links`, `cul-de-sacs`, `no outgoing links`
+
+**Examples:**
 > "Find dead end notes"
 > "Which notes don't link out?"
 > "Show me notes that should have more links"
@@ -323,7 +338,9 @@ All link analysis skills are **read-only**.
 
 Show all notes linking to a specific note.
 
-**You say:**
+**Triggers:** `backlinks`, `backlinks for`, `backlinks to`, `what links to`, `who links to`, `show backlinks`, `get backlinks`, `notes linking to`, `references to`, `incoming links`, `linked by`, `pointing to`, `what references`, `links pointing to`
+
+**Examples:**
 > "What links to my React note?"
 > "Show backlinks for Project Alpha"
 > "Who references this note?"
@@ -352,7 +369,9 @@ Show all notes linking to a specific note.
 
 Find notes similar to a specific note based on shared links and tags.
 
-**You say:**
+**Triggers:** `related notes`, `similar notes`, `notes like`, `related to`, `find related`, `show related`, `connected to`, `notes similar to`, `similar to this`, `what's related`, `linked concepts`, `associated notes`, `relevance`, `notes about same`
+
+**Examples:**
 > "What's related to my React note?"
 > "Find similar notes to Project Alpha"
 > "What notes are like this one?"
@@ -381,9 +400,9 @@ Find notes similar to a specific note based on shared links and tags.
 
 Find the shortest connection path between two notes.
 
-**User Story**: As a knowledge worker, I want to see how two concepts connect, so I can understand their relationship.
+**Triggers:** `path between`, `path from`, `connection path`, `how are they connected`, `link chain`, `relationship path`, `find path`, `show path`, `how connected`, `shortest path`, `route between`, `link path`, `connected how`, `degrees between`
 
-**You say:**
+**Examples:**
 > "How does React connect to my Project Alpha note?"
 > "Find the path from API Design to Security"
 > "What's the link chain between these notes?"
@@ -410,7 +429,9 @@ React.md → tech/frontend/state-management.md → projects/dashboard.md → Pro
 
 Get a connection strength score between two notes.
 
-**You say:**
+**Triggers:** `connection strength`, `link strength`, `relationship strength`, `how strongly connected`, `strength between`, `connection score`, `relationship score`, `measure connection`, `relationship weight`, `how related`, `bond strength`, `affinity`
+
+**Examples:**
 > "How strongly connected are React and Project Alpha?"
 > "What's the relationship strength between these notes?"
 > "Rate the connection between API Design and Security"
@@ -443,7 +464,9 @@ Breakdown:
 
 Find notes that two notes both reference (shared context).
 
-**You say:**
+**Triggers:** `common references`, `shared links`, `what do X and Y both link to`, `common neighbors`, `shared references`, `both link to`, `mutual references`, `overlap between`, `common links`, `what do they share`, `in common`, `overlapping`, `shared context`, `both reference`, `intersection`, `common ground`
+
+**Examples:**
 > "What do React and Vue have in common?"
 > "Find shared references between these notes"
 > "What notes do both of these link to?"
@@ -472,7 +495,9 @@ Find notes that two notes both reference (shared context).
 
 Find all mutual links in your vault (A ↔ B relationships).
 
-**You say:**
+**Triggers:** `bidirectional`, `bidirectional links`, `mutual links`, `two-way links`, `reciprocal links`, `show bidirectional`, `find mutual links`, `linked both ways`, `mutual references`, `back and forth`, `symmetric links`, `cross-linked`, `linked together`, `both link`
+
+**Examples:**
 > "Find bidirectional links"
 > "What notes link to each other?"
 > "Show me mutual relationships"
@@ -502,7 +527,9 @@ Find all mutual links in your vault (A ↔ B relationships).
 
 Analyze link patterns across your vault.
 
-**You say:**
+**Triggers:** `link density`, `link analysis`, `linking patterns`, `link statistics`, `link stats`, `analyze links`, `link distribution`, `connectivity`, `graph density`, `link metrics`, `how much linking`, `linking behavior`, `connection stats`, `vault connectivity`
+
+**Examples:**
 > "Analyze my link density"
 > "How well connected is my vault?"
 > "Show me link patterns"
@@ -539,7 +566,9 @@ Distribution:
 
 Find text mentions of a term not yet converted to wikilinks.
 
-**You say:**
+**Triggers:** `unlinked mentions`, `unlinked mentions of`, `where is`, `where mentioned`, `link everywhere`, `mentions of`, `mentions for`, `find mentions`, `unlinked references`, `references to`, `mentioned but not linked`, `plain text mentions`, `could be linked`, `linkable text`, `should have links`, `potential links`
+
+**Examples:**
 > "Find unlinked mentions of React"
 > "Where is 'API design' mentioned but not linked?"
 > "Show me linking opportunities for this term"
@@ -568,7 +597,9 @@ Find text mentions of a term not yet converted to wikilinks.
 
 Get wikilink suggestions for a specific note.
 
-**You say:**
+**Triggers:** `suggest links`, `link suggestions`, `what should I link`, `wikilink suggestions`, `suggest wikilinks`, `recommendations for links`, `what to link`, `find linkable`, `linkable entities`, `add links to this`, `should be linked`, `linkify`, `autolink`, `link opportunities`, `where to link`, `improve linking`
+
+**Examples:**
 > "Suggest links for this note"
 > "What should I link in my React note?"
 > "Find linking opportunities"
@@ -601,7 +632,9 @@ Get wikilink suggestions for a specific note.
 
 Extract content from a specific heading without reading the whole file.
 
-**You say:**
+**Triggers:** `extract section`, `get section`, `content under heading`, `section content`, `heading content`, `show section`, `read section`, `get the X section`, `content under`, `text in section`, `what's under heading`, `pull section`, `section text`, `under the heading`
+
+**Examples:**
 > "Show me the Log section from today's note"
 > "Get the Tasks section from my daily note"
 > "What's under the Setup heading in the README?"
@@ -630,7 +663,9 @@ Extract content from a specific heading without reading the whole file.
 
 Find all headings matching a pattern across your vault.
 
-**You say:**
+**Triggers:** `find sections`, `notes with heading`, `all X sections`, `which notes have`, `find headings`, `search headings`, `heading pattern`, `notes with section`, `heading search`, `find heading`, `search for heading`, `section across vault`, `heading in notes`, `locate sections`
+
+**Examples:**
 > "Find all ## Tasks sections"
 > "Where do I have Setup headings?"
 > "Find all notes with a Goals section"
@@ -659,7 +694,9 @@ Find all headings matching a pattern across your vault.
 
 Check folder organization and recommendations.
 
-**You say:**
+**Triggers:** `folder health`, `folder analysis`, `vault organization`, `folder structure`, `organize vault`, `folder stats`, `check folders`, `vault folders`, `folder report`, `folder breakdown`, `directory health`, `how organized`, `folder balance`, `note distribution`, `folder hierarchy`, `vault layout`
+
+**Examples:**
 > "How's my folder structure?"
 > "Analyze my vault organization"
 > "Check folder health"
@@ -689,7 +726,9 @@ Check folder organization and recommendations.
 
 Detect topic clusters from link patterns.
 
-**You say:**
+**Triggers:** `clusters`, `knowledge clusters`, `note clusters`, `find clusters`, `show clusters`, `topic clusters`, `communities`, `note groups`, `knowledge areas`, `related groups`, `knowledge domains`, `topic areas`, `note neighborhoods`, `groupings`, `what topics exist`
+
+**Examples:**
 > "What topic clusters exist in my vault?"
 > "Find related note groups"
 > "Show me knowledge clusters"
@@ -725,7 +764,9 @@ Detect topic clusters from link patterns.
 
 See all YAML frontmatter fields used across your vault.
 
-**You say:**
+**Triggers:** `frontmatter schema`, `metadata fields`, `what fields exist`, `vault schema`, `field types`, `metadata structure`, `frontmatter overview`, `what metadata`, `yaml fields`, `property names`, `metadata overview`, `field list`, `what properties`, `note attributes`
+
+**Examples:**
 > "What frontmatter fields do I use?"
 > "Show me my YAML schema"
 > "What metadata fields exist in my vault?"
@@ -756,7 +797,9 @@ See all YAML frontmatter fields used across your vault.
 
 Find type inconsistencies in frontmatter (string vs array, etc.).
 
-**You say:**
+**Triggers:** `schema check`, `frontmatter inconsistencies`, `metadata violations`, `type mismatches`, `schema violations`, `inconsistent fields`, `field type errors`, `check frontmatter`, `metadata issues`, `frontmatter problems`, `type errors`, `yaml issues`, `inconsistent metadata`, `property mismatches`, `schema problems`, `fix metadata`
+
+**Examples:**
 > "Check my frontmatter for problems"
 > "Find schema inconsistencies"
 > "What frontmatter is broken?"
@@ -791,7 +834,9 @@ Find type inconsistencies in frontmatter (string vs array, etc.).
 
 Get all unique values for a specific frontmatter field.
 
-**You say:**
+**Triggers:** `field values`, `unique values for`, `what X values exist`, `list all`, `all values of`, `enumerate field`, `possible values`, `what types exist`, `what statuses exist`, `values of`, `what options`, `enumeration`, `list values`, `field options`, `value distribution`, `what can X be`
+
+**Examples:**
 > "What values does the 'status' field have?"
 > "Show me all tag values"
 > "What priorities are used?"
@@ -824,7 +869,9 @@ Get all unique values for a specific frontmatter field.
 
 Get all tasks across your vault with filtering.
 
-**You say:**
+**Triggers:** `all tasks`, `task list`, `show tasks`, `find tasks`, `open tasks`, `completed tasks`, `list tasks`, `tasks in`, `todos`, `to-do list`, `what needs doing`, `open items`, `pending tasks`, `checklist`, `things to do`, `work items`
+
+**Examples:**
 > "Show me all my tasks"
 > "What tasks do I have?"
 > "List incomplete tasks"
@@ -859,7 +906,9 @@ Get all tasks across your vault with filtering.
 
 Get tasks with due dates, sorted by deadline.
 
-**You say:**
+**Triggers:** `due tasks`, `upcoming deadlines`, `what's due`, `deadlines`, `due dates`, `tasks due`, `overdue`, `due this week`, `what's coming up`, `calendar`, `schedule`, `approaching deadlines`, `due soon`, `upcoming`, `deadline calendar`, `when due`
+
+**Examples:**
 > "What tasks are due soon?"
 > "Show me upcoming deadlines"
 > "What's due this week?"
@@ -896,7 +945,9 @@ LATER:
 
 See recent modification patterns and trends.
 
-**You say:**
+**Triggers:** `activity summary`, `vault activity`, `what happened this week`, `editing patterns`, `recent activity`, `activity report`, `work summary`, `how active`, `what's happening`, `editing history`, `activity log`, `work history`, `productivity`, `how much editing`, `vault changes`
+
+**Examples:**
 > "What's my recent vault activity?"
 > "Show me modification trends"
 > "When was I most active?"
@@ -932,7 +983,9 @@ Hot folders:
 
 Find notes edited around the same time as a specific note.
 
-**You say:**
+**Triggers:** `concurrent notes`, `edited around same time`, `what else was I working on`, `contemporaneous`, `same time as`, `edited together`, `working on when`, `related by time`, `same session`, `around same time`, `editing session`, `what else then`, `simultaneous`, `co-edited`
+
+**Examples:**
 > "What was I working on when I wrote this note?"
 > "Find notes from the same session"
 > "What else did I edit that day?"
@@ -964,7 +1017,9 @@ Within 2 hours:
 
 Find and repair broken wikilinks.
 
-**You say:**
+**Triggers:** `fix links`, `broken links`, `repair vault`, `fix broken links`, `repair links`, `find broken links`, `broken wikilinks`, `fix wikilinks`, `invalid links`, `dead links`, `link errors`, `repair connections`, `link problems`, `fix references`, `bad links`
+
+**Examples:**
 > "Fix my broken links"
 > "Repair dead wikilinks"
 > "Find and fix broken references"
@@ -995,7 +1050,9 @@ Fix these? (y/n for each)
 
 Advanced search with frontmatter, tags, and folder filters.
 
-**You say:**
+**Triggers:** `search vault`, `search`, `find notes`, `find`, `query notes`, `search for`, `look for`, `where are`, `show me notes`, `notes about`, `notes with`, `notes in`, `locate notes`, `where is`, `filter notes`, `query`, `lookup`, `find by`
+
+**Examples:**
 > "Search for notes in tech folder with work tag"
 > "Find status:draft notes"
 > "Search for project:alpha notes"
@@ -1030,7 +1087,9 @@ Found 23 notes:
 
 Rebuild the entity cache from your vault content.
 
-**You say:**
+**Triggers:** `rebuild cache`, `rebuild wikilink cache`, `rebuild wikilinks`, `update cache`, `refresh cache`, `refresh wikilinks`, `update wikilink cache`, `rebuild entities`
+
+**Examples:**
 > "Rebuild the wikilink cache"
 > "Refresh entity cache"
 > "Update the link suggestions database"
@@ -1059,7 +1118,9 @@ Ready for auto-linking
 
 Apply wikilink suggestions to a specific note.
 
-**You say:**
+**Triggers:** `apply wikilinks`, `add wikilinks`, `wikilink this note`, `wikilink this file`, `suggest wikilinks`, `convert to wikilinks`, `wikify`, `auto-link this`
+
+**Examples:**
 > "Add wikilinks to this note"
 > "Apply link suggestions to project-notes.md"
 > "Convert plain text to wikilinks"
@@ -1095,7 +1156,9 @@ Need to update the [[API Design]] document.
 
 Execute the complete rollup chain for the last 2 months.
 
-**You say:**
+**Triggers:** `rollup`, `do rollup`, `run rollup`, `process rollup`, `summarize my notes`, `weekly summary`, `monthly summary`, `quarterly summary`, `yearly summary`, `update achievements`, `process my daily notes`, `aggregate my logs`, `compile my work`
+
+**Examples:**
 > "Run the full rollup"
 > "Create all my summary notes"
 > "Roll up my daily notes"
@@ -1122,7 +1185,9 @@ Execute the complete rollup chain for the last 2 months.
 
 Summarize a specific week from daily notes.
 
-**You say:**
+**Triggers:** `weekly rollup`, `create weekly summary`, `roll up week`, `summarize last week`, `weekly summary for`, `this week summary`
+
+**Examples:**
 > "Create a weekly summary for this week"
 > "Roll up week 1 of 2026"
 > "Summarize last week"
@@ -1144,7 +1209,9 @@ Summarize a specific week from daily notes.
 
 Summarize a specific month from weekly notes.
 
-**You say:**
+**Triggers:** `monthly rollup`, `create monthly summary`, `roll up month`, `summarize this month`, `monthly summary for`
+
+**Examples:**
 > "Create a monthly summary for January"
 > "Roll up this month"
 > "Summarize January 2026"
@@ -1166,7 +1233,9 @@ Summarize a specific month from weekly notes.
 
 Summarize a specific quarter from monthly notes.
 
-**You say:**
+**Triggers:** `quarterly rollup`, `create quarterly summary`, `roll up quarter`, `Q1 summary`, `Q2 summary`, `Q3 summary`, `Q4 summary`, `quarterly summary for`
+
+**Examples:**
 > "Create a Q1 summary"
 > "Roll up this quarter"
 > "Summarize Q1 2026"
@@ -1188,7 +1257,9 @@ Summarize a specific quarter from monthly notes.
 
 Summarize a specific year from quarterly notes.
 
-**You say:**
+**Triggers:** `yearly rollup`, `create yearly summary`, `annual summary`, `year in review`, `roll up year`, `yearly summary for`
+
+**Examples:**
 > "Create a 2026 yearly summary"
 > "Roll up the year"
 > "Annual summary please"

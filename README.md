@@ -152,6 +152,60 @@ Claude: ✓ Updated 8 files with [[React]] links
 
 ---
 
+## Intelligent Wikilinks
+
+smoking-mirror sees your graph. obsidian-scribe helps you build it.
+
+### Two-tier detection
+
+**Tier 1 — Cache-based (entities with notes)**
+
+Scans your vault on session start. If a note exists, its title becomes linkable.
+
+**Tier 2 — Heuristic (high-probability patterns)**
+
+No note yet? The hook still recognizes:
+
+| Pattern | Examples |
+|---------|----------|
+| Multi-word proper nouns | Machine Learning, Neural Network |
+| Technology terms | API Server, Graph Database |
+| Versioned products | Quest 3, .NET 8, GPT-4 |
+| CamelCase | PowerBI, GraphAPI |
+| Acronym compounds | REST API, MCP Server, SQL Database |
+
+### Smart filtering
+
+The hook knows what to skip:
+
+- Common phrases ("Good Morning", "Thank You")
+- Calendar terms and dates
+- Code blocks, frontmatter, existing links
+- Articles at start ("The API" → filtered)
+- First occurrence only (no over-linking)
+
+### Example
+
+**You write:**
+
+```markdown
+I'm using Claude Code with Machine Learning.
+The API Server handles REST API calls.
+Upgraded to Quest 3 and .NET 8.
+```
+
+**After save:**
+
+```markdown
+I'm using [[Claude Code]] with [[Machine Learning]].
+The [[API Server]] handles [[REST API]] calls.
+Upgraded to [[Quest 3]] and [[.NET 8]].
+```
+
+Your vault builds connections automatically—even for concepts you haven't documented yet.
+
+---
+
 ## Powered by smoking-mirror
 
 The intelligence comes from **[smoking-mirror](https://github.com/bencassie/smoking-mirror)**, an MCP server that indexes your vault and exposes 47 graph query tools.

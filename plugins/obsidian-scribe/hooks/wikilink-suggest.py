@@ -52,6 +52,12 @@ EXCLUDE_WORDS = {
     'christmas', 'holiday', 'break',
 }
 
+# Common phrases to exclude (not proper nouns despite capitalization)
+EXCLUDE_PHRASES = {
+    'go for', 'next step', 'good morning', 'happy birthday',
+    'thank you', 'please see', 'best regards', 'kind regards',
+}
+
 
 def load_wikilinks_from_cache(vault_path: Path) -> set:
     """Load existing wikilinks from cache file."""
@@ -205,6 +211,88 @@ def apply_wikilinks(content: str, entities_to_link: list) -> tuple[str, int]:
     return new_content, links_added
 
 
+def find_heuristic_candidates(content_no_code: str) -> dict:
+    """Find high-probability wikilink candidates using heuristic patterns.
+
+    These are multi-word proper nouns that should be wikilinked even without
+    backing notes, based on patterns that indicate importance.
+    """
+    heuristic = defaultdict(list)
+
+    # Category 1: Capitalized Multi-Word Phrases (2-4 words)
+    # "Claude Code", "Private Endpoint", "Machine Learning"
+    multi_word_pattern = r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})\b'
+    for match in re.finditer(multi_word_pattern, content_no_code):
+        phrase = match.group(1)
+        phrase_lower = phrase.lower()
+
+        # Skip common words and phrases
+        if phrase_lower in EXCLUDE_WORDS or phrase_lower in EXCLUDE_PHRASES:
+            continue
+
+        # Skip if any word is in EXCLUDE_WORDS
+        words = phrase.split()
+        if any(w.lower() in EXCLUDE_WORDS for w in words):
+            continue
+
+        heuristic['Multi-Word Proper Nouns'].append(phrase)
+
+    # Category 2: Technology Patterns
+    # Pattern: "X.js", "X Server", "X API", "X Framework", "X Code"
+    tech_suffixes = ['Server', 'API', 'Framework', 'Code', 'Database', 'Platform',
+                     'Service', 'Engine', 'Client', 'Library', 'Tool', 'App']
+    tech_pattern = r'\b([A-Z][a-z]+(?:\s+(?:' + '|'.join(tech_suffixes) + r')))\b'
+    for match in re.finditer(tech_pattern, content_no_code):
+        phrase = match.group(1)
+        heuristic['Technology Terms'].append(phrase)
+
+    # Pattern: "X.js", "X.py", "X.net"
+    dotjs_pattern = r'\b([A-Z][a-z]+\.(?:js|py|net|go|rb|rs))\b'
+    for match in re.finditer(dotjs_pattern, content_no_code, re.IGNORECASE):
+        phrase = match.group(1)
+        heuristic['Technology Terms'].append(phrase)
+
+    # Category 3: Version/Year Patterns
+    # "Quest 3", "Python 3", ".NET 8", "SIP 2024", "GPT-4"
+    version_patterns = [
+        r'\b([A-Z][a-z]+\s+\d{1,2})\b',  # "Quest 3", "Python 3"
+        r'\b(\.NET\s+\d)\b',              # ".NET 8"
+        r'\b([A-Z]{2,}\s+\d{4})\b',       # "SIP 2024"
+        r'\b(GPT-\d+(?:\.\d+)?)\b',       # "GPT-4", "GPT-4.5"
+        r'\b([A-Z][a-z]+\s+v?\d+(?:\.\d+)*)\b',  # "React v18.2"
+    ]
+    for pattern in version_patterns:
+        for match in re.finditer(pattern, content_no_code):
+            phrase = match.group(1)
+            heuristic['Versioned Products'].append(phrase)
+
+    # Category 4: CamelCase/PascalCase
+    # ESGHub, GraphAPI, PowerBI, TruCost
+    camelcase_pattern = r'\b([A-Z][a-z]+[A-Z][a-z][A-Za-z]*)\b'
+    for match in re.finditer(camelcase_pattern, content_no_code):
+        phrase = match.group(1)
+        # Must have at least 5 chars to avoid false positives
+        if len(phrase) >= 5:
+            heuristic['CamelCase Terms'].append(phrase)
+
+    # Category 6: Acronym + Word/Acronym
+    # "API Management", "MCP Server", "REST API"
+    acronym_word_patterns = [
+        r'\b([A-Z]{2,6}\s+[A-Z][a-z]+)\b',  # API Management, MCP Server
+        r'\b([A-Z]{2,6}\s+[A-Z]{2,6})\b',   # REST API, HTTP POST
+    ]
+    for pattern in acronym_word_patterns:
+        for match in re.finditer(pattern, content_no_code):
+            phrase = match.group(1)
+            heuristic['Acronym Compounds'].append(phrase)
+
+    # Deduplicate each category
+    for category in heuristic:
+        heuristic[category] = sorted(set(heuristic[category]))
+
+    return heuristic
+
+
 def find_linkable_candidates(content: str, existing_wikilinks: set) -> dict:
     """Find potential wikilink candidates in content."""
     candidates = defaultdict(list)
@@ -321,16 +409,48 @@ def main():
         # Read file content
         content = path.read_text(encoding='utf-8')
 
-        # Find linkable candidates
-        candidates = find_linkable_candidates(content, existing_wikilinks)
+        # Prepare cleaned content for analysis (reuse the cleaning logic)
+        frontmatter_end = find_frontmatter_end(content)
+        content_no_code = content[frontmatter_end:] if frontmatter_end > 0 else content
+        content_no_code = re.sub(r'```[\s\S]*?```', '', content_no_code)
+        content_no_code = re.sub(r'`[^`]+`', '', content_no_code)
+        content_no_code = re.sub(r'\[\[[^\]]+\]\]', '', content_no_code)
+        content_no_code = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', '', content_no_code)
+        content_no_code = re.sub(r'https?://[^\s\)\]]+(?:\([^\)]+\))?[^\s\)\]]*', '', content_no_code)
+        content_no_code = re.sub(r'#[\w-]+', '', content_no_code)
+        content_no_code = re.sub(r'<[^>]+>', '', content_no_code)
+        content_no_code = re.sub(r'%%.*?%%', '', content_no_code, flags=re.DOTALL)
+        content_no_code = re.sub(r'\$\$[\s\S]*?\$\$|\$[^\$]+\$', '', content_no_code)
+
+        # TIER 1: Find cache-based candidates (entities with backing notes)
+        cache_candidates = find_linkable_candidates(content, existing_wikilinks)
+
+        # TIER 2: Find heuristic candidates (high-probability patterns)
+        heuristic_candidates = find_heuristic_candidates(content_no_code)
+
+        # Merge candidates (cache takes precedence, heuristic fills gaps)
+        all_candidates = defaultdict(list)
+
+        # Add cache-based first (HIGH confidence - they have backing notes)
+        for category, items in cache_candidates.items():
+            all_candidates[f"✓ {category} (Has Notes)"].extend(items)
+
+        # Add heuristic-based (MEDIUM-HIGH confidence - pattern match only)
+        for category, items in heuristic_candidates.items():
+            # Don't add if already in cache
+            new_items = [item for item in items if not any(
+                item in cache_items for cache_items in cache_candidates.values()
+            )]
+            if new_items:
+                all_candidates[f"⚡ {category} (Heuristic)"].extend(new_items)
 
         # Remove empty categories
-        candidates = {k: v for k, v in candidates.items() if v}
+        all_candidates = {k: v for k, v in all_candidates.items() if v}
 
-        if candidates:
+        if all_candidates:
             # Collect all entities to link
             all_entities = []
-            for items in candidates.values():
+            for items in all_candidates.values():
                 all_entities.extend(items)
 
             # Apply wikilinks automatically
@@ -343,7 +463,7 @@ def main():
                 print(f"\n✓ Auto-Applied {links_added} Wikilinks to {path.name}")
                 print("-" * 60)
 
-                for category, items in candidates.items():
+                for category, items in all_candidates.items():
                     # Show what was linked (limit to top 5 per category)
                     display_items = items[:min(5, len(items))]
                     print(f"{category}: {', '.join(display_items)}")
