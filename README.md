@@ -293,6 +293,26 @@ The power of this product comes from [**smoking-mirror MCP**](https://github.com
 
 **GitHub**: [github.com/bencassie/smoking-mirror](https://github.com/bencassie/smoking-mirror)
 
+### The Token Economy
+
+Every character Claude reads costs tokens. smoking-mirror changes the math:
+
+```
+BEFORE (file-centric):
+  You: "Find notes about React"
+  Claude: grep → 47 matches → read all files → 50,000+ tokens
+
+AFTER (graph-first):
+  You: "Find notes about React"
+  Claude: search_notes() → 3 core notes
+          get_backlinks() → 12 references
+          Read only 3 files → 5,000 tokens
+```
+
+**Result**: 90% token reduction, 10x faster, deeper understanding through relationships.
+
+**See [Use Cases](docs/use-cases.md) for real examples with tool invocations and JSON output.**
+
 ### Graph Intelligence (4 tools)
 
 | Tool | Purpose |
@@ -691,8 +711,9 @@ One session. Full context. Actions taken. That's the power of graph-first + REPL
 - **[WORKFLOW.md](WORKFLOW.md)** — Complete graph-first workflow guide
 - **[CLAUDE.md.example](CLAUDE.md.example)** — Template for your vault's CLAUDE.md
 - **[Example Rules](docs/example-rules/)** — Copy-paste rules for your `.claude/rules/` directory
-- **[Skills Reference](docs/skills-reference.md)** — All 35 skills documented
-- **[Workflows](docs/workflows.md)** — Real examples and use cases
+- **[Skills Reference](docs/skills-reference.md)** — All 35 skills with natural language examples
+- **[Use Cases](docs/use-cases.md)** — User stories with tool invocations and JSON output
+- **[Workflows](docs/workflows.md)** — End-to-end workflow examples
 - **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)
 
 ### Example Rules

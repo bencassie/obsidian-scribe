@@ -10,6 +10,8 @@ Complete reference for all 35 skills in Obsidian Scribe. Each skill shows **how 
 
 Add timestamped entries to your daily note.
 
+**User Story**: As a daily note user, I want to quickly log activities without leaving my workflow.
+
 **You say:**
 > "Log that I fixed the authentication bug"
 > "Add to my daily: deployed v2.1 to production"
@@ -103,6 +105,8 @@ All vault health skills are **read-only** - they analyze and report without chan
 
 Get a comprehensive vault diagnostic report.
 
+**User Story**: As a vault maintainer, I want comprehensive vault statistics, so I can understand overall health.
+
 **You say:**
 > "How's my vault looking?"
 > "Give me a vault health check"
@@ -167,6 +171,8 @@ Average links per note: 2.89
 
 Find notes with no incoming links (knowledge islands).
 
+**User Story**: As a knowledge worker, I want to find orphaned notes, so I can integrate disconnected knowledge.
+
 **You say:**
 > "Find orphan notes"
 > "What notes aren't linked to anything?"
@@ -195,6 +201,8 @@ Find notes with no incoming links (knowledge islands).
 ### vault-hubs
 
 Find your most connected notes (knowledge centers).
+
+**User Story**: As a knowledge worker, I want to find my vault's most connected notes, so I can identify key concepts.
 
 **You say:**
 > "What are my hub notes?"
@@ -372,6 +380,8 @@ Find notes similar to a specific note based on shared links and tags.
 ### vault-path
 
 Find the shortest connection path between two notes.
+
+**User Story**: As a knowledge worker, I want to see how two concepts connect, so I can understand their relationship.
 
 **You say:**
 > "How does React connect to my Project Alpha note?"
@@ -1331,5 +1341,6 @@ All paths configured in `.obsidian-scribe.json`:
 
 ## Related
 
-- [Workflows](workflows.md) - Real examples
+- [Use Cases](use-cases.md) - User stories with tool invocations and JSON output
+- [Workflows](workflows.md) - End-to-end workflow examples
 - [MCP Setup](installation/mcp-servers.md) - Enable vault intelligence
