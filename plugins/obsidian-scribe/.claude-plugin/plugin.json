@@ -1,6 +1,6 @@
 {
   "name": "obsidian-scribe",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
   "author": {
     "name": "Ben Cassie",
@@ -23,6 +23,7 @@
     "./agents/rollup/weekly-agent.md",
     "./agents/rollup/monthly-agent.md",
     "./agents/rollup/quarterly-agent.md",
-    "./agents/rollup/yearly-agent.md"
+    "./agents/rollup/yearly-agent.md",
+    "./agents/achievement/achievement-extraction-agent.md"
   ]
 }
