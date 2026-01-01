@@ -144,6 +144,56 @@ If plugins don't load:
 3. Ensure obsidian-scribe path points to the repository root (contains `.claude-plugin/`)
 4. Look for errors in debug logs: `C:\Users\<you>\.claude\debug\`
 
+### Plugin Version Updates
+
+If the plugin is stuck on an old version after updates:
+
+**Symptom**: `~/.claude/plugins/installed_plugins.json` shows old version even though GitHub has newer version.
+
+**Root Cause**: Marketplace source configured as `directory` instead of `github`, preventing auto-updates.
+
+**Solution**:
+
+1. **Check marketplace source:**
+   ```bash
+   cat ~/.claude/plugins/known_marketplaces.json | grep -A 5 obsidian-scribe
+   ```
+
+2. **If it shows `"source": "directory"`, switch to GitHub source:**
+
+   Edit `~/.claude/plugins/known_marketplaces.json`:
+   ```json
+   "obsidian-scribe": {
+     "source": {
+       "source": "github",
+       "owner": "bencassie",
+       "repo": "obsidian-scribe"
+     },
+     "installLocation": "/home/ben/.claude/plugins/marketplaces/obsidian-scribe",
+     "lastUpdated": "2026-01-01T10:14:00.000Z"
+   }
+   ```
+
+3. **Update installed plugin registry** (`~/.claude/plugins/installed_plugins.json`):
+   - Change `version` to latest (e.g., "1.0.11")
+   - Change `installPath` to match new version
+   - Change `gitCommitSha` to latest commit from GitHub
+   - Update `lastUpdated` timestamp
+
+4. **Create cache directory and copy latest files:**
+   ```bash
+   mkdir -p ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/1.0.11
+   cp -r /path/to/obsidian-scribe/plugins/obsidian-scribe/* \
+     ~/.claude/plugins/cache/obsidian-scribe/obsidian-scribe/1.0.11/
+   ```
+
+5. **Restart Claude Code session**
+
+**Prevention**: Always use GitHub source for automatic updates:
+```bash
+claude plugins add bencassie/obsidian-scribe
+```
+
 ### WSL Setup
 
 WSL users can commit plugin configuration directly to `.claude/settings.json`:
