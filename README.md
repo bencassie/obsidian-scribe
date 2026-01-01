@@ -17,15 +17,32 @@ smoking-mirror MCP + 21 skills + 4 hooks + 5 agents = Graph-first PKM
 
 <img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%">
 
-## The Problem
+## Why Not RAG?
 
-Obsidian at scale is *work*:
-- Finding orphans, broken links, knowledge gaps = clicking around
-- Understanding how notes connect = manual backlink checking
-- Summarizing weekly/monthly progress = copy-paste hell
-- Tracking achievements = hoping you remember
+RAG (Retrieval-Augmented Generation) is the standard approach for AI + knowledge bases. But for PKM, it has fundamental limitations:
 
-**Traditional AI tools read your vault file-by-file.** 50 files × 1000 tokens = 50K tokens consumed. Shallow understanding. No relationships.
+| RAG Approach | Graph-First Approach |
+|--------------|---------------------|
+| Embed chunks → retrieve similar | Query relationships → understand structure |
+| "Here are 10 similar paragraphs" | "Here's how these 3 notes connect to 12 others" |
+| Static retrieval | Interactive REPL loop |
+| Read-only | Read, write, and automate |
+| No understanding of links | Full backlink/forward link awareness |
+| Chunks lose context | Graph preserves relationships |
+
+**The Claude Code REPL loop changes everything.** It's not retrieval—it's a conversation with your knowledge graph. Ask a question, get an answer, ask a follow-up, take action, all in one session.
+
+---
+
+## The Problem with File-Centric AI
+
+Traditional AI tools (including RAG) read your vault file-by-file:
+- 50 files × 1000 tokens = 50K tokens consumed
+- Shallow understanding—no relationships
+- Can't see the graph structure
+- Can't take action on what it finds
+
+**Obsidian Scribe + smoking-mirror is different.** It treats your vault as a **queryable knowledge graph**.
 
 ---
 
@@ -186,7 +203,9 @@ claude
 
 ## smoking-mirror: Your Eyes
 
-The power of this product comes from smoking-mirror MCP. It turns your vault into a queryable graph.
+The power of this product comes from [**smoking-mirror MCP**](https://github.com/bencassie/smoking-mirror). It turns your vault into a queryable graph.
+
+**GitHub**: [github.com/bencassie/smoking-mirror](https://github.com/bencassie/smoking-mirror)
 
 ### Graph Intelligence
 | Tool | Purpose |
@@ -215,7 +234,7 @@ The power of this product comes from smoking-mirror MCP. It turns your vault int
 | `get_all_tasks()` | Every task in vault |
 | `get_folder_structure()` | Vault organization |
 
-**Full reference**: [smoking-mirror documentation](https://github.com/bencassie/smoking-mirror)
+**Full tool reference**: [smoking-mirror GitHub](https://github.com/bencassie/smoking-mirror) — 20+ graph queries for Obsidian vaults
 
 ---
 
@@ -348,19 +367,42 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 
 ## Comparison
 
-| Feature | Obsidian Scribe + smoking-mirror | Copilot | Smart Connections |
-|---------|----------------------------------|---------|-------------------|
-| **Graph navigation** | ✅ Full vault graph | ❌ | ❌ |
-| **Backlink queries** | ✅ Instant | ❌ | ❌ |
-| **Orphan/hub detection** | ✅ Automated | ❌ | ❌ |
-| **Vault health analysis** | ✅ 16 skills | ❌ | ❌ |
-| **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ |
-| **Hierarchical rollups** | ✅ 5 agents | ❌ | ❌ |
-| **Works from terminal** | ✅ Claude Code | ❌ In-Obsidian | ❌ In-Obsidian |
-| **Token efficiency** | ✅ 10x reduction | ❌ Reads everything | ❌ |
-| **Semantic search** | ✅ Tags, frontmatter | ✅ | ✅ Embeddings |
-| **Long context (200K)** | ✅ Claude | Limited | ❌ |
-| **Price** | Free (MIT) | Free + Pro | Free + Pro |
+| Feature | Obsidian Scribe | RAG Solutions | Copilot | Smart Connections |
+|---------|-----------------|---------------|---------|-------------------|
+| **Graph navigation** | ✅ Full vault graph | ❌ Chunks only | ❌ | ❌ |
+| **Interactive REPL** | ✅ Conversation loop | ❌ One-shot | ❌ | ❌ |
+| **Take action** | ✅ Read + Write + Automate | ❌ Read-only | ❌ Chat only | ❌ |
+| **Backlink awareness** | ✅ Native | ❌ Lost in chunking | ❌ | ❌ |
+| **Orphan/hub detection** | ✅ Automated | ❌ | ❌ | ❌ |
+| **Vault health analysis** | ✅ 16 skills | ❌ | ❌ | ❌ |
+| **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ | ❌ |
+| **Hierarchical rollups** | ✅ 5 agents | ❌ | ❌ | ❌ |
+| **Token efficiency** | ✅ 10x reduction | ⚠️ Embed everything | ❌ | ❌ |
+| **Follow-up questions** | ✅ Full context preserved | ⚠️ Re-retrieve each time | ✅ | ❌ |
+| **Semantic search** | ✅ Tags, frontmatter, graph | ✅ Embeddings | ✅ | ✅ Embeddings |
+| **Long context (200K)** | ✅ Claude | Varies | Limited | ❌ |
+| **Price** | Free (MIT) | Varies | Free + Pro | Free + Pro |
+
+### The REPL Advantage
+
+RAG is one-shot: embed → retrieve → answer → done.
+
+Claude Code is a **conversation**:
+```
+You: What do I know about authentication?
+     [Claude queries graph, reads 3 notes]
+
+You: How does that connect to the API project?
+     [Claude follows links, finds 5 related notes]
+
+You: Create a summary note linking these together
+     [Claude writes new note with proper wikilinks]
+
+You: Add it to my weekly rollup
+     [Claude updates weekly note]
+```
+
+One session. Full context. Actions taken. That's the power of graph-first + REPL.
 
 ---
 
@@ -380,6 +422,17 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 > Use your eyes to see where to go. Only use your hands when you know what to touch.
 
 Welcome to graph-first Obsidian PKM.
+
+---
+
+## The Ecosystem
+
+| Repository | Purpose | Link |
+|------------|---------|------|
+| **obsidian-scribe** | Claude Code plugin: skills, hooks, agents | [GitHub](https://github.com/bencassie/obsidian-scribe) |
+| **smoking-mirror** | MCP server: graph queries for Obsidian | [GitHub](https://github.com/bencassie/smoking-mirror) |
+
+Both are MIT licensed, free, and open source. Star them if you find them useful.
 
 ---
 
