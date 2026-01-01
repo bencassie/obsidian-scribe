@@ -79,11 +79,11 @@ def main():
             achievements_file = vault_path / config['paths']['achievements']
 
             if achievements_file.exists():
-                # Write achievements using shared library (max 3)
+                # Write achievements using shared library (no limit - log everything)
                 num_written = write_achievements_to_file(
                     achievements,
                     achievements_file,
-                    max_achievements=3
+                    max_achievements=1000
                 )
 
                 if num_written > 0:

@@ -282,7 +282,7 @@ def filter_existing_achievements(achievements: List[Dict[str, str]], existing_co
 def write_achievements_to_file(
     achievements: List[Dict[str, str]],
     achievements_file: Path,
-    max_achievements: int = 3,
+    max_achievements: int = 1000,
     target_month: Optional[str] = None
 ) -> int:
     """
@@ -291,7 +291,7 @@ def write_achievements_to_file(
     Args:
         achievements: List of achievement dicts to write
         achievements_file: Path to Achievements.md
-        max_achievements: Maximum number of achievements to write (default 3)
+        max_achievements: Maximum number of achievements to write (default 1000, effectively unlimited)
         target_month: Optional month string like "December 2025" (defaults to current month)
 
     Returns:

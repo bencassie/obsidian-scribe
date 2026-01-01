@@ -185,11 +185,11 @@ achievements_file = Path('/absolute/path/to/personal/goals/Achievements.md')
 # Target month (e.g., "December 2025")
 target_month = "December 2025"
 
-# Write achievements (limit 10 for batch operations)
+# Write achievements (no limit - log everything for comprehensive records)
 num_written = write_achievements_to_file(
     achievements,
     achievements_file,
-    max_achievements=10,
+    max_achievements=1000,
     target_month=target_month
 )
 
