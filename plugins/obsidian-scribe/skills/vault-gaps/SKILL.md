@@ -32,7 +32,7 @@ These represent opportunities to create new content.
 
 **1. Broken Links** - Explicitly linked but file missing
 ```
-[[Feature Not Built Yet]] → No file exists
+Feature Not Built Yet → No file exists
 ```
 
 **2. Unlinked Mentions** - Mentioned but not linked
@@ -88,9 +88,9 @@ Knowledge Gaps
 Found 34 knowledge gaps
 
 🚨 High Priority Broken Links (10+ references):
-   • [[API Authentication]] - Referenced 24 times, no file
-   • [[Deployment Guide]] - Referenced 18 times, no file
-   • [[Testing Strategy]] - Referenced 12 times, no file
+   • API Authentication - Referenced 24 times, no file
+   • Deployment Guide - Referenced 18 times, no file
+   • Testing Strategy - Referenced 12 times, no file
 
 ⚠️ Frequently Unlinked Topics (5+ mentions):
    • "authentication" - 15 unlinked mentions
@@ -98,8 +98,8 @@ Found 34 knowledge gaps
    • "api design" - 8 unlinked mentions
 
 📝 Stub Pages (high backlinks, low content):
-   • [[Best Practices]] - 34 backlinks, 45 words
-   • [[Team Process]] - 28 backlinks, 67 words
+   • Best Practices - 34 backlinks, 45 words
+   • Team Process - 28 backlinks, 67 words
 
 💡 Actions:
    • Create notes for high priority broken links

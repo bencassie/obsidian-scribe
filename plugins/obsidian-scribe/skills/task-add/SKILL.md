@@ -56,7 +56,7 @@ User prompts that DO NOT trigger this skill:
 3. **Extract task description**
    - Remove trigger words ("add a task to", "task to do", etc.)
    - Extract description before the due date reference
-   - Preserve any [[wikilinks]] in the description
+   - Preserve any wikilinks in the description
 
 4. **Extract and parse due date**
    - Look for date reference after "by", "due", "for"
@@ -97,7 +97,7 @@ User prompts that DO NOT trigger this skill:
 1. **Checkbox**: `- [ ]` (unchecked task)
 2. **Tag**: `#task` (for filtering/searching)
 3. **Timestamp**: `HH:MM` (when task was created)
-4. **Description**: Free text with optional [[wikilinks]]
+4. **Description**: Free text with optional wikilinks
 5. **Due date emoji**: `📅` (calendar emoji, U+1F4C5)
 6. **Due date**: `YYYY-MM-DD` (ISO 8601 format)
 
@@ -132,7 +132,7 @@ User prompts that DO NOT trigger this skill:
 - **Timestamp required**: Always include HH:MM format for task creation time
 - **Preserve structure**: Don't modify other sections
 - **Task format**: Use `- [ ] #task HH:MM description 📅 YYYY-MM-DD`
-- **Wikilinks**: Preserve any [[wikilinks]] in the user's description
+- **Wikilinks**: Preserve any wikilinks in the user's description
 
 ## Configuration
 

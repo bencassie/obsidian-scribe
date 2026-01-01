@@ -84,13 +84,13 @@ Search Results
 Query: databricks in work/ tagged #project
 Found: 12 notes (sorted by modified, desc)
 
-1. [[Databricks Migration Project]]
+1. Databricks Migration Project
    📂 work/projects/databricks-migration.md
    📅 Modified: 2025-12-30 | Created: 2024-05-15
    🏷️ Tags: #work #project #databricks
    📋 type: project | status: active
 
-2. [[Databricks ETL Pipeline]]
+2. Databricks ETL Pipeline
    📂 work/projects/databricks-etl.md
    📅 Modified: 2025-12-28 | Created: 2024-09-20
    🏷️ Tags: #work #project #databricks

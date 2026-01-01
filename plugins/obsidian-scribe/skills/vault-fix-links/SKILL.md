@@ -35,21 +35,21 @@ Call `mcp__smoking-mirror__find_broken_links` to retrieve all broken wikilinks.
 Categorize broken links by type:
 
 **Missing Notes** (create candidates):
-- `[[New Topic]]` → No file exists
+- `New Topic` → No file exists
 - High confidence if referenced multiple times
 - Suggest creating note
 
 **Typos** (fuzzy match):
-- `[[Databrics]]` → Did you mean `[[Databricks]]`?
+- `Databrics` → Did you mean `Databricks`?
 - Use Levenshtein distance
 - Auto-fix if confidence >90%
 
 **Case Mismatches** (exact match different case):
-- `[[databricks]]` → Exists as `[[Databricks]]`
+- `databricks` → Exists as `Databricks`
 - Auto-fix (safe)
 
 **Moved Notes** (search by title):
-- `[[Old Path/Note]]` → Now at `[[New Path/Note]]`
+- `Old Path/Note` → Now at `New Path/Note`
 - Search vault for matching title
 - Suggest update
 
@@ -70,16 +70,16 @@ Found 200 broken links across 50 notes
 🔍 Sample (showing 20 of 200):
 
 Missing Notes:
-1. [[API Guide]] (15 references)
+1. API Guide (15 references)
    → Mentioned in: Projects, Tech Docs
    → Suggestion: Create tech/guides/API.md
 
 Typos:
-2. [[Databrics]] → [[Databricks]] (confidence: 95%)
+2. Databrics → Databricks (confidence: 95%)
    → Auto-fixable
 
 Case Mismatches:
-3. [[azure]] → [[Azure]] (exact match)
+3. azure → Azure (exact match)
    → Auto-fixable
 
 ═══════════════════════════════════════════════

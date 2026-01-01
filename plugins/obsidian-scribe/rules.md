@@ -19,7 +19,7 @@ mkdir -p /path/to/vault/.claude/rules
 
 Prevents common Obsidian-breaking syntax errors:
 - **No angle brackets** - `ILogger<T>` breaks all wikilinks after it
-- **No wrapped wikilinks** - `**[[Link]]**` breaks hyperlinks
+- **No wrapped wikilinks** - `**Link**` breaks hyperlinks
 - **No wikilinks in YAML** - Corrupts frontmatter parsing
 - **Close code blocks** - Unclosed fences break rendering
 
@@ -104,20 +104,20 @@ These rules apply when editing ANY markdown file in the vault.
 
 ## Wikilinks
 
-- Use `[[wikilink]]` format for internal links
-- Use `[[Page|Display Text]]` for aliased links
+- Use `wikilink` format for internal links
+- Use `Page|Display Text` for aliased links
 
 ### CRITICAL - Never Wrap Wikilinks
 
 NEVER wrap wikilinks with formatting characters:
 
 WRONG:
-**[[Link]]**
-*[[Link]]*
+**Link**
+*Link*
 
 CORRECT:
-[[Link]]
-**Text with [[Link]] inside**
+Link
+**Text with Link inside**
 
 ## Angle Brackets
 

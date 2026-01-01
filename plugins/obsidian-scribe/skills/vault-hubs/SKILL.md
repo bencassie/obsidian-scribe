@@ -89,17 +89,17 @@ Threshold: 5+ total links
 
 TOP HUBS (20 shown):
 
-1. [[Daily Habit 1]] - 300+ total links
+1. Daily Habit 1 - 300+ total links
    ← 300 backlinks | → 2 forward links
    Type: Habit | Daily reference
    Hub strength: SUPER (daily tracking)
 
-2. [[Main Project]] - 68 total links
+2. Main Project - 68 total links
    ← 45 backlinks | → 23 forward links
    Type: Project | Balanced hub
    Hub strength: STRONG ⭐ (excellent MOC!)
 
-3. [[Core Technology]] - 56 total links
+3. Core Technology - 56 total links
    ← 42 backlinks | → 14 forward links
    Type: Technology | Balanced hub
    Hub strength: STRONG (central tech)

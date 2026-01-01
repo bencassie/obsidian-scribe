@@ -6,7 +6,7 @@ A comprehensive Claude Code plugin for Obsidian vault automation, note rollups, 
 
 ### Automatic Wikilink Management
 - **Session Start Hook**: Validates daily notes and rebuilds wikilink cache
-- **Suggest Wikilinks Hook**: Auto-applies `[[wikilinks]]` to recognized entities
+- **Suggest Wikilinks Hook**: Auto-applies `wikilinks` to recognized entities
 - **Syntax Validation Hook**: Prevents angle brackets and wrapped wikilinks that break Obsidian
 
 ### Note Rollup System

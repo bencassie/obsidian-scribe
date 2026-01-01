@@ -80,16 +80,16 @@ Found 12 knowledge clusters
 🎯 Top Clusters by Size:
 
 **Cluster 1: Data Platform** (23 notes, 89% cohesion)
-Hub: [[Main Project]]
-Notes: [[Database]], [[API]], [[Pipeline]], [[Data Quality]], ...
+Hub: Main Project
+Notes: Database, API, Pipeline, Data Quality, ...
 
 **Cluster 2: Development Tools** (18 notes, 76% cohesion)
-Hub: [[Dev Environment]]
-Notes: [[Git]], [[VS Code]], [[GitHub]], [[Python]], [[Node.js]], ...
+Hub: Dev Environment
+Notes: Git, VS Code, GitHub, Python, Node.js, ...
 
 **Cluster 3: Work Process** (15 notes, 82% cohesion)
-Hub: [[Workflow]]
-Notes: [[Deployments]], [[Releases]], [[Testing]], [[Change Management]], ...
+Hub: Workflow
+Notes: Deployments, Releases, Testing, Change Management, ...
 
 📊 Cluster Statistics:
    • Total clusters: 12
@@ -119,14 +119,14 @@ Notes: [[Deployments]], [[Releases]], [[Testing]], [[Change Management]], ...
 # Data Platform MOC
 
 Core Platform:
-- [[Main Project]]
-- [[Database]]
-- [[Architecture]]
+- Main Project
+- Database
+- Architecture
 
 Data Sources:
-- [[Source A]]
-- [[Source B]]
-- [[Data Quality]]
+- Source A
+- Source B
+- Data Quality
 
 [... organized cluster view]
 ```

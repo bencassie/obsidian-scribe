@@ -71,9 +71,9 @@ Dead End Notes
 Found 87 dead end notes
 
 🚨 High Priority (10+ backlinks):
-   • [[Meeting 2025-03-15]] - 24 backlinks, 0 outlinks
-   • [[Project Alpha]] - 18 backlinks, 0 outlinks
-   • [[Technical Spec]] - 12 backlinks, 0 outlinks
+   • Meeting 2025-03-15 - 24 backlinks, 0 outlinks
+   • Project Alpha - 18 backlinks, 0 outlinks
+   • Technical Spec - 12 backlinks, 0 outlinks
 
 ⚠️ Medium Priority (3-9 backlinks):
    • 34 notes need connections

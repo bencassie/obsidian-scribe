@@ -72,18 +72,18 @@ Score each note:
 ```
 Related Notes
 ═══════════════════════════════════════════════
-Finding notes related to: [[MyProject]]
+Finding notes related to: MyProject
 
 📊 Most Related (by score):
-   1. [[Related Project]] - Score: 7
+   1. Related Project - Score: 7
       • Tags: #project, #data-platform, #azure
       • Folder: work/projects/
 
-   2. [[Similar Work]] - Score: 6
+   2. Similar Work - Score: 6
       • Tags: #project, #methodology
       • Folder: work/projects/
 
-   3. [[Connected Topic]] - Score: 5
+   3. Connected Topic - Score: 5
       • Tags: #methodology
       • Folder: work/projects/
 
@@ -95,7 +95,7 @@ Finding notes related to: [[MyProject]]
 📁 Folder Matches: 12 notes in work/projects/
 
 💡 Suggestions:
-   • Consider linking [[MyProject]] to top 3 related notes
+   • Consider linking MyProject to top 3 related notes
    • Review folder matches for additional context
 
 ═══════════════════════════════════════════════

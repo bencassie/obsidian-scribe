@@ -70,7 +70,7 @@ For each monthly note, extract:
 #### Key Achievements
 - All items from `## Key Achievements` section
 - Preserve categorization
-- Keep ALL [[wikilinks]]
+- Keep ALL wikilinks
 
 #### Completed Projects
 - Projects finished during the month
@@ -97,7 +97,7 @@ Synthesize data across all 3 months:
 - Identify major themes across the quarter
 - Group by category
 - Highlight most significant items
-- Preserve ALL [[wikilinks]]
+- Preserve ALL wikilinks
 
 #### Projects
 - List all completed projects with month completed
@@ -137,7 +137,7 @@ Synthesize a coherent narrative, don't just list items.
 ## Key Achievements
 
 **Category Name**
-- Highlight achievement with [[wikilinks]]
+- Highlight achievement with wikilinks
 - Focus on most significant items
 
 **Another Category**
@@ -150,8 +150,8 @@ NO CODE BLOCKS for achievements.
 ```markdown
 ## Completed Projects
 
-- [[Project Name]] (Month YYYY)
-- [[Another Project]] (Month YYYY)
+- Project Name (Month YYYY)
+- Another Project (Month YYYY)
 ```
 
 Include month completed for each project.
@@ -160,16 +160,16 @@ Include month completed for each project.
 ```markdown
 ## Ongoing Projects
 
-- [[Project Name]]: Status at end of quarter, progress made this quarter
-- [[Another Project]]: Current status
+- Project Name: Status at end of quarter, progress made this quarter
+- Another Project: Current status
 ```
 
 #### Quarterly Habit Summary
 ```markdown
 ### Quarterly Habit Summary (QX YYYY)
-- [[Walk]]: X/91 days (XX.X%)
-- [[Stretch]]: X/91 days (XX.X%)
-- [[Vitamins]]: X/91 days (XX.X%)
+- Walk: X/91 days (XX.X%)
+- Stretch: X/91 days (XX.X%)
+- Vitamins: X/91 days (XX.X%)
 
 Total days tracked: X/91
 ```
@@ -212,11 +212,11 @@ Brief summary of each month:
 ## Critical Rules
 
 ### Obsidian Syntax
-- **Link everything**: ALL projects, people, technologies need [[wikilinks]]
+- **Link everything**: ALL projects, people, technologies need wikilinks
 - **No code blocks**: DO NOT USE CODE BLOCKS for achievements or narrative (except habit tracking format)
 - **No angle brackets**: Avoid `<` `>` which break Obsidian
-- **Never wrap wikilinks**: Never use `**[[Link]]**`
-- **Preserve existing wikilinks**: Keep all [[wikilinks]] from monthly notes
+- **Never wrap wikilinks**: Never use `**Link**`
+- **Preserve existing wikilinks**: Keep all wikilinks from monthly notes
 
 ### Data Integrity
 - **Synthesize**: Create narrative, don't just concatenate monthly data

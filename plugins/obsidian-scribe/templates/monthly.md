@@ -30,9 +30,9 @@ tags:
 > Summarize habit completion for the month. Roll up habit data from weekly notes.
 >
 > ### Monthly Habit Summary (Month YYYY)
-> - [[Habit1]]: X/DD days (X%)
-> - [[Habit2]]: X/DD days (X%)
-> - [[Habit3]]: X/DD days (X%)
+> - Habit1: X/DD days (X%)
+> - Habit2: X/DD days (X%)
+> - Habit3: X/DD days (X%)
 >
 > Total days tracked: X/DD
 >

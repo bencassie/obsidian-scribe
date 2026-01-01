@@ -57,9 +57,9 @@ Bidirectional Links
 Found 234 bidirectional link pairs
 
 📊 Top Bidirectional Relationships:
-   • [[Project A]] ↔ [[Technology X]] (strong project connection)
-   • [[Claude Code]] ↔ [[Obsidian]] (tool integration)
-   • [[Daily Notes]] ↔ [[Habits]] (workflow connection)
+   • Project A ↔ Technology X (strong project connection)
+   • Claude Code ↔ Obsidian (tool integration)
+   • Daily Notes ↔ Habits (workflow connection)
 
 💡 Insights:
    • 16% of your links are bidirectional
