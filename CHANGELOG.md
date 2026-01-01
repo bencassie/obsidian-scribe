@@ -5,22 +5,37 @@ All notable changes to Obsidian Scribe will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.17] - 2026-01-01
+## [1.2.0] - 2026-01-01
 
 ### Added
+- **Example Rules** (`docs/example-rules/`) - Ready-to-use Claude Code rule templates:
+  - `achievements.md` - Achievement log format with timestamps
+  - `daily-notes.md` - Daily note structure for rollup chain
+  - `obsidian-syntax.md` - Critical Obsidian markdown rules
+  - `platform-requirements.md` - WSL/Windows setup requirements
+  - `README.md` - Documentation hub for example rules
 - **Graph-First Workflow Guide** (`WORKFLOW.md`) - Complete documentation for the graph-first mental model
 - **CLAUDE.md Example** (`CLAUDE.md.example`) - Full template for configuring Claude Code in your vault
 - **Graph-First README Section** - New section explaining the three-layer architecture
+- **RAG Comparison** - "Why Not RAG?" section positioning graph-first vs chunk-based retrieval
+- **REPL Advantage Documentation** - Highlighting Claude Code's interactive conversation loop
+- **Target Audience Section** - "Who is this for?" targeting Obsidian, Claude Code, RAG, and MCP users
 - **Categorized Skills** - Skills now organized into Core Workflows (5), Vault Health (16), and Periodic Rollups (4)
-- **Comparison Page** (`docs/comparison.md`) - Feature comparison vs Copilot and Smart Connections
+- **Comparison Page** (`docs/comparison.md`) - Feature comparison vs Copilot, Smart Connections, and RAG
 - **Skills Reference** (`docs/skills-reference.md`) - Consolidated documentation for all 21 skills
 - **Workflows Guide** (`docs/workflows.md`) - Real-world workflow examples
 
 ### Changed
-- **README.md** - Complete rewrite with clearer value proposition and scannable structure
+- **README.md** - Complete rewrite emphasizing:
+  - smoking-mirror MCP as **required** core dependency (not optional)
+  - Graph-first navigation vs file-centric approaches
+  - RAG alternative positioning with REPL advantages
+  - Hyperlinked key concepts (Obsidian, Claude Code, RAG, PKM, MCP)
+  - smoking-mirror badge and promotion
 - **Documentation Structure** - Simplified from 13+ files to focused hub with key pages
 - **Installation Instructions** - Now uses GitHub source (`repo: "bencassie/obsidian-scribe"`) instead of directory source
 - **Skill Count** - Updated to reflect 21 skills (was showing 22)
+- **Dependencies** - smoking-mirror MCP now listed as Required, not Optional
 
 ### Fixed
 - **wikilink-suggest.py Hook** - Added exclusions for:
@@ -31,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Wikilinks in Docs** - Removed erroneous `[[wikilinks]]` from all documentation files
 
 ### Technical
-- Version bumped in all 3 manifest files:
+- Version bumped to 1.2.0 in all 3 manifest files:
   - `.claude-plugin/marketplace.json`
   - `plugins/obsidian-scribe/.claude-plugin/marketplace.json`
   - `plugins/obsidian-scribe/.claude-plugin/plugin.json`

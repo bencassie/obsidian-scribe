@@ -422,9 +422,23 @@ One session. Full context. Actions taken. That's the power of graph-first + REPL
 
 - **[WORKFLOW.md](WORKFLOW.md)** — Complete graph-first workflow guide
 - **[CLAUDE.md.example](CLAUDE.md.example)** — Template for your vault's CLAUDE.md
+- **[Example Rules](docs/example-rules/)** — Copy-paste rules for your `.claude/rules/` directory
 - **[Skills Reference](docs/skills-reference.md)** — All 21 skills documented
 - **[Workflows](docs/workflows.md)** — Real examples and use cases
 - **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)
+
+### Example Rules
+
+Ready-to-use [Claude Code rules](docs/example-rules/) for your vault:
+
+| Rule | Purpose |
+|------|---------|
+| [achievements.md](docs/example-rules/achievements.md) | Achievement log format with timestamps |
+| [daily-notes.md](docs/example-rules/daily-notes.md) | Daily note structure for rollup chain |
+| [obsidian-syntax.md](docs/example-rules/obsidian-syntax.md) | Critical Obsidian markdown rules |
+| [platform-requirements.md](docs/example-rules/platform-requirements.md) | WSL/Windows setup requirements |
+
+Copy to `.claude/rules/` in your vault and customize paths.
 
 ---
 

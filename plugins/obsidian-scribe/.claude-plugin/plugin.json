@@ -1,6 +1,6 @@
 {
   "name": "obsidian-scribe",
-  "version": "1.0.17",
+  "version": "1.2.0",
   "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
   "author": {
     "name": "Ben Cassie",
