@@ -6,7 +6,7 @@
 
 **Your [Obsidian](https://obsidian.md) vault as a queryable knowledge graph.**
 
-[smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP + 35 skills + 4 hooks + 8 agents = Graph-first PKM
+[smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP + 33 skills + 5 hooks + 8 agents = Graph-first PKM
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
@@ -16,12 +16,38 @@
 
 ---
 
+## What Is This?
+
+**obsidian-scribe** is a [Claude Code plugin](https://github.com/anthropics/claude-code) that turns your Obsidian vault into an AI-powered knowledge graph.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Claude Code CLI                                            │
+│  ├── obsidian-scribe plugin (skills, hooks, agents)        │
+│  │   └── smoking-mirror MCP (graph queries, 47 tools)      │
+│  │       └── Your Obsidian vault (notes, links, tags)      │
+│  └── Read/Edit/Write tools (surgical file access)          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**The stack:**
+- **[smoking-mirror](https://github.com/bencassie/smoking-mirror)**: MCP server that indexes your vault and exposes 47 graph query tools (backlinks, hubs, orphans, paths, sections, frontmatter, tasks)
+- **obsidian-scribe**: Claude Code plugin with 33 skills (vault analysis, daily logging, rollups), 5 hooks (achievement detection, wikilink suggestions), and 8 agents (periodic summaries, schema enforcement)
+- **Claude Code**: Anthropic's CLI that orchestrates everything via natural language
+
+**Install:**
+```bash
+/install bencassie/obsidian-scribe
+```
+
+---
+
 ## Who is this for?
 
 | If you use... | You'll love this because... |
 |---------------|----------------------------|
 | **[Obsidian](https://obsidian.md)** | Finally query your vault's graph structure from the command line |
-| **[Claude Code](https://github.com/anthropics/claude-code)** | Purpose-built plugin with 35 skills + 8 intelligent agents for knowledge management |
+| **[Claude Code](https://github.com/anthropics/claude-code)** | Purpose-built plugin with 33 skills + 5 hooks + 8 agents for knowledge management |
 | **RAG systems** | Graph-first beats chunk-based retrieval for PKM (see below) |
 | **[MCP](https://modelcontextprotocol.io/)** | [smoking-mirror](https://github.com/bencassie/smoking-mirror) is a production MCP server for Obsidian |
 
@@ -222,7 +248,7 @@ Claude: ✓ Added to daily note (14:32)
 
 No clicking. No switching apps. Your vault responds to conversation.
 
-**See [Skills Reference](docs/skills-reference.md) for all 35 skills with natural language examples.**
+**See [Skills Reference](docs/skills-reference.md) for all 33 skills with natural language examples.**
 
 ---
 
@@ -676,7 +702,7 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 | **Link path finding** | ✅ A → B → C routes | ❌ | ❌ | ❌ |
 | **Task management** | ✅ Cross-vault tasks | ❌ | ❌ | ❌ |
 | **Orphan/hub detection** | ✅ Automated | ❌ | ❌ | ❌ |
-| **Vault health analysis** | ✅ 35 skills | ❌ | ❌ | ❌ |
+| **Vault health analysis** | ✅ 33 skills | ❌ | ❌ | ❌ |
 | **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ | ❌ |
 | **Intelligent agents** | ✅ 8 agents (rollups, schema, relationships) | ❌ | ❌ | ❌ |
 | **Follow-up questions** | ✅ Full context preserved | ⚠️ Re-retrieve each time | ✅ | ❌ |
@@ -711,7 +737,7 @@ One session. Full context. Actions taken. That's the power of graph-first + REPL
 - **[WORKFLOW.md](WORKFLOW.md)** — Complete graph-first workflow guide
 - **[CLAUDE.md.example](CLAUDE.md.example)** — Template for your vault's CLAUDE.md
 - **[Example Rules](docs/example-rules/)** — Copy-paste rules for your `.claude/rules/` directory
-- **[Skills Reference](docs/skills-reference.md)** — All 35 skills with natural language examples
+- **[Skills Reference](docs/skills-reference.md)** — All 33 skills with natural language examples
 - **[Use Cases](docs/use-cases.md)** — User stories with tool invocations and JSON output
 - **[Workflows](docs/workflows.md)** — End-to-end workflow examples
 - **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)

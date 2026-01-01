@@ -430,6 +430,6 @@ Claude: search_notes(title_contains="React") → 3 core notes
 
 ## Related
 
-- [Skills Reference](skills-reference.md) - All 35 skills with natural language examples
+- [Skills Reference](skills-reference.md) - All 33 skills with natural language examples
 - [smoking-mirror GitHub](https://github.com/bencassie/smoking-mirror) - Full MCP tool documentation
 - [Workflows](workflows.md) - End-to-end workflow examples

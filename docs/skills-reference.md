@@ -1,6 +1,6 @@
 # Skills Reference
 
-Complete reference for all 35 skills in Obsidian Scribe. Each skill shows **how you actually ask** (natural language), **what Claude does**, and **what changes in your vault**.
+Complete reference for all 33 skills in Obsidian Scribe. Each skill shows **how you actually ask** (natural language), **what Claude does**, and **what changes in your vault**.
 
 ---
 

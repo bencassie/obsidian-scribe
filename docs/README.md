@@ -58,7 +58,7 @@ Obsidian Scribe — Your Obsidian vault, accessible from the command line.
 ## Architecture
 
 ```
-21 skills + 4 hooks + 5 agents
+33 skills + 5 hooks + 8 agents
          ↓
     Claude Code
          ↓
