@@ -1,6 +1,6 @@
-<div align="center">
+(div align="center")
 
-<img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="280">
+(img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="280")
 
 ### Unlock Deeper Insights in Your Knowledge Vault
 
@@ -9,15 +9,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
 
-</div>
+(/div)
 
 ---
 
-<img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%">
+(img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%")
 
 ## Features
 
-<img src="docs/assets/feature-icons.png" alt="Features" align="right" width="200">
+(img src="docs/assets/feature-icons.png" alt="Features" align="right" width="200")
 
 - **Wikilink Automation** - Auto-suggest and apply `[[wikilinks]]` to your notes
 - **Periodic Note Rollups** - Chain daily → weekly → monthly → quarterly → yearly summaries
@@ -150,19 +150,26 @@ If plugins don't load:
 
 #### Standard Update Process
 
-1. **Pull latest from GitHub marketplace clone:**
-   ```bash
-   cd ~/.claude/plugins/marketplaces/obsidian-scribe
-   git pull origin main
-   ```
+**On WSL:**
+```bash
+cd ~/.claude/plugins/marketplaces/obsidian-scribe && git pull origin main
+claude plugin update --scope local obsidian-scribe@obsidian-scribe
+# Restart Claude Code session to apply changes
+```
 
-2. **Update installed plugin** (use `--scope local` for local-scoped plugins):
-   ```bash
-   # NOTE: Command is "plugin" (singular), not "plugins"
-   claude plugin update --scope local obsidian-scribe@obsidian-scribe
-   ```
+**On Windows (PowerShell):**
+```powershell
+cd C:\Users\<YourUsername>\.claude\plugins\marketplaces\obsidian-scribe
+git pull origin main
+claude plugin update --scope local obsidian-scribe@obsidian-scribe
+# Restart Claude Code session to apply changes
+```
 
-3. **Restart Claude Code session**
+**Notes:**
+- Command is `plugin` (singular), not `plugins`
+- `--scope local` flag required for vault-scoped plugins
+- Can update from either platform - plugin cache is shared
+- Manual pull required - Claude Code doesn't auto-update from GitHub
 
 #### Verification
 
