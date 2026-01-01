@@ -1,22 +1,22 @@
-# Daily Logging 🦉📝
+# Daily [[Logging]] 🦉📝
 
-*Hoot! Let the owl help You capture your daily wisdom with ease.*
+*Hoot! Let the owl help [[You]] capture your daily wisdom with ease.*
 
-Daily logging Features help you record your work, tasks, and thoughts without leaving Claude Code.
+Daily logging [[Features]] help you record your work, tasks, and thoughts without leaving [[Claude Code]].
 
-## Features in This Domain
+## Features in [[This]] [[Domain]]
 
-| Feature | Type | Purpose |
+| [[Feature]] | Type | Purpose |
 |---------|------|---------|
-| `/auto-log` | Skill | Add timestamped entries to Daily Notes |
+| `/auto-log` | [[Skill]] | Add timestamped entries to [[Daily Notes]] |
 | `/task-add` | Skill | Create tasks with due dates |
-| `session-start` | Hook | Show Vault Status at Session start |
+| `session-start` | [[Hook]] | [[Show]] [[Vault]] [[Status]] at [[Session]] start |
 
-**No MCP Required** - These features work out of the box!
+**No [[MCP]] [[Required]]** - [[These]] features work out of the box!
 
 ## `/auto-log` - Timestamped Logging
 
-Add entries to your daily Note with automatic timestamps.
+Add entries to your daily [[Note]] with automatic timestamps.
 
 ### Usage
 
@@ -54,7 +54,7 @@ The owl:
 
 ### Configuration
 
-Daily note path is configured in `.Obsidian-scribe.json`:
+Daily note path is configured in `.[[Obsidian]]-scribe.json`:
 
 ```json
 {
@@ -220,30 +220,30 @@ tags:
 ### "Daily note not found"
 
 **Check:**
-- Daily notes folder matches config (`daily-Notes/`)
+- Daily notes folder matches config (`daily-[[Notes]]/`)
 - Today's note exists (create from template if needed)
 - Path in config is relative to vault root
 
 ### Entries not appending
 
 **Ensure:**
-- Log section header matches config exactly (`## Log`)
+- Log section header matches config exactly (`## [[Log]]`)
 - Section exists in daily note
 - No structural issues (mismatched markdown)
 
 ### Session hook not showing
 
 **Verify:**
-- Python is installed and accessible as `Python` Command
-- Hooks Are enabled in Plugin
-- You're in your vault directory When starting Claude Code
+- Python is installed and accessible as `[[Python]]` [[Command]]
+- [[Hooks]] [[Are]] enabled in [[Plugin]]
+- You're in your vault directory [[When]] starting [[Claude]] Code
 
-## Related Features
+## [[Related]] Features
 
-- **[Achievements](achievements.md)** - Auto-detect significant accomplishments
-- **[Rollup](rollup.md)** - Summarize daily logs into weekly/Monthly notes
-- **[Examples: Daily Workflow](../examples/daily-workflow.md)** - See it All in Action
+- **[Achievements](achievements.md)** - [[Auto]]-detect significant accomplishments
+- **[Rollup](rollup.md)** - Summarize daily logs into weekly/[[Monthly]] notes
+- **[Examples: Daily Workflow](../examples/daily-workflow.md)** - [[See]] it [[All]] in [[Action]]
 
 ---
 
-*"Every log entry is a feather in the owl's cap of Knowledge, dear scholar!"* 🦉📝
+*"Every log entry is a feather in the owl's cap of [[Knowledge]], dear scholar!"* 🦉📝

@@ -1,28 +1,28 @@
-(div align="center")
+<div align="center">
 
-(img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="280")
+<img src="docs/assets/logo-alt.png" alt="Obsidian Scribe" width="280">
 
 ### Unlock Deeper Insights in Your Knowledge Vault
 
-*A wise owl companion for Obsidian vault Automation and Intelligence*
+*A wise owl companion for Obsidian vault automation and intelligence*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
 
-(/div)
+</div>
 
 ---
 
-(img src="docs/assets/banner.png" alt="Obsidian Scribe in Action" width="100%")
+<img src="docs/assets/banner.png" alt="Obsidian Scribe in action" width="100%">
 
 ## Features
 
-(img src="docs/assets/Feature-icons.png" alt="Features" align="right" width="200")
+<img src="docs/assets/feature-icons.png" alt="Features" align="right" width="200">
 
-- **Wikilink Automation** - Auto-Suggest and Apply `wikilinks` to your Notes
-- **Periodic Note Rollups** - Chain daily → weekly → Monthly → Quarterly → yearly summaries
-- **Vault Health Tools** - Orphan Detection, broken Link repair, link density analysis
-- **Privacy Protection** - Person Name format enforcement, protected folders
+- **Wikilink Automation** - Auto-suggest and apply `[[wikilinks]]` to your notes
+- **Periodic Note Rollups** - Chain daily → weekly → monthly → quarterly → yearly summaries
+- **Vault Health Tools** - Orphan detection, broken link repair, link density analysis
+- **Privacy Protection** - Person name format enforcement, protected folders
 
 ## Installation
 
@@ -40,7 +40,7 @@ All platform-specific configurations follow the same pattern to enable cross-pla
 
 | Platform | Configuration Location | Path Format | Status |
 |----------|------------------------|-------------|--------|
-| **WSL** | Project `.Claude/settings.json` | `/mnt/c/...` | Checked into git |
+| **WSL** | Project `.claude/settings.json` | `/mnt/c/...` | Checked into git |
 | **Windows** | Global `.claude.json` project override | `C:/...` | Local only (not committed) |
 
 ### Why This Matters
@@ -141,7 +141,7 @@ Add the new vault entry inside the existing `projects` object:
 If plugins don't load:
 1. Verify paths use forward slashes: `C:/Users/...` not `C:\Users\...`
 2. Check vault path matches exactly (use `pwd` in your vault directory)
-3. Ensure obsidian-scribe path points to the repository root (contains `.claude-Plugin/`)
+3. Ensure obsidian-scribe path points to the repository root (contains `.claude-plugin/`)
 4. Look for errors in debug logs: `C:\Users\<you>\.claude\debug\`
 
 ### Plugin Version Updates
@@ -150,26 +150,19 @@ If plugins don't load:
 
 #### Standard Update Process
 
-**On WSL:**
-```bash
-cd ~/.claude/plugins/marketplaces/obsidian-scribe && git pull origin main
-claude plugin update --scope local obsidian-scribe@obsidian-scribe
-# Restart Claude Code session to apply changes
-```
+1. **Pull latest from GitHub marketplace clone:**
+   ```bash
+   cd ~/.claude/plugins/marketplaces/obsidian-scribe
+   git pull origin main
+   ```
 
-**On Windows (PowerShell):**
-```powershell
-cd C:\Users\<YourUsername>\.claude\plugins\marketplaces\obsidian-scribe
-git pull origin main
-claude plugin update --scope local obsidian-scribe@obsidian-scribe
-# Restart Claude Code session to apply changes
-```
+2. **Update installed plugin** (use `--scope local` for local-scoped plugins):
+   ```bash
+   # NOTE: Command is "plugin" (singular), not "plugins"
+   claude plugin update --scope local obsidian-scribe@obsidian-scribe
+   ```
 
-**Notes:**
-- Command is `plugin` (singular), not `Plugins`
-- `--Scope local` flag required for vault-scoped plugins
-- Can update from either platform - plugin cache is shared
-- Manual pull required - Claude Code doesn't auto-update from GitHub
+3. **Restart Claude Code session**
 
 #### Verification
 
@@ -187,9 +180,9 @@ cat ~/.claude/debug/<session-id>.txt | grep "Found.*plugins"
 ```
 
 Expected output after restart:
-- `Found 2 plugins (2 enabled, 0 Disabled)`
+- `Found 2 plugins (2 enabled, 0 disabled)`
 - `Loaded plugins - Enabled: 2`
-- `Registered X Hooks from 2 plugins`
+- `Registered X hooks from 2 plugins`
 
 #### Important Notes
 

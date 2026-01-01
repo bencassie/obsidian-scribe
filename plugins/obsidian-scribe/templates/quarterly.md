@@ -12,38 +12,38 @@ tags:
 ## Quarterly Summary
 > A concise overview of the quarter's key events, accomplishments, and challenges.
 >
-> CRITICAL: Ensure ALL nouns are properly backlinked using wiki links
+> CRITICAL: Ensure ALL nouns are properly backlinked using [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Key Achievements
 > Major accomplishments, milestones reached, and significant progress made during the quarter.
 >
-> CRITICAL: Link ALL projects, people, technologies, and relevant entities with wiki links
+> CRITICAL: Link ALL projects, people, technologies, and relevant entities with [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Completed Projects
 > Projects or major initiatives that were completed during this quarter.
 >
-> CRITICAL: Ensure ALL project names, technologies, and systems have proper wiki links
+> CRITICAL: Ensure ALL project names, technologies, and systems have proper [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Ongoing Projects
 > Status updates on continuing projects and initiatives.
 >
-> CRITICAL: Link ALL project names, technologies, and systems with wiki links
+> CRITICAL: Link ALL project names, technologies, and systems with [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Habit Tracking
 > Summarize habit completion for the quarter. Roll up habit data from monthly notes.
 >
 > ### Quarterly Habit Summary (QX YYYY)
-> - Habit1: X/91 days (X%)
-> - Habit2: X/91 days (X%)
-> - Habit3: X/91 days (X%)
+> - [[Habit1]]: X/91 days (X%)
+> - [[Habit2]]: X/91 days (X%)
+> - [[Habit3]]: X/91 days (X%)
 >
 > Total days tracked: X/91
 >
-> CRITICAL: Ensure ALL habit names use proper wiki links
+> CRITICAL: Ensure ALL habit names use proper [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 

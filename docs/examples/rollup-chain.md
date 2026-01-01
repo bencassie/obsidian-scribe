@@ -1,22 +1,22 @@
-# Example: Rollup Chain 🦉📊
+# [[Example]]: [[Rollup]] Chain 🦉📊
 
 *Hoot! Watch the owl weave your daily work into the grand tapestry of time.*
 
-This example demonstrates the Complete rollup chain: daily → weekly → Monthly → Quarterly → yearly.
+[[This]] example demonstrates the [[Complete]] rollup chain: daily → weekly → [[Monthly]] → [[Quarterly]] → yearly.
 
-## Scenario
+## [[Scenario]]
 
-It's the end of Week 3 in January 2026. You want to:
-1. Summarize this week's Daily Notes
-2. Update the monthly Summary
+It's the end of Week 3 in January 2026. [[You]] want to:
+1. Summarize this week's [[Daily Notes]]
+2. Update the monthly [[Summary]]
 3. Update the quarterly summary
 4. Update the yearly summary
 
 Let's watch the owl work its magic! ✨
 
-## Your Daily Notes (Week 3)
+## Your Daily [[Notes]] (Week 3)
 
-You've been Logging consistently All week. Here's a Sample:
+You've been [[Logging]] consistently [[All]] week. Here's a [[Sample]]:
 
 ### 2026-01-13.md (Monday)
 ```markdown
@@ -382,42 +382,42 @@ Want to run everything in one command?
 ```
 
 This executes:
-1. Last 8 Weeks → weekly summaries
+1. [[Last]] 8 [[Weeks]] → weekly summaries
 2. Last 2 months → monthly summaries
-3. Current quarter → quarterly update
+3. [[Current]] quarter → quarterly update
 4. Current year → yearly update
 
 All in ~60 seconds! ⚡
 
-## Best Practices
+## [[Best Practices]]
 
-### 1. Run Rollups on Schedule
+### 1. [[Run]] Rollups on Schedule
 
-- **Weekly:** Sunday evening
-- **Monthly:** Last day of Month
-- **Quarterly:** Last Friday of quarter
+- **Weekly:** [[Sunday]] evening
+- **Monthly:** Last day of [[Month]]
+- **Quarterly:** Last [[Friday]] of quarter
 - **Yearly:** December 31st
 
-### 2. Review & Edit
+### 2. Review & [[Edit]]
 
-The owl is Smart, But Not perfect:
-- Read Generated summaries
-- Add missing Context
+The owl is [[Smart]], [[But]] [[Not]] perfect:
+- [[Read]] [[Generated]] summaries
+- Add missing [[Context]]
 - Remove irrelevant items
-- Highlight Key Wins
+- [[Highlight]] [[Key]] [[Wins]]
 
-### 3. Use for Planning
+### 3. [[Use]] for Planning
 
-Your Past informs your future:
+Your [[Past]] informs your future:
 - Review Q1 before planning Q2
 - Check 2026 before setting 2027 goals
-- Use patterns to inform Strategy
+- Use patterns to inform [[Strategy]]
 
-## Related Resources
+## [[Related]] Resources
 
-- **[Rollup Features](../features/rollup.md)** - Detailed Documentation
+- **[Rollup Features](../features/rollup.md)** - Detailed [[Documentation]]
 - **[Daily Logging](../features/daily-logging.md)** - Capture work to summarize
-- **[Achievements](../features/achievements.md)** - Wins Surface in summaries
+- **[Achievements](../features/achievements.md)** - Wins [[Surface]] in summaries
 
 ---
 

@@ -47,7 +47,7 @@ For each quarterly note, extract:
 #### Key Achievements by Quarter
 - All achievements from each quarter
 - Preserve categorization
-- Keep ALL wikilinks
+- Keep ALL [[wikilinks]]
 
 #### Completed Projects
 - Projects finished during each quarter
@@ -102,7 +102,7 @@ Synthesize data across all 4 quarters:
 - Organize by quarter
 - Highlight most significant accomplishments
 - Tell a cohesive story
-- Preserve ALL wikilinks
+- Preserve ALL [[wikilinks]]
 
 #### Projects
 - All completed projects across the year
@@ -141,7 +141,7 @@ Tell a coherent story, not just a list.
 ## Key Achievements by Quarter
 
 ### Q1 YYYY
-- Highlights from Q1 with wikilinks
+- Highlights from Q1 with [[wikilinks]]
 - Major accomplishments
 
 ### Q2 YYYY
@@ -160,16 +160,16 @@ NO CODE BLOCKS.
 #### Yearly Habit Summary
 ```markdown
 ### Yearly Habit Summary (YYYY)
-- Walk: X/365 days (XX.X%)
-- Stretch: X/365 days (XX.X%)
-- Vitamins: X/365 days (XX.X%)
+- [[Walk]]: X/365 days (XX.X%)
+- [[Stretch]]: X/365 days (XX.X%)
+- [[Vitamins]]: X/365 days (XX.X%)
 
 Total days tracked: X/365
 
 Habit streaks:
-- Walk: Longest streak: X days | Current streak: X days
-- Stretch: Longest streak: X days | Current streak: X days
-- Vitamins: Longest streak: X days | Current streak: X days
+- [[Walk]]: Longest streak: X days | Current streak: X days
+- [[Stretch]]: Longest streak: X days | Current streak: X days
+- [[Vitamins]]: Longest streak: X days | Current streak: X days
 ```
 
 Note: Use 366 for leap years.
@@ -179,8 +179,8 @@ Note: Use 366 for leap years.
 ## Completed Projects
 
 **Domain/Category**
-- Project Name (QX)
-- Another Project (QX)
+- [[Project Name]] (QX)
+- [[Another Project]] (QX)
 
 **Another Category**
 - More projects
@@ -234,11 +234,11 @@ Organize by domain/category or chronologically.
 ## Critical Rules
 
 ### Obsidian Syntax
-- **Link everything**: ALL projects, people, technologies need wikilinks
+- **Link everything**: ALL projects, people, technologies need [[wikilinks]]
 - **No code blocks**: DO NOT USE CODE BLOCKS for achievements or narrative (except habit tracking format)
 - **No angle brackets**: Avoid `<` `>` which break Obsidian
-- **Never wrap wikilinks**: Never use `**Link**`
-- **Preserve existing wikilinks**: Keep all wikilinks from quarterly notes
+- **Never wrap wikilinks**: Never use `**[[Link]]**`
+- **Preserve existing wikilinks**: Keep all [[wikilinks]] from quarterly notes
 
 ### Data Integrity
 - **Tell a story**: The yearly note should read as a coherent narrative

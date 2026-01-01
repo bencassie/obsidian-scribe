@@ -72,9 +72,9 @@ Stale Notes
 Found 42 important but stale notes
 
 🚨 Critical (100+ days, 10+ backlinks):
-   • Architecture Docs - 156 days, 47 backlinks
-   • Best Practices - 203 days, 34 backlinks
-   • Team Onboarding - 178 days, 28 backlinks
+   • [[Architecture Docs]] - 156 days, 47 backlinks
+   • [[Best Practices]] - 203 days, 34 backlinks
+   • [[Team Onboarding]] - 178 days, 28 backlinks
 
 ⚠️ High (60-100 days, 5+ backlinks):
    • 18 notes need review

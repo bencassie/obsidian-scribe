@@ -61,9 +61,9 @@ Vault Health Report
   • Orphan Notes: 100 (10% of all notes)
 
 🌟 Top Hubs:
-  1. Project A - 150 backlinks
-  2. Technology X - 120 backlinks
-  3. Daily Workflow - 100 backlinks
+  1. [[Project A]] - 150 backlinks
+  2. [[Technology X]] - 120 backlinks
+  3. [[Daily Workflow]] - 100 backlinks
 
 📈 Vault Health Score: 85% (Good)
 

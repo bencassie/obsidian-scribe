@@ -50,7 +50,7 @@ User prompts that trigger this skill:
 1. **Extract log description**
    - Remove the trigger word from the start of the prompt
    - Use remaining text as the log description
-   - Preserve any wikilinks in the description
+   - Preserve any [[wikilinks]] in the description
 
 2. **Get current time**
    - Parse from injected UserPromptSubmit hook context: "Time: HH:MM"
@@ -80,7 +80,7 @@ User prompts that trigger this skill:
 
 - 13:54 Fixed authentication issue
 - 15:34 Deployed to staging
-- 16:03 Made significant progress with Project
+- 16:03 Made significant progress with [[Project]]
 ```
 
 ## Critical Rules
@@ -89,7 +89,7 @@ User prompts that trigger this skill:
 - **Preserve structure**: Don't modify other sections
 - **Bullet format**: Use `- HH:MM description` format
 - **Today only**: Only add to current day's note
-- **Wikilinks**: Preserve any wikilinks in the user's description
+- **Wikilinks**: Preserve any [[wikilinks]] in the user's description
 - **No empty logs**: If no description after trigger word, ask user what to log
 - **Exact match**: Only trigger on prompts that START with trigger words (case-insensitive)
 

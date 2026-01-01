@@ -73,7 +73,7 @@ For each weekly note, extract:
 #### Key Achievements
 - All items from `## Achievements` section
 - Preserve categorization (Work, Personal, Infrastructure, etc.)
-- Keep ALL wikilinks intact
+- Keep ALL [[wikilinks]] intact
 
 #### Completed Projects
 - Items marked as completed
@@ -108,7 +108,7 @@ Combine data across all weekly notes:
 - Group by category across all weeks
 - Identify major themes and patterns
 - Combine similar achievements
-- Preserve ALL wikilinks
+- Preserve ALL [[wikilinks]]
 
 #### Projects
 - List all completed projects with completion week
@@ -143,7 +143,7 @@ Update these sections:
 ## Key Achievements
 
 **Category Name**
-- Major accomplishment with wikilinks
+- Major accomplishment with [[wikilinks]]
 - Another achievement
 
 **Another Category**
@@ -151,31 +151,31 @@ Update these sections:
 ```
 
 Focus on MAJOR accomplishments - summarize, don't duplicate everything.
-Preserve all wikilinks.
+Preserve all [[wikilinks]].
 NO CODE BLOCKS.
 
 #### Completed Projects
 ```markdown
 ## Completed Projects
 
-- Project Name (Week XX)
-- Another Project (Week XX)
+- [[Project Name]] (Week XX)
+- [[Another Project]] (Week XX)
 ```
 
 #### Ongoing Projects
 ```markdown
 ## Ongoing Projects
 
-- Active Project: Current status and progress this month
-- Another Project: Status update
+- [[Active Project]]: Current status and progress this month
+- [[Another Project]]: Status update
 ```
 
 #### Monthly Habit Summary
 ```markdown
 ### Monthly Habit Summary (Month YYYY)
-- Walk: X/DD days (XX.X%)
-- Stretch: X/DD days (XX.X%)
-- Vitamins: X/DD days (XX.X%)
+- [[Walk]]: X/DD days (XX.X%)
+- [[Stretch]]: X/DD days (XX.X%)
+- [[Vitamins]]: X/DD days (XX.X%)
 
 Total days tracked: X/DD
 
@@ -206,11 +206,11 @@ Include only SIGNIFICANT events, not every daily item.
 ## Critical Rules
 
 ### Obsidian Syntax
-- **Link everything**: ALL projects, people, technologies need wikilinks
+- **Link everything**: ALL projects, people, technologies need [[wikilinks]]
 - **No code blocks**: DO NOT USE CODE BLOCKS for achievements or narrative (except habit tracking format shown above)
 - **No angle brackets**: Avoid `<` `>` which break Obsidian
-- **Never wrap wikilinks**: Never use `**Link**`
-- **Preserve existing wikilinks**: Keep all wikilinks from weekly notes
+- **Never wrap wikilinks**: Never use `**[[Link]]**`
+- **Preserve existing wikilinks**: Keep all [[wikilinks]] from weekly notes
 
 ### Data Integrity
 - **Aggregate, don't duplicate**: Summarize patterns, don't copy everything

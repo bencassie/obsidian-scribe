@@ -58,7 +58,7 @@ Parameters: { entity: "Databricks" }
 Show formatted report:
 
 ```
-Unlinked Mentions: Databricks
+Unlinked Mentions: [[Databricks]]
 ═══════════════════════════════════════════════
 
 Found 5 unlinked mentions across 3 notes:
@@ -134,7 +134,7 @@ Need to check Databricks documentation.
 
 **After:**
 ```
-Working with Databricks today on the ETL pipeline.
+Working with [[Databricks]] today on the ETL pipeline.
 Need to check Databricks documentation.
 ```
 

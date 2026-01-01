@@ -58,7 +58,7 @@ Identify connection patterns:
 Display comprehensive connection view:
 
 ```
-Connections for MyProject
+Connections for [[MyProject]]
 ═══════════════════════════════════════════════
 
 📊 Overview:
@@ -70,24 +70,24 @@ Connections for MyProject
 ⬅️ BACKLINKS (Top 20 of 50):
 
 Bidirectional (mutual links):
-  1. Related Project (line 23, 67)
+  1. [[Related Project]] (line 23, 67)
      ↔ Strong connection (15 mutual refs)
 
-  2. Technology Used (line 12, 45)
+  2. [[Technology Used]] (line 12, 45)
      ↔ Mutual (10 refs each way)
 
 One-way incoming (they link here, we don't link back):
-  3. Planning Doc (line 5)
+  3. [[Planning Doc]] (line 5)
      → Suggestion: Link back if relevant
 
 ➡️ FORWARD LINKS (All 20):
 
 Bidirectional (mutual):
-  1. Related Project ✅ exists
-  2. Technology Used ✅ exists
+  1. [[Related Project]] ✅ exists
+  2. [[Technology Used]] ✅ exists
 
 Broken (target doesn't exist):
-  3. Old Feature ❌ broken
+  3. [[Old Feature]] ❌ broken
      → Run /fix-links to repair
 
 ═══════════════════════════════════════════════
@@ -119,7 +119,7 @@ Asymmetric: <20% ratio
 Always use the branded format:
 
 ```
-Connections for Note
+Connections for [[Note]]
 ═══════════════════════════════════════════════
 
 [Connection details]

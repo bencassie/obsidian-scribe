@@ -11,13 +11,13 @@ tags:
 ## Year in Review
 > A comprehensive overview of the year's key events, accomplishments, and challenges.
 >
-> CRITICAL: Ensure ALL nouns are properly backlinked using wiki links
+> CRITICAL: Ensure ALL nouns are properly backlinked using [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Key Achievements by Quarter
 > Major accomplishments and milestones organized by quarter.
 >
-> CRITICAL: Link ALL projects, people, technologies, and relevant entities with wiki links
+> CRITICAL: Link ALL projects, people, technologies, and relevant entities with [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ### Q1 {{year}}
@@ -36,18 +36,18 @@ tags:
 > Summarize habit completion for the entire year. Roll up habit data from quarterly notes.
 >
 > ### Yearly Habit Summary (YYYY)
-> - Habit1: X/365 days (X%)
-> - Habit2: X/365 days (X%)
-> - Habit3: X/365 days (X%)
+> - [[Habit1]]: X/365 days (X%)
+> - [[Habit2]]: X/365 days (X%)
+> - [[Habit3]]: X/365 days (X%)
 >
 > Total days tracked: X/365
 >
 > Habit streaks:
-> - Habit1: Longest streak: X days | Current streak: X days
-> - Habit2: Longest streak: X days | Current streak: X days
-> - Habit3: Longest streak: X days | Current streak: X days
+> - [[Habit1]]: Longest streak: X days | Current streak: X days
+> - [[Habit2]]: Longest streak: X days | Current streak: X days
+> - [[Habit3]]: Longest streak: X days | Current streak: X days
 >
-> CRITICAL: Ensure ALL habit names use proper wiki links
+> CRITICAL: Ensure ALL habit names use proper [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 
@@ -55,7 +55,7 @@ tags:
 ## Completed Projects
 > Major projects completed during the year.
 >
-> CRITICAL: Ensure ALL project names, technologies, and systems have proper wiki links
+> CRITICAL: Ensure ALL project names, technologies, and systems have proper [[wiki links]]
 > DO NOT USE CODE BLOCKS
 
 ## Professional Growth

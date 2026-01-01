@@ -1,75 +1,75 @@
-# Achievements 🦉🏆
+# [[Achievements]] 🦉🏆
 
-*Hoot! Let the owl celebrate your victories, Both great and small.*
+*Hoot! Let the owl celebrate your victories, [[Both]] great and small.*
 
-The Achievement Detection System automatically identifies and tracks significant accomplishments from your daily work.
+The [[Achievement]] [[Detection]] [[System]] automatically identifies and tracks significant accomplishments from your daily work.
 
-## Features
+## [[Features]]
 
-| Feature | Type | Purpose |
+| [[Feature]] | Type | Purpose |
 |---------|------|---------|
-| `achievement-detect` | Hook | Auto-detect achievements from Daily Notes |
+| `achievement-detect` | [[Hook]] | [[Auto]]-detect achievements from [[Daily Notes]] |
 
-**No MCP Required** - Works with daily Notes alone!
+**No [[MCP]] [[Required]]** - Works with daily [[Notes]] alone!
 
 ## How It Works
 
 The achievement detection hook:
-1. Runs automatically After You Edit daily notes
-2. Scans Log entries for achievement patterns
+1. Runs automatically [[After]] [[You]] [[Edit]] daily notes
+2. Scans [[Log]] entries for achievement patterns
 3. Auto-adds up to 3 achievements to your Achievements file
 4. Deduplicates to avoid repeats
 
-*The owl notices your Wins even When you're too modest to claim them!* 🦉
+*The owl notices your [[Wins]] even [[When]] you're too modest to claim them!* 🦉
 
-## What Gets Detected
+## [[What]] Gets Detected
 
 The owl watches for **126 patterns** across 12 categories:
 
 ### 1. Simple Actions
-- Built, Created, tested, configured
-- Fixed, Updated, deployed
-- Automated, scripted
+- [[Built]], [[Created]], tested, configured
+- Fixed, [[Updated]], deployed
+- [[Automated]], scripted
 
-### 2. Learning & Discovery
-- Learned, figured out
+### 2. [[Learning]] & [[Discovery]]
+- [[Learned]], figured out
 - Discovered, understood
 - Researched, explored
 
-### 3. Problem Solving
+### 3. Problem [[Solving]]
 - Solved, debugged
-- Diagnosed, Identified
+- Diagnosed, [[Identified]]
 - Worked around
 
-### 4. Communication
-- Presented, Documented
-- Reviewed, Merged
+### 4. [[Communication]]
+- Presented, [[Documented]]
+- Reviewed, [[Merged]]
 - Shared, published
 
-### 5. Progress Indicators
-- Finished, Completed
+### 5. Progress [[Indicators]]
+- Finished, [[Completed]]
 - Shipped, released
 - Wrapped up, closed out
 
 ### 6. Success Signals
 - Works, passed, green
 - Successful, succeeded
-- All tests pass
+- [[All]] tests pass
 
 ### 7. Milestones
-- First time, finally
-- Breakthrough
+- [[First]] time, finally
+- [[Breakthrough]]
 - Version numbers (v1.0.2)
 
-### 8. Bold Text
+### 8. Bold [[Text]]
 - **Anything in bold** = important!
 
 ### 9. Work Items
-- Closed Ticket, PR merged
+- Closed [[Ticket]], [[PR]] merged
 - OC123456 (ticket numbers)
 
-### 10. Meta Achievements
-- Achieved, Accomplished
+### 10. [[Meta]] Achievements
+- [[Achieved]], [[Accomplished]]
 - Nailed, crushed
 
 ### 11. Emojis
@@ -78,9 +78,9 @@ The owl watches for **126 patterns** across 12 categories:
 ### 12. Late Night Work
 - Timestamps 22:00-05:00 (dedication!)
 
-## Example Detection
+## [[Example]] Detection
 
-**You write in daily Note:**
+**You write in daily [[Note]]:**
 ```markdown
 ## Log
 
@@ -226,7 +226,7 @@ The owl is smart about duplicates:
 
 **Example:**
 ```markdown
-- 10:30 **Built** authentication system
+- 10:30 **Built** [[authentication]] system
 - Built authentication system
 ```
 
@@ -300,29 +300,29 @@ The 126 patterns are intentionally liberal. To reduce noise:
 - You're editing daily notes (not other files)
 - Log entries use achievement keywords
 - Hook is enabled in plugin config
-- Python is available as `Python` Command
+- Python is available as `[[Python]]` [[Command]]
 
-### Too many false Positives
+### Too many false [[Positives]]
 
-**Solutions:**
-- Be more Specific in log entries
-- Use bold/emojis intentionally
+**[[Solutions]]:**
+- Be more [[Specific]] in log entries
+- [[Use]] bold/emojis intentionally
 - Review Achievements.md weekly to prune
-- Increase minimum text length in hook Config
+- Increase minimum text length in hook [[Config]]
 
 ### Missing obvious achievements
 
-**Ensure you're Using trigger words:**
-- Action verbs: built, created, deployed, fixed
+**Ensure you're [[Using]] trigger words:**
+- [[Action]] verbs: built, created, deployed, fixed
 - Success words: works, passed, successful
 - Bold text for important items
 - Emojis for celebrations
 
-## Related Features
+## [[Related]] Features
 
 - **[Daily Logging](daily-logging.md)** - Capture work that becomes achievements
-- **[Rollup](rollup.md)** - Achievements Surface in period summaries
-- **[Examples: Daily Workflow](../examples/daily-workflow.md)** - See it in action
+- **[Rollup](rollup.md)** - Achievements [[Surface]] in period summaries
+- **[Examples: Daily Workflow](../examples/daily-workflow.md)** - [[See]] it in action
 
 ---
 

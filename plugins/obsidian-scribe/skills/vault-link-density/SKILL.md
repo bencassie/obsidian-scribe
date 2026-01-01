@@ -80,9 +80,9 @@ Link Density Analysis
    • templates/ - 2 links/note (low, expected)
 
 🔝 Over-Linked Notes (>40 links):
-   • Main Hub - 127 links (consider splitting)
-   • Core Tech - 89 links (central hub)
-   • Key Project - 76 links (central hub)
+   • [[Main Hub]] - 127 links (consider splitting)
+   • [[Core Tech]] - 89 links (central hub)
+   • [[Key Project]] - 76 links (central hub)
 
 📉 Under-Linked Notes (<3 links):
    • 150 notes (15% of vault)
@@ -91,7 +91,7 @@ Link Density Analysis
 💡 Insights:
    • Work projects are well-integrated
    • Personal notes could use more connections
-   • Consider splitting Main Hub into sub-topics
+   • Consider splitting [[Main Hub]] into sub-topics
    • Daily notes intentionally have fewer links (normal)
 
 ═══════════════════════════════════════════════

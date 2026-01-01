@@ -4,10 +4,10 @@ date: (% tp.date.now("YYYY-MM-DD") %)
 tags:
   - "#daily"
 ---
-# Habits
-- [ ] Walk #Habit
-- [ ] Stretch #habit
-- [ ] Vitamins #habit
+# [[Habits]]
+- [ ] [[Walk]] #[[Habit]]
+- [ ] [[Stretch]] #habit
+- [ ] [[Vitamins]] #habit
 ---
 # Today
 ## Tasks
@@ -22,6 +22,6 @@ if (tasks.length === 0) {
   dv.taskList(tasks, false);
 }
 ```
-## Log
+## [[Log]]
 
 - (% tp.file.cursor() %)

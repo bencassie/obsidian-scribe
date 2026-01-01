@@ -1,19 +1,19 @@
-# Contributing to Obsidian Scribe
+# Contributing to [[Obsidian Scribe]]
 
-Hoot hoot! Welcome to the nest, fellow Developer! 🦉
+Hoot hoot! Welcome to the nest, fellow [[Developer]]! 🦉
 
-We're delighted You want to help make Obsidian Scribe even wiser. This Guide will help you spread your wings and contribute effectively.
+We're delighted [[You]] want to help make [[Obsidian]] [[Scribe]] even wiser. [[This]] [[Guide]] will help you spread your wings and contribute effectively.
 
 ## Development Setup
 
 ### Prerequisites
 
-- **Python 3.8+** with `python` Command Available
-  - WSL: Install `python-is-python3` package
-  - Windows: Ensure Python in PATH as `python`
-- **Claude Code** installed and configured
-- **Git** for version control
-- An Obsidian Vault for Testing
+- **[[Python]] 3.8+** with `python` [[Command]] [[Available]]
+  - [[WSL]]: Install `python-is-python3` package
+  - [[Windows]]: Ensure Python in PATH as `python`
+- **[[Claude Code]]** installed and configured
+- **[[Git]]** for version control
+- An Obsidian [[Vault]] for [[Testing]]
 
 ### Clone and Setup
 
@@ -45,7 +45,7 @@ When adding features, consider which domain they belong to.
 
 ### Version Files (All Must Match)
 
-1. Root marketplace: `.Claude-Plugin/Marketplace.JSON`
+1. Root marketplace: `.[[Claude]]-[[Plugin]]/[[Marketplace]].[[JSON]]`
 2. Plugin marketplace: `plugins/obsidian-scribe/.claude-plugin/marketplace.json`
 3. Plugin config: `plugins/obsidian-scribe/.claude-plugin/plugin.json`
 
@@ -266,7 +266,7 @@ To set the social preview image (shown when sharing repo links):
 The wise owl is here to help!
 
 - Open an issue for questions
-- Join discussions for Design ideas
-- Check Existing issues before Creating new Ones
+- Join discussions for [[Design]] ideas
+- Check [[Existing]] issues before [[Creating]] new [[Ones]]
 
 Thank you for helping Obsidian Scribe grow wiser!

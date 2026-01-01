@@ -64,7 +64,7 @@ For each daily note, extract:
 
 #### Habits (from `# Habits` section)
 - Count completed `[x]` vs total for configured habits
-- Format: `Habit: X/7 days (XX.X%)`
+- Format: `[[Habit]]: X/7 days (XX.X%)`
 
 #### Weight (from `## Log` section)
 - Pattern: `weight is X.XXkg`
@@ -80,14 +80,14 @@ For each daily note, extract:
 #### Achievements (from `## Log` section)
 - Identify significant accomplishments, completions, milestones
 - Group by category: Work, Personal, Infrastructure, Development, etc.
-- Preserve ALL wikilinks
+- Preserve ALL [[wikilinks]]
 - Extract with timestamps if present
 
 #### Daily Activities (from `## Log` section)
 - All log entries for each day
 - Organize by day of week (Monday, Tuesday, etc.)
 - Include timestamps
-- Preserve wikilinks
+- Preserve [[wikilinks]]
 
 ### Phase 5: Update Weekly Note Sections
 
@@ -104,7 +104,7 @@ Update these sections:
 ## Achievements
 
 **Category Name**
-- Achievement with wikilinks preserved
+- Achievement with [[wikilinks]] preserved
 - Another achievement
 
 **Another Category**
@@ -112,7 +112,7 @@ Update these sections:
 ```
 
 Group by category (deployments, development, infrastructure, personal, etc.)
-Preserve ALL wikilinks
+Preserve ALL [[wikilinks]]
 NO CODE BLOCKS for achievements
 
 #### Incomplete Tasks
@@ -123,9 +123,9 @@ NO CODE BLOCKS for achievements
 #### Habit Tracking
 ```markdown
 ### Weekly Habit Summary (Month DD-DD, YYYY)
-- Walk: X/7 days (XX.X%)
-- Stretch: X/7 days (XX.X%)
-- Vitamins: X/7 days (XX.X%)
+- [[Walk]]: X/7 days (XX.X%)
+- [[Stretch]]: X/7 days (XX.X%)
+- [[Vitamins]]: X/7 days (XX.X%)
 
 Total days tracked: X/7
 ```
@@ -156,7 +156,7 @@ If no weight data, state: "*No weight measurements this week*"
 One subsection per day:
 ```markdown
 ### Monday, Month DD
-- HH:MM Activity with wikilinks
+- HH:MM Activity with [[wikilinks]]
 - HH:MM Another activity
 
 ### Tuesday, Month DD
@@ -174,15 +174,15 @@ NO CODE BLOCKS for log entries
 ## Critical Rules
 
 ### Obsidian Syntax
-- **Link everything**: ALL projects, people, technologies, concepts need wikilinks
+- **Link everything**: ALL projects, people, technologies, concepts need [[wikilinks]]
 - **No code blocks**: DO NOT USE CODE BLOCKS for achievements or narrative sections (only for habit tracking tables as shown in template)
 - **No angle brackets**: Avoid `<` `>` which break Obsidian
   - WRONG: `ILogger<T>`, `List<string>`
   - CORRECT: `ILogger(T)`, `List of string`
-- **Never wrap wikilinks**: Never use `**Link**` or `*Link*`
-  - WRONG: `**Claude Code**`
-  - CORRECT: `Claude Code` or `**Text with Claude Code inside**`
-- **Preserve existing wikilinks**: Keep all wikilinks from daily notes
+- **Never wrap wikilinks**: Never use `**[[Link]]**` or `*[[Link]]*`
+  - WRONG: `**[[Claude Code]]**`
+  - CORRECT: `[[Claude Code]]` or `**Text with [[Claude Code]] inside**`
+- **Preserve existing wikilinks**: Keep all [[wikilinks]] from daily notes
 
 ### Data Integrity
 - **No fabrication**: Only use actual entries from daily notes

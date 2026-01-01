@@ -14,7 +14,7 @@ allowed-tools: Read, Edit, Glob
 
 # Wikilink Application Skill
 
-Scan a note for entities that should be wikilinked and automatically apply brackets to them.
+Scan a note for entities that should be wikilinked and automatically apply [[brackets]] to them.
 
 ## When to Use
 
@@ -47,7 +47,7 @@ Find plain text that matches known entities:
 **Skip these areas:**
 - Inside code blocks (```)
 - Inside inline code (`text`)
-- Already wikilinked text (already linked)
+- Already wikilinked text ([[already linked]])
 - URLs (http://, https://)
 - YAML frontmatter (between --- markers)
 
@@ -64,20 +64,20 @@ Display what will be linked:
 🔗 Applying Wikilinks to: 2025-12-29.md
 ────────────────────────────────────────
 People/Entities (3):
-  • Person Name → Person Name
+  • Person Name → [[Person Name]]
 
 Technologies (4):
-  • Databricks → Databricks
-  • Claude Code → Claude Code
+  • Databricks → [[Databricks]]
+  • Claude Code → [[Claude Code]]
 
 Projects (2):
-  • ProjectName → ProjectName
+  • ProjectName → [[ProjectName]]
 ────────────────────────────────────────
 Total: 9 entities will be wikilinked
 ```
 
 ### 6. Apply Wikilinks
-Use Edit tool to wrap detected entities with `brackets`:
+Use Edit tool to wrap detected entities with `[[brackets]]`:
 - Process entities from longest to shortest (avoid partial replacements)
 - Use word boundaries to ensure exact matches
 - Preserve original capitalization
@@ -97,9 +97,9 @@ Categories updated:
 ## Critical Rules
 
 ### Detection Rules
-- **Case-insensitive matching**: "databricks" matches Databricks
+- **Case-insensitive matching**: "databricks" matches [[Databricks]]
 - **Word boundaries only**: Don't link partial words
-- **Existing links preserved**: Never re-link `already linked` text
+- **Existing links preserved**: Never re-link `[[already linked]]` text
 - **Code blocks protected**: Never link inside ``` or ` marks
 
 ### Application Rules
@@ -111,7 +111,7 @@ Categories updated:
 ### Safety Rules
 - **Read before edit**: Always read file first
 - **Validate paths**: Ensure file exists before processing
-- **Non-destructive**: Only adds brackets, doesn't change text
+- **Non-destructive**: Only adds [[brackets]], doesn't change text
 
 ## Example Transformation
 
@@ -126,9 +126,9 @@ Categories updated:
 ### After:
 ```markdown
 ## Log
-- Met with team to discuss Databricks optimization
+- Met with team to discuss [[Databricks]] optimization
 - Deployed project to production
-- Fixed API configuration issue
+- Fixed [[API]] configuration issue
 ```
 
 ## Performance Considerations
@@ -150,6 +150,6 @@ Works seamlessly with `wikilink-suggest.py` hook:
 ## Edge Cases
 
 **Ambiguous entities**: If "API" could mean multiple things, prefer exact match
-**Partial matches**: "APIs" won't match API (word boundary protection)
-**Already linked aliases**: Don't re-link `Entity|Alias` usage
-**Case variations**: "databricks", "Databricks", "DATABRICKS" all link to Databricks
+**Partial matches**: "APIs" won't match [[API]] (word boundary protection)
+**Already linked aliases**: Don't re-link `[[Entity|Alias]]` usage
+**Case variations**: "databricks", "Databricks", "DATABRICKS" all link to [[Databricks]]
