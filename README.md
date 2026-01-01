@@ -184,10 +184,12 @@ Queries hit an in-memory index, not your filesystem. Instant results.
 
 ## How It Works
 
-```
-You: /vault-health
+Just talk naturally. No slash commands needed.
 
-Scribe: 🔍 Vault Health Report
+```
+You: How's my vault looking?
+
+Claude: 🔍 Vault Health Report
         Notes: 2,847
         Links: 8,234 (2.89 avg/note)
         Orphans: 43 (1.5%)
@@ -199,7 +201,7 @@ Scribe: 🔍 Vault Health Report
 
 You: Find all notes about Claude Code and how they connect
 
-Scribe: [uses smoking-mirror graph queries]
+Claude: [uses smoking-mirror graph queries]
 
         Core notes (3):
         - tech/tools/Claude Code.md (hub: 15 backlinks)
@@ -211,14 +213,16 @@ Scribe: [uses smoking-mirror graph queries]
 
         [reads only the 3 core notes for content]
 
-You: /auto-log Fixed the authentication bug, deployed v2.1
+You: Log that I fixed the auth bug and deployed v2.1
 
-Scribe: ✓ Added to daily note (14:32)
+Claude: ✓ Added to daily note (14:32)
         🏆 Achievement detected: "Fixed authentication bug"
         → Added to Achievements.md
 ```
 
 No clicking. No switching apps. Your vault responds to conversation.
+
+**See [Skills Reference](docs/skills-reference.md) for all 35 skills with natural language examples.**
 
 ---
 
