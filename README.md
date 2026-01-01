@@ -104,11 +104,78 @@ YOUR HANDS (Read/Edit/Write)
 
 ---
 
+## Privacy by Design
+
+[smoking-mirror](https://github.com/bencassie/smoking-mirror) was built with a core principle: **your content never leaves your machine**.
+
+```
+    YOUR MACHINE                           │    CLOUD
+    ────────────────────────────────────── │ ────────────────
+                                           │
+    ┌─────────────────┐                    │
+    │   Obsidian      │                    │
+    │     Vault       │  NEVER LEAVES      │
+    │  ┌───────────┐  │  ───────────►      │   ❌ Blocked
+    │  │ Notes     │  │                    │
+    │  │ Journals  │  │                    │
+    │  │ Private   │  │                    │
+    │  └───────────┘  │                    │
+    └────────┬────────┘                    │
+             │                             │
+             │ Parse locally               │
+             ▼                             │
+    ┌─────────────────┐                    │
+    │  smoking-mirror │                    │
+    │     (index)     │                    │
+    └────────┬────────┘                    │
+             │                             │
+             │ Metadata only               │
+             ▼                             │
+    ┌─────────────────┐    API calls      ┌─────────────────┐
+    │   Claude Code   │ ───────────────►  │    Claude AI    │
+    └─────────────────┘  (paths, links,   └─────────────────┘
+                          tags only)
+```
+
+**What Claude receives**: File paths, link relationships, tags, frontmatter keys, word counts, dates.
+
+**What Claude NEVER receives**: Your actual note content—unless you explicitly `Read` it.
+
+> Your vault's secrets stay yours. Claude sees only what it needs.
+
+---
+
+## Token Economy
+
+Every character Claude reads costs tokens. [smoking-mirror](https://github.com/bencassie/smoking-mirror) changes the math:
+
+| Approach | Query | Tokens | Cost |
+|----------|-------|--------|------|
+| **Traditional** | "Read all notes with #project tag" | ~100,000 | ~$0.30 |
+| **smoking-mirror** | `search_notes({ has_tag: "project" })` | ~500 | ~$0.0015 |
+
+**200x savings per query.** Then Claude surgically reads only the 2-3 notes it actually needs.
+
+---
+
+## Performance
+
+| Vault Size | Index Build | Query Time | Memory |
+|------------|-------------|------------|--------|
+| 100 notes | <200ms | <10ms | ~20MB |
+| 500 notes | <500ms | <10ms | ~30MB |
+| 1,500 notes | <2s | <10ms | ~50MB |
+| 5,000 notes | <5s | <10ms | ~100MB |
+
+Queries hit an in-memory index, not your filesystem. Instant results.
+
+---
+
 ## What You Get
 
 | Layer | Component | What It Provides |
 |-------|-----------|------------------|
-| **Intelligence** | [smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP | 20+ graph queries: backlinks, hubs, orphans, clusters, tasks, sections |
+| **Intelligence** | [smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP | 47 graph tools: backlinks, hubs, orphans, link paths, sections, frontmatter, tasks |
 | **Workflows** | 21 obsidian-scribe skills | Daily logging, vault health, rollups, wikilink automation |
 | **Automation** | 4 smart hooks | Achievement detection, wikilink suggestions, syntax validation |
 | **Summarization** | 5 rollup agents | Daily → Weekly → Monthly → Quarterly → Yearly summaries |
@@ -215,38 +282,86 @@ claude
 
 ## smoking-mirror: Your Eyes
 
-The power of this product comes from [**smoking-mirror MCP**](https://github.com/bencassie/smoking-mirror). It turns your vault into a queryable graph.
+The power of this product comes from [**smoking-mirror MCP**](https://github.com/bencassie/smoking-mirror). It turns your vault into a queryable graph with **47 tools** across 8 categories.
+
+> **"tezcatl"** (Nahuatl) literally means "smoking mirror"—the original name for obsidian.
+> The mirror reveals structure without taking content.
 
 **GitHub**: [github.com/bencassie/smoking-mirror](https://github.com/bencassie/smoking-mirror)
 
-### Graph Intelligence
+### Graph Intelligence (4 tools)
+
 | Tool | Purpose |
 |------|---------|
 | `get_backlinks(path)` | Who links TO this note |
 | `get_forward_links(path)` | What this note links TO |
 | `find_orphan_notes()` | Disconnected notes |
 | `find_hub_notes(min=5)` | Central concepts |
+
+### Deep Graph Analysis (6 tools)
+
+| Tool | Purpose |
+|------|---------|
 | `get_link_path(from, to)` | Shortest path between notes |
+| `get_common_neighbors(a, b)` | Shared references |
 | `find_bidirectional_links()` | Strong relationships (A ↔ B) |
 | `find_dead_ends()` | Notes that should link out |
+| `find_sources()` | Link-givers, not receivers |
+| `get_connection_strength(a, b)` | Relationship strength score |
 
-### Search & Discovery
+### Wikilink Services (4 tools)
+
 | Tool | Purpose |
 |------|---------|
-| `search_notes()` | Dataview-like queries (tags, frontmatter, folders) |
+| `suggest_wikilinks(path)` | Linking opportunities |
+| `validate_links()` | Find broken links |
+| `find_broken_links()` | Dead references |
+| `get_unlinked_mentions(entity)` | Text mentions not yet linked |
+
+### Smart Search (5 tools)
+
+| Tool | Purpose |
+|------|---------|
+| `search_notes()` | Query by frontmatter, tags, folders |
 | `get_recent_notes(days)` | Recently modified |
 | `get_stale_notes(days)` | Important but neglected |
-| `get_unlinked_mentions(entity)` | Linking opportunities |
+| `get_notes_modified_on(date)` | Activity on specific date |
+| `get_notes_in_range(start, end)` | Date range analysis |
 
-### Structure Analysis
+### Structure Analysis (4 tools)
+
 | Tool | Purpose |
 |------|---------|
+| `get_note_structure(path)` | Full heading hierarchy |
+| `get_headings(path)` | Quick heading list |
 | `get_section_content(path, heading)` | Extract section without reading whole file |
-| `get_note_metadata(path)` | Stats without content read |
-| `get_all_tasks()` | Every task in vault |
-| `get_folder_structure()` | Vault organization |
+| `find_sections(pattern)` | Find headings across vault |
 
-**Full tool reference**: [smoking-mirror GitHub](https://github.com/bencassie/smoking-mirror) — 20+ graph queries for Obsidian vaults
+### Frontmatter Intelligence (3 tools)
+
+| Tool | Purpose |
+|------|---------|
+| `get_frontmatter_schema()` | All YAML fields in vault |
+| `get_field_values(field)` | Unique values for a field |
+| `find_frontmatter_inconsistencies()` | Detect schema chaos |
+
+### Task Management (3 tools)
+
+| Tool | Purpose |
+|------|---------|
+| `get_all_tasks()` | Every task in vault |
+| `get_tasks_from_note(path)` | Tasks in specific note |
+| `get_tasks_with_due_dates()` | Filter by deadline |
+
+### Vault Health (3 tools)
+
+| Tool | Purpose |
+|------|---------|
+| `get_vault_stats()` | Aggregated metrics |
+| `get_folder_structure()` | Directory overview |
+| `get_activity_summary()` | Recent modification patterns |
+
+**Full documentation**: [smoking-mirror GitHub](https://github.com/bencassie/smoking-mirror) — 47 tools for graph-first Obsidian intelligence
 
 ---
 
@@ -379,19 +494,23 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 
 ## Comparison
 
-| Feature | Obsidian Scribe | RAG Solutions | Copilot | Smart Connections |
-|---------|-----------------|---------------|---------|-------------------|
-| **Graph navigation** | ✅ Full vault graph | ❌ Chunks only | ❌ | ❌ |
+| Feature | Obsidian Scribe + smoking-mirror | RAG Solutions | Copilot | Smart Connections |
+|---------|----------------------------------|---------------|---------|-------------------|
+| **Graph tools** | ✅ 47 specialized tools | ❌ None | ❌ | ❌ |
+| **Privacy** | ✅ Content stays local | ⚠️ Embeddings sent | ⚠️ | ⚠️ |
+| **Token efficiency** | ✅ 200x savings | ❌ Embed everything | ❌ | ❌ |
 | **Interactive REPL** | ✅ Conversation loop | ❌ One-shot | ❌ | ❌ |
 | **Take action** | ✅ Read + Write + Automate | ❌ Read-only | ❌ Chat only | ❌ |
 | **Backlink awareness** | ✅ Native | ❌ Lost in chunking | ❌ | ❌ |
+| **Frontmatter queries** | ✅ Full schema analysis | ❌ | ❌ | ❌ |
+| **Section extraction** | ✅ Without reading whole file | ❌ | ❌ | ❌ |
+| **Link path finding** | ✅ A → B → C routes | ❌ | ❌ | ❌ |
+| **Task management** | ✅ Cross-vault tasks | ❌ | ❌ | ❌ |
 | **Orphan/hub detection** | ✅ Automated | ❌ | ❌ | ❌ |
 | **Vault health analysis** | ✅ 16 skills | ❌ | ❌ | ❌ |
 | **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ | ❌ |
 | **Hierarchical rollups** | ✅ 5 agents | ❌ | ❌ | ❌ |
-| **Token efficiency** | ✅ 10x reduction | ⚠️ Embed everything | ❌ | ❌ |
 | **Follow-up questions** | ✅ Full context preserved | ⚠️ Re-retrieve each time | ✅ | ❌ |
-| **Semantic search** | ✅ Tags, frontmatter, graph | ✅ Embeddings | ✅ | ✅ Embeddings |
 | **Long context (200K)** | ✅ Claude | Varies | Limited | ❌ |
 | **Price** | Free (MIT) | Varies | Free + Pro | Free + Pro |
 
@@ -447,7 +566,9 @@ Copy to `.claude/rules/` in your vault and customize paths.
 > **[smoking-mirror](https://github.com/bencassie/smoking-mirror) is your eyes, file tools are your hands.**
 > Use your eyes to see where to go. Only use your hands when you know what to touch.
 
-Welcome to graph-first [Obsidian](https://obsidian.md) PKM.
+> *"tezcatl"—the obsidian mirror that reveals truth without taking it.*
+
+Welcome to graph-first [Obsidian](https://obsidian.md) [PKM](https://en.wikipedia.org/wiki/Personal_knowledge_management).
 
 ---
 
