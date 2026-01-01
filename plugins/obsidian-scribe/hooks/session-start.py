@@ -11,6 +11,12 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+# Configure UTF-8 output for Windows console
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except AttributeError:
+    pass
+
 # Add parent directory to path for config import
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.loader import load_config, get_path
