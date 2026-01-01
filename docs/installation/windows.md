@@ -1,14 +1,14 @@
-# [[Windows]] Installation 🦉🪟
+# Windows Installation 🦉🪟
 
-*Hoot! A Windows [[Scribe]]! Let me help [[You]] prepare your nest with care.*
+*Hoot! A Windows Scribe! Let me help You prepare your nest with care.*
 
-[[This]] [[Guide]] covers [[Obsidian Scribe]] installation on Windows ([[PowerShell]]).
+This Guide covers Obsidian Scribe installation on Windows (PowerShell).
 
 ## Prerequisites
 
-### 1. [[Python]] Setup
+### 1. Python Setup
 
-Ensure Python 3.8+ is installed and [[Available]] as `python`:
+Ensure Python 3.8+ is installed and Available as `python`:
 
 ```powershell
 # Verify Python is installed
@@ -67,7 +67,7 @@ On Windows, MCP servers using `npx` **must** be wrapped with `cmd /c`:
 
 Direct `npx` fails with "Connection closed" errors on Windows.
 
-### Global `.[[Claude]].json` Configuration
+### Global `.Claude.json` Configuration
 
 The owl recommends using a global `.claude.json` with project-specific settings.
 
@@ -166,15 +166,15 @@ Ensure:
 ### Path format confusion
 
 **Windows configs use forward slashes:**
-- ✅ `C:/Users/benca/[[Obsidian]]/Ben`
+- ✅ `C:/Users/benca/Obsidian/Ben`
 - ❌ `C:\\Users\\benca\\obsidian\\Ben`
 - ❌ `C:\Users\benca\obsidian\Ben`
 
-## [[Next]] Steps
+## Next Steps
 
-Your Windows perch is [[Ready]]! [[Explore]]:
+Your Windows perch is Ready! Explore:
 - **[Getting Started](../getting-started.md)** - Begin your journey
-- **[MCP Servers Guide](mcp-servers.md)** - [[Deep]] [[Dive]] into configuration
+- **[MCP Servers Guide](mcp-servers.md)** - Deep Dive into configuration
 - **[Daily Logging](../features/daily-logging.md)** - Start capturing work
 
 *The wise owl is ready to assist, dear Windows scribe!* 🦉✨

@@ -1,23 +1,23 @@
-# [[Rollup]] Summarization 🦉📊
+# Rollup Summarization 🦉📊
 
 *Hoot! Watch the owl weave daily threads into the tapestry of time.*
 
-The rollup [[System]] uses [[Multi]]-agent [[Orchestration]] to automatically summarize your [[Notes]] across time periods.
+The rollup System uses Multi-agent Orchestration to automatically summarize your Notes across time periods.
 
 ## The Rollup Chain
 
-Daily → Weekly → [[Monthly]] → [[Quarterly]] → Yearly
+Daily → Weekly → Monthly → Quarterly → Yearly
 
-[[Each]] level summarizes the previous, [[Creating]] progressively higher-level overviews.
+Each level summarizes the previous, Creating progressively higher-level overviews.
 
-## [[Features]]
+## Features
 
-| [[Feature]] | Type | Purpose |
+| Feature | Type | Purpose |
 |---------|------|---------|
-| `/rollup` | [[Skill]] | Execute [[Full]] rollup chain |
-| 5 Rollup Agents | Agents | [[Specialized]] summarization at each level |
+| `/rollup` | Skill | Execute Full rollup chain |
+| 5 Rollup Agents | Agents | Specialized summarization at each level |
 
-**No [[MCP]] [[Required]]** - Works with your notes alone!
+**No MCP Required** - Works with your notes alone!
 
 ## How It Works
 
@@ -284,23 +284,23 @@ Your past informs your future:
 **Solutions:**
 - Run individual agents instead of full `/rollup`
 - Split large periods into smaller chunks
-- Increase agent timeout in [[Config]]
+- Increase agent timeout in Config
 
-### Summaries [[Are]] too generic
+### Summaries Are too generic
 
-**[[Improve]] input:**
-- Write detailed daily [[Log]] entries
-- [[Use]] [[Achievement]]-detect [[Hook]] for [[Auto]]-tracking
-- Add [[Context]] to significant work
+**Improve input:**
+- Write detailed daily Log entries
+- Use Achievement-detect Hook for Auto-tracking
+- Add Context to significant work
 
-The owl can [[Only]] summarize [[What]] [[You]]'ve captured!
+The owl can Only summarize What You've captured!
 
-## [[Related]] Features
+## Related Features
 
 - **[Daily Logging](daily-logging.md)** - Capture work that rollup summarizes
-- **[Achievements](achievements.md)** - Significant accomplishments [[Surface]] in summaries
+- **[Achievements](achievements.md)** - Significant accomplishments Surface in summaries
 - **[Examples: Rollup Chain](../examples/rollup-chain.md)** - Step-by-step walkthrough
 
 ---
 
-*"Time [[Reveals]] patterns [[Invisible]] in the [[Moment]]. Let the owl [[Show]] you the way, dear scholar!"* 🦉📊
+*"Time Reveals patterns Invisible in the Moment. Let the owl Show you the way, dear scholar!"* 🦉📊

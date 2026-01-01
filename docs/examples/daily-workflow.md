@@ -1,12 +1,12 @@
-# [[Example]]: [[Daily Workflow]] 🦉📅
+# Example: Daily Workflow 🦉📅
 
-*Hoot! Let the owl [[Show]] [[You]] a day in the life of a wise [[Knowledge]] worker.*
+*Hoot! Let the owl Show You a day in the life of a wise Knowledge worker.*
 
-[[This]] example demonstrates how [[Obsidian Scribe]] fits into a typical workday.
+This example demonstrates how Obsidian Scribe fits into a typical workday.
 
-## [[Morning]]: [[Session]] Start (8:30 [[AM]])
+## Morning: Session Start (8:30 AM)
 
-You open your [[Vault]] in [[Claude Code]]:
+You open your Vault in Claude Code:
 
 ```bash
 cd ~/obsidian/vault
@@ -131,7 +131,7 @@ The achievement hook detects multiple wins:
 
 ```bash
 /auto-log **Finished architecture documentation** for new microservices
-/auto-log Updated diagrams with [[Mermaid]] syntax
+/auto-log Updated diagrams with Mermaid syntax
 ```
 
 Wikilink-suggest hook auto-applies brackets to "Mermaid" (it's a note in your vault).
@@ -255,14 +255,14 @@ tags:
 - 14:20 Verified fix - payment processing restored
 - 14:25 Zero downtime deployment ✅
 - 16:30 **Finished architecture documentation** for new microservices
-- 16:45 Updated diagrams with [[Mermaid]] syntax
+- 16:45 Updated diagrams with Mermaid syntax
 - 17:15 End of day: deployed hotfix, reviewed PR, completed docs ✅
 ```
 
 ## Key Takeaways
 
 1. **Start with session hook** - Know your vault status
-2. **Log as you go** - Use `/[[Auto]]-[[Log]]` throughout the day
+2. **Log as you go** - Use `/Auto-Log` throughout the day
 3. **Be descriptive** - Help the achievement detector succeed
 4. **Use bold and emojis** - Signal important work
 5. **End with rollup** - Summarize regularly

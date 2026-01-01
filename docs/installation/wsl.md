@@ -1,14 +1,14 @@
-# [[WSL]] (Ubuntu) Installation 🦉🐧
+# WSL (Ubuntu) Installation 🦉🐧
 
-*Hoot! A [[Linux]] scholar! The owl appreciates your choice of perch.*
+*Hoot! A Linux scholar! The owl appreciates your choice of perch.*
 
-[[This]] [[Guide]] helps [[You]] set up [[Obsidian Scribe]] on WSL ([[Windows]] Subsystem for Linux).
+This Guide helps You set up Obsidian Scribe on WSL (Windows Subsystem for Linux).
 
 ## Prerequisites
 
-### 1. [[Python]] Setup
+### 1. Python Setup
 
-WSL Ubuntu doesn't symlink `python` to `python3` by default, [[But]] the owl's [[Hooks]] [[Need]] it!
+WSL Ubuntu doesn't symlink `python` to `python3` by default, But the owl's Hooks Need it!
 
 ```bash
 # Install the python symlink
@@ -55,7 +55,7 @@ claude skills | grep obsidian-scribe -A 30
 
 The vault intelligence features (15 vault-* skills) require the smoking-mirror MCP server.
 
-### Add to Your Project `.[[MCP]].json`
+### Add to Your Project `.MCP.json`
 
 Navigate to your vault directory and create/edit `.mcp.json`:
 
@@ -141,11 +141,11 @@ Ensure:
 - `python` command works (not just `python3`)
 - Hook files have execute permissions: `chmod +x hooks/*.py`
 
-## [[Next]] Steps
+## Next Steps
 
-Your perch is [[Prepared]]! [[Explore]]:
-- **[Getting Started](../getting-started.md)** - [[First]] flights
+Your perch is Prepared! Explore:
+- **[Getting Started](../getting-started.md)** - First flights
 - **[Daily Logging](../features/daily-logging.md)** - Capture your work
-- **[Vault Intelligence](../features/vault-intelligence.md)** - [[Analyze]] your [[Vault]]
+- **[Vault Intelligence](../features/vault-intelligence.md)** - Analyze your Vault
 
 *The wise owl awaits your commands, dear Linux scholar!* 🦉✨

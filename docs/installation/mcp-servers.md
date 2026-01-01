@@ -1,47 +1,47 @@
-# [[MCP]] [[Server]] Configuration 🦉🔌
+# MCP Server Configuration 🦉🔌
 
-*Hoot! Let me help [[You]] connect the owl's [[Intelligence]] to the wider world through MCP.*
+*Hoot! Let me help You connect the owl's Intelligence to the wider world through MCP.*
 
-[[Model Context Protocol]] (MCP) [[Servers]] extend [[Claude Code]]'s [[Capabilities]]. [[Obsidian Scribe]] uses **smoking-[[Mirror]]** for [[Vault Intelligence]].
+Model Context Protocol (MCP) Servers extend Claude Code's Capabilities. Obsidian Scribe uses **smoking-Mirror** for Vault Intelligence.
 
-## [[What]] is smoking-mirror?
+## What is smoking-mirror?
 
 smoking-mirror is an MCP server that provides:
-- 📊 Real-time [[Vault]] [[Graph]] analysis
-- 🔗 Backlink and forward [[Link]] tracking
-- 🔍 [[Orphan]] [[Note]] [[Detection]]
-- 🧠 [[Knowledge]] gap identification
+- 📊 Real-time Vault Graph analysis
+- 🔗 Backlink and forward Link tracking
+- 🔍 Orphan Note Detection
+- 🧠 Knowledge gap identification
 - 📈 Link density patterns
 
-**15 vault-* [[Skills]]** depend on [[This]] server.
+**15 vault-* Skills** depend on This server.
 
-## [[When]] Do You [[Need]] It?
+## When Do You Need It?
 
-### With smoking-mirror ([[Full]] Intelligence)
+### With smoking-mirror (Full Intelligence)
 
-[[All]] 20+ skills [[Available]]:
+All 20+ skills Available:
 - ✅ `/vault-health` - Comprehensive diagnostics
-- ✅ `/vault-orphans` - Find isolated [[Notes]]
+- ✅ `/vault-orphans` - Find isolated Notes
 - ✅ `/vault-hubs` - Find highly connected notes
-- ✅ `/vault-fix-links` - Repair broken [[Wikilinks]]
+- ✅ `/vault-fix-links` - Repair broken Wikilinks
 - ✅ *...and 11 more vault-* skills!*
 
-### Without smoking-mirror ([[Core]] [[Features]] [[Only]])
+### Without smoking-mirror (Core Features Only)
 
 5 skills still work:
-- ✅ `/auto-log` - Daily [[Logging]]
-- ✅ `/task-add` - Task [[Management]]
+- ✅ `/auto-log` - Daily Logging
+- ✅ `/task-add` - Task Management
 - ✅ `/rollup` - Periodic summarization
-- ✅ `/rebuild-wikilink-cache` - [[Wikilink]] cache
-- ✅ `/wikilink-apply` - [[Apply]] wikilink [[Suggestions]]
+- ✅ `/rebuild-wikilink-cache` - Wikilink cache
+- ✅ `/wikilink-apply` - Apply wikilink Suggestions
 
-*The owl can still help, [[But]] its full wisdom requires smoking-mirror.*
+*The owl can still help, But its full wisdom requires smoking-mirror.*
 
 ## Configuration by Platform
 
-### [[WSL]] (Ubuntu)
+### WSL (Ubuntu)
 
-**[[Location]]:** [[Project]] `.mcp.json` in your vault directory
+**Location:** Project `.mcp.json` in your vault directory
 
 ```json
 {
@@ -62,7 +62,7 @@ smoking-mirror is an MCP server that provides:
 
 ### Windows
 
-**Location:** Global `C:\Users\YOUR_USERNAME\.[[Claude]].json`
+**Location:** Global `C:\Users\YOUR_USERNAME\.Claude.json`
 
 ```json
 {
@@ -177,7 +177,7 @@ claude
 ### Vault path issues
 
 **Ensure path is absolute:**
-- ✅ `/mnt/c/Users/benca/[[Obsidian]]/Ben`
+- ✅ `/mnt/c/Users/benca/Obsidian/Ben`
 - ✅ `C:/Users/benca/obsidian/Ben`
 - ❌ `~/obsidian/Ben` (relative paths don't work)
 - ❌ `../Ben` (relative paths don't work)
@@ -208,12 +208,12 @@ smoking-mirror supports:
 }
 ```
 
-## [[Next]] Steps
+## Next Steps
 
 With MCP configured, the owl's full intelligence awakens:
 
-- **[Vault Intelligence Guide](../features/vault-intelligence.md)** - [[Explore]] 15 vault-* skills
-- **[Vault Analysis Example](../examples/vault-analysis.md)** - [[See]] it in [[Action]]
+- **[Vault Intelligence Guide](../features/vault-intelligence.md)** - Explore 15 vault-* skills
+- **[Vault Analysis Example](../examples/vault-analysis.md)** - See it in Action
 - **[Getting Started](../getting-started.md)** - If you're new here
 
-*The owl's eyes glow brighter with [[Each]] connection, dear scholar!* 🦉✨
+*The owl's eyes glow brighter with Each connection, dear scholar!* 🦉✨

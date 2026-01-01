@@ -1,20 +1,20 @@
-# [[Vault Intelligence]] 🦉🧠
+# Vault Intelligence 🦉🧠
 
-*Hoot! The owl sees your [[Knowledge]] [[Graph]] in [[All]] its interconnected glory.*
+*Hoot! The owl sees your Knowledge Graph in All its interconnected glory.*
 
-[[Vault]] [[Intelligence]] [[Features]] [[Analyze]] your [[Note]] network to find patterns, gaps, and [[Optimization]] [[Opportunities]].
+Vault Intelligence Features Analyze your Note network to find patterns, gaps, and Optimization Opportunities.
 
 ## Prerequisites
 
-**Requires:** smoking-[[Mirror]] [[MCP]] [[Server]] ([setup guide](../installation/mcp-servers.md))
+**Requires:** smoking-Mirror MCP Server ([setup guide](../installation/mcp-servers.md))
 
-Without it, [[These]] 15 [[Skills]] won't work. [[But]] [[When]] configured - *the owl's eyes truly open!* 🦉
+Without it, These 15 Skills won't work. But When configured - *the owl's eyes truly open!* 🦉
 
-## [[Overview]] Skills
+## Overview Skills
 
 ### `/vault-health`
 
-Comprehensive vault diagnostics and health [[Report]].
+Comprehensive vault diagnostics and health Report.
 
 ```bash
 /vault-health
@@ -98,7 +98,7 @@ Find notes that link to each other (mutual connections).
 
 Strong bidirectional links indicate related concepts worth merging or cross-referencing.
 
-### `/vault-[[Related]]`
+### `/vault-Related`
 
 Find notes similar to the current note (by tags, folder, keywords).
 
@@ -116,7 +116,7 @@ Get wikilink suggestions for a note using smoking-mirror entity detection.
 
 ## Problem Detection
 
-### `/vault-[[Orphans]]`
+### `/vault-Orphans`
 
 Find notes with no backlinks (isolated in the graph).
 
@@ -196,7 +196,7 @@ Consider creating notes for these topics!
 
 ## Network Topology
 
-### `/vault-[[Hubs]]`
+### `/vault-Hubs`
 
 Find highly connected notes (many links in/out).
 
@@ -206,7 +206,7 @@ Find highly connected notes (many links in/out).
 
 Hubs are central to your knowledge graph - index pages, concept notes, or frequently referenced topics.
 
-### `/vault-[[Clusters]]`
+### `/vault-Clusters`
 
 Find groups of highly connected notes.
 
@@ -216,7 +216,7 @@ Find groups of highly connected notes.
 
 Clusters reveal natural topic areas in your vault.
 
-### `/vault-[[Link]]-density`
+### `/vault-Link-density`
 
 Analyze link density patterns across vault.
 
@@ -228,7 +228,7 @@ Shows which folders/topics are well-connected vs. isolated.
 
 ## Maintenance Tools
 
-### `/vault-fix-[[Links]]`
+### `/vault-fix-Links`
 
 Find and repair broken wikilinks.
 
@@ -241,8 +241,8 @@ Find and repair broken wikilinks.
 🦉 Broken Links Found
 
 tech/tools/Obsidian.md
-  [[Claude]] → Did you mean [[Claude Code]]?
-  [[MCP]] → Did you mean [[Model Context Protocol]]?
+  Claude → Did you mean Claude Code?
+  MCP → Did you mean Model Context Protocol?
 
 2 broken links repaired
 ```
@@ -261,16 +261,16 @@ Unlinked Mentions of "Obsidian"
 
 daily-notes/2025-12-30.md (line 15)
   ...using Obsidian for notes...
-  Suggestion: ...using [[Obsidian]] for notes...
+  Suggestion: ...using Obsidian for notes...
 
 tech/tools/PKM.md (line 42)
   ...Obsidian is a powerful tool...
-  Suggestion: ...[[Obsidian]] is a powerful tool...
+  Suggestion: ...Obsidian is a powerful tool...
 
 8 unlinked mentions found
 ```
 
-### `/vault-[[Search]]`
+### `/vault-Search`
 
 Advanced search with filters (folder, tags, frontmatter).
 
@@ -392,18 +392,18 @@ cd /path/to/vault
 claude
 ```
 
-### Slow [[Performance]]
+### Slow Performance
 
-Large vaults (5000+ [[Notes]]) may be slow:
-- [[Use]] more [[Specific]] searches (folders, [[Tags]])
-- [[Run]] analyses during off-[[Hours]]
-- [[Consider]] vault archiving [[Strategies]]
+Large vaults (5000+ Notes) may be slow:
+- Use more Specific searches (folders, Tags)
+- Run analyses during off-Hours
+- Consider vault archiving Strategies
 
 ## Related Features
 
-- **[Wikilinks](wikilinks.md)** - [[Auto]]-[[Linking]] supports vault health
-- **[Examples: Vault Analysis](../examples/vault-analysis.md)** - Step-by-step [[Workflows]]
+- **[Wikilinks](wikilinks.md)** - Auto-Linking supports vault health
+- **[Examples: Vault Analysis](../examples/vault-analysis.md)** - Step-by-step Workflows
 
 ---
 
-*"Your vault is a living garden, dear scholar. Let the owl help [[You]] tend it with wisdom!"* 🦉🧠
+*"Your vault is a living garden, dear scholar. Let the owl help You tend it with wisdom!"* 🦉🧠
