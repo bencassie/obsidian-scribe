@@ -28,8 +28,11 @@ claude --version
 ### Option 1: From GitHub (Recommended)
 
 ```powershell
-/install bencassie/obsidian-scribe
+/plugin marketplace add bencassie/obsidian-scribe
+/plugin install obsidian-scribe@bencassie/obsidian-scribe
 ```
+
+Or use the interactive UI: `/plugin` → Discover → obsidian-scribe → Install
 
 ### Option 2: Manual Configuration
 

@@ -36,8 +36,9 @@
 - **Claude Code**: Anthropic's CLI that orchestrates everything via natural language
 
 **Install:**
-```bash
-/install bencassie/obsidian-scribe
+```
+/plugin marketplace add bencassie/obsidian-scribe
+/plugin install obsidian-scribe@bencassie/obsidian-scribe
 ```
 
 ---
@@ -258,8 +259,11 @@ No clicking. No switching apps. Your vault responds to conversation.
 
 In Claude Code:
 ```
-/install bencassie/obsidian-scribe
+/plugin marketplace add bencassie/obsidian-scribe
+/plugin install obsidian-scribe@bencassie/obsidian-scribe
 ```
+
+Or use the interactive UI: `/plugin` → Discover → obsidian-scribe → Install
 
 ### Step 2: Configure smoking-mirror MCP
 
