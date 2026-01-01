@@ -10,6 +10,14 @@ trigger_keywords:
   - "vault report"
   - "how is my vault"
   - "vault overview"
+  - "vault checkup"
+  - "how's my vault"
+  - "vault condition"
+  - "knowledge base health"
+  - "vault stats"
+  - "check vault"
+  - "diagnose vault"
+  - "vault summary"
 allowed-tools: mcp__smoking-mirror__get_vault_stats, mcp__smoking-mirror__find_broken_links
 ---
 

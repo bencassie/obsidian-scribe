@@ -13,6 +13,12 @@ trigger_keywords:
   - "vault folders"
   - "folder report"
   - "folder breakdown"
+  - "directory health"
+  - "how organized"
+  - "folder balance"
+  - "note distribution"
+  - "folder hierarchy"
+  - "vault layout"
 allowed-tools: mcp__smoking-mirror__get_folder_structure
 ---
 

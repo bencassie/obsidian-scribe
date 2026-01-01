@@ -11,6 +11,13 @@ trigger_keywords:
   - "similar to"
   - "show related"
   - "notes like this"
+  - "like this note"
+  - "notes like"
+  - "find similar"
+  - "comparable notes"
+  - "akin to"
+  - "matching notes"
+  - "same topic"
 allowed-tools: mcp__smoking-mirror__search_notes, mcp__smoking-mirror__get_note_metadata
 ---
 

@@ -6,7 +6,7 @@
 
 **Your [Obsidian](https://obsidian.md) vault as a queryable knowledge graph.**
 
-[smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP + 21 skills + 4 hooks + 5 agents = Graph-first PKM
+[smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP + 35 skills + 4 hooks + 8 agents = Graph-first PKM
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-8B5CF6)](https://github.com/anthropics/claude-code)
@@ -21,7 +21,7 @@
 | If you use... | You'll love this because... |
 |---------------|----------------------------|
 | **[Obsidian](https://obsidian.md)** | Finally query your vault's graph structure from the command line |
-| **[Claude Code](https://github.com/anthropics/claude-code)** | Purpose-built plugin with 21 skills for knowledge management |
+| **[Claude Code](https://github.com/anthropics/claude-code)** | Purpose-built plugin with 35 skills + 8 intelligent agents for knowledge management |
 | **RAG systems** | Graph-first beats chunk-based retrieval for PKM (see below) |
 | **[MCP](https://modelcontextprotocol.io/)** | [smoking-mirror](https://github.com/bencassie/smoking-mirror) is a production MCP server for Obsidian |
 
@@ -176,9 +176,9 @@ Queries hit an in-memory index, not your filesystem. Instant results.
 | Layer | Component | What It Provides |
 |-------|-----------|------------------|
 | **Intelligence** | [smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP | 47 graph tools: backlinks, hubs, orphans, link paths, sections, frontmatter, tasks |
-| **Workflows** | 21 obsidian-scribe skills | Daily logging, vault health, rollups, wikilink automation |
+| **Workflows** | 35 obsidian-scribe skills | Daily logging, vault health, rollups, wikilink automation, graph analysis |
 | **Automation** | 4 smart hooks | Achievement detection, wikilink suggestions, syntax validation |
-| **Summarization** | 5 rollup agents | Daily → Weekly → Monthly → Quarterly → Yearly summaries |
+| **Agents** | 8 intelligent agents | Rollup summaries, schema enforcement, relationship exploration, achievements |
 
 ---
 
@@ -365,47 +365,192 @@ The power of this product comes from [**smoking-mirror MCP**](https://github.com
 
 ---
 
-## obsidian-scribe: Your Brain
+## obsidian-scribe: Your Brain (35 Skills)
 
-### Core Workflows (5 skills)
+All skills are **read-only** unless explicitly marked. They analyze and report—your vault stays unchanged until you decide to act.
 
-| Skill | Description |
-|-------|-------------|
-| `/auto-log <text>` | Add timestamped entry to today's daily note |
-| `/task-add <text>` | Create task with natural language due date |
-| `/rollup` | Execute full rollup chain (last 2 months) |
-| `/rebuild-wikilink-cache` | Rebuild entity cache from vault |
-| `/wikilink-apply <file>` | Apply wikilink suggestions to a note |
+### Daily Workflows (5 skills)
 
-### Vault Health (16 skills)
+| Skill | What You Get | Changes Files? |
+|-------|--------------|----------------|
+| `/auto-log <text>` | Timestamped entry added to today's daily note | **Yes** - Appends to daily note |
+| `/task-add <text>` | New task with natural language due date | **Yes** - Creates task in daily note |
+| `/rollup` | Full rollup chain executed (last 2 months) | **Yes** - Creates/updates rollup notes |
+| `/rebuild-wikilink-cache` | Entity cache rebuilt from vault content | **Yes** - Updates cache file |
+| `/wikilink-apply <file>` | Wikilinks added to plain text mentions | **Yes** - Edits specified note |
 
-| Skill | Description |
-|-------|-------------|
-| `/vault-health` | Comprehensive vault diagnostics |
-| `/vault-stats` | Quick note/link/tag statistics |
-| `/vault-orphans` | Find notes with no backlinks |
-| `/vault-hubs` | Find highly-connected notes |
-| `/vault-clusters` | Detect topic clusters |
-| `/vault-gaps` | Find mentioned but undocumented topics |
-| `/vault-stale` | Find important notes not updated recently |
-| `/vault-dead-ends` | Notes with backlinks but no outlinks |
-| `/vault-backlinks <note>` | Show all notes linking to a note |
-| `/vault-related <note>` | Find similar notes |
-| `/vault-fix-links` | Repair broken wikilinks |
-| `/vault-unlinked-mentions <term>` | Find unlinked mentions of a term |
-| `/vault-link-density` | Analyze link patterns |
-| `/vault-folder-health` | Check folder organization |
-| `/vault-search` | Advanced search with filters |
-| `/vault-suggest` | Suggest wikilinks for a note |
+### Vault Health (7 skills) — All Read-Only
 
-### Periodic Rollups (4 skills + 5 agents)
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-health` | Complete diagnostic report: notes, links, orphans, hubs, gaps |
+| `/vault-stats` | Quick numbers: total notes, links per note, tag counts |
+| `/vault-orphans` | List of notes with no incoming links (knowledge islands) |
+| `/vault-hubs` | Your most connected notes (knowledge centers) |
+| `/vault-gaps` | Topics mentioned frequently but lacking dedicated notes |
+| `/vault-stale` | Important notes that haven't been updated recently |
+| `/vault-dead-ends` | Notes others link to but that link nowhere |
 
-| Skill | Description |
-|-------|-------------|
-| `/rollup-weekly <week>` | Summarize week (e.g., `2026-W01`) |
-| `/rollup-monthly <month>` | Summarize month (e.g., `2026-01`) |
-| `/rollup-quarterly <quarter>` | Summarize quarter (e.g., `2026-Q1`) |
-| `/rollup-yearly <year>` | Summarize year (e.g., `2026`) |
+### Link Analysis (9 skills) — All Read-Only
+
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-backlinks <note>` | Every note that links TO the specified note |
+| `/vault-related <note>` | Similar notes based on shared links and tags |
+| `/vault-path <from> <to>` | Shortest connection path between two notes (A → B → C) |
+| `/vault-strength <a> <b>` | Connection strength score (0-100) with breakdown |
+| `/vault-common <a> <b>` | Notes that both A and B reference (shared context) |
+| `/vault-bidirectional` | All mutual links in vault (A ↔ B relationships) |
+| `/vault-link-density` | Link pattern analysis across your vault |
+| `/vault-unlinked-mentions <term>` | Text mentions not yet converted to [[wikilinks]] |
+| `/vault-suggest <note>` | Wikilink opportunities for a specific note |
+
+### Structure Analysis (4 skills) — All Read-Only
+
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-section <note> <heading>` | Content under a specific heading (without reading whole file) |
+| `/vault-find-sections <pattern>` | All headings matching pattern across vault |
+| `/vault-folder-health` | Folder organization analysis and recommendations |
+| `/vault-clusters` | Topic clusters detected from link patterns |
+
+### Frontmatter Intelligence (3 skills) — All Read-Only
+
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-schema` | All YAML frontmatter fields used across vault |
+| `/vault-schema-check` | Type inconsistencies in frontmatter (string vs array, etc.) |
+| `/vault-field-values <field>` | All unique values for a specific frontmatter field |
+
+### Task Management (2 skills) — All Read-Only
+
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-tasks` | All tasks across vault with filtering (status, folder, tag) |
+| `/vault-due` | Tasks with due dates, sorted by deadline |
+
+### Activity Tracking (2 skills) — All Read-Only
+
+| Skill | What You Get |
+|-------|--------------|
+| `/vault-activity` | Recent modification patterns and trends |
+| `/vault-concurrent <note>` | Notes edited around the same time as specified note |
+
+### Link Maintenance (2 skills)
+
+| Skill | What You Get | Changes Files? |
+|-------|--------------|----------------|
+| `/vault-fix-links` | Broken wikilinks repaired | **Yes** - Fixes broken links |
+| `/vault-search` | Advanced search with frontmatter, tags, folders | Read-only |
+
+### Periodic Rollups (4 skills)
+
+| Skill | What You Get | Changes Files? |
+|-------|--------------|----------------|
+| `/rollup-weekly <week>` | Week summary created (e.g., `2026-W01`) | **Yes** - Creates rollup note |
+| `/rollup-monthly <month>` | Month summary created (e.g., `2026-01`) | **Yes** - Creates rollup note |
+| `/rollup-quarterly <quarter>` | Quarter summary created (e.g., `2026-Q1`) | **Yes** - Creates rollup note |
+| `/rollup-yearly <year>` | Year summary created (e.g., `2026`) | **Yes** - Creates rollup note |
+
+---
+
+## Intelligent Agents (8 Agents)
+
+Agents are autonomous workflows that Claude orchestrates using natural language. Just describe what you want—Claude invokes the right agent with the right tools.
+
+### The Power of Natural Language Workflows
+
+Instead of remembering commands, just ask:
+
+```
+You: "How do my project notes relate to my tech notes?"
+
+Claude: [Invokes relationship-explorer agent]
+        [Agent calls get_connection_strength, get_link_path, get_common_neighbors]
+        [Returns comprehensive relationship report]
+
+You: "My frontmatter is a mess. Can you audit it?"
+
+Claude: [Invokes schema-enforcer agent]
+        [Agent calls get_frontmatter_schema, find_frontmatter_inconsistencies]
+        [Returns schema report with fix suggestions]
+
+You: "Fix the tags field inconsistency"
+
+Claude: [Schema-enforcer agent applies fixes with your confirmation]
+```
+
+This is the Claude Code REPL advantage: **conversation-driven automation**.
+
+### Rollup Agents (5 agents) — Create Summary Notes
+
+| Agent | What You Get | Changes Files? |
+|-------|--------------|----------------|
+| **Daily Rollup** | Extracts highlights from today's daily note | **Yes** - Creates summary |
+| **Weekly Rollup** | Synthesizes week from daily notes | **Yes** - Creates `weekly-notes/YYYY-WNN.md` |
+| **Monthly Rollup** | Synthesizes month from weekly notes | **Yes** - Creates `monthly-notes/YYYY-MM.md` |
+| **Quarterly Rollup** | Synthesizes quarter from monthly notes | **Yes** - Creates `quarterly-notes/YYYY-QN.md` |
+| **Yearly Rollup** | Synthesizes year from quarterly notes | **Yes** - Creates `yearly-notes/YYYY.md` |
+
+**How it works**: Each rollup agent reads the previous tier's notes and creates structured summaries. Daily → Weekly → Monthly → Quarterly → Yearly.
+
+### Analysis Agents (3 agents)
+
+| Agent | What You Get | Changes Files? |
+|-------|--------------|----------------|
+| **Achievement Extractor** | Finds accomplishments in your logs (126 patterns) | **Yes** - Updates `Achievements.md` |
+| **Schema Enforcer** | Audits frontmatter, suggests fixes, applies corrections | **Optional** - Fixes with confirmation |
+| **Relationship Explorer** | Deep relationship analysis between notes | **No** - Read-only reports |
+
+### Schema Enforcer Agent
+
+**What it does**: Analyzes your vault's frontmatter schema, detects inconsistencies (e.g., `tags: "work"` vs `tags: ["work"]`), and optionally fixes them.
+
+**User outcomes**:
+- **Audit mode** (default): Get a report of schema problems. Nothing changes.
+- **Fix mode**: Agent applies fixes **with your confirmation**. You approve each change.
+
+**Example conversation**:
+```
+You: "Check my vault's frontmatter schema"
+Claude: [Runs audit, returns report]
+
+        Schema Report:
+        - 'tags' field: 12 notes use string instead of array
+        - 'priority' field: 5 notes use quoted numbers
+
+        Would you like me to fix these?
+
+You: "Yes, fix the tags field"
+Claude: [Applies fixes with confirmation for each file]
+```
+
+### Relationship Explorer Agent
+
+**What it does**: Deep-dives into how two notes relate using multiple graph metrics.
+
+**User outcomes**: A comprehensive report including:
+- Connection strength score (0-100)
+- Link path (A → B → C)
+- Common neighbors (shared references)
+- Bidirectional link check
+- Relationship narrative
+
+**This agent is READ-ONLY**. It never modifies your vault—only analyzes and reports.
+
+**Example conversation**:
+```
+You: "How does [[Project Alpha]] relate to [[React]]?"
+Claude: [Runs relationship analysis]
+
+        Connection Strength: 78/100 (Strong)
+        Path: Project Alpha → React (direct link)
+        Common Neighbors: TypeScript, Node.js, Testing
+        Bidirectional: Yes (both link to each other)
+
+        Narrative: React is a core dependency of Project Alpha,
+        explicitly documented in the tech stack section.
+```
 
 ---
 
@@ -507,9 +652,9 @@ See [Windows Setup](docs/installation/windows.md) | [WSL Setup](docs/installatio
 | **Link path finding** | ✅ A → B → C routes | ❌ | ❌ | ❌ |
 | **Task management** | ✅ Cross-vault tasks | ❌ | ❌ | ❌ |
 | **Orphan/hub detection** | ✅ Automated | ❌ | ❌ | ❌ |
-| **Vault health analysis** | ✅ 16 skills | ❌ | ❌ | ❌ |
+| **Vault health analysis** | ✅ 35 skills | ❌ | ❌ | ❌ |
 | **Achievement tracking** | ✅ 126 patterns | ❌ | ❌ | ❌ |
-| **Hierarchical rollups** | ✅ 5 agents | ❌ | ❌ | ❌ |
+| **Intelligent agents** | ✅ 8 agents (rollups, schema, relationships) | ❌ | ❌ | ❌ |
 | **Follow-up questions** | ✅ Full context preserved | ⚠️ Re-retrieve each time | ✅ | ❌ |
 | **Long context (200K)** | ✅ Claude | Varies | Limited | ❌ |
 | **Price** | Free (MIT) | Varies | Free + Pro | Free + Pro |
@@ -542,7 +687,7 @@ One session. Full context. Actions taken. That's the power of graph-first + REPL
 - **[WORKFLOW.md](WORKFLOW.md)** — Complete graph-first workflow guide
 - **[CLAUDE.md.example](CLAUDE.md.example)** — Template for your vault's CLAUDE.md
 - **[Example Rules](docs/example-rules/)** — Copy-paste rules for your `.claude/rules/` directory
-- **[Skills Reference](docs/skills-reference.md)** — All 21 skills documented
+- **[Skills Reference](docs/skills-reference.md)** — All 35 skills documented
 - **[Workflows](docs/workflows.md)** — Real examples and use cases
 - **Setup**: [Windows](docs/installation/windows.md) | [WSL](docs/installation/wsl.md) | [MCP Servers](docs/installation/mcp-servers.md)
 

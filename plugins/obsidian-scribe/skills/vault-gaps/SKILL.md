@@ -11,6 +11,13 @@ trigger_keywords:
   - "show gaps"
   - "missing topics"
   - "undocumented"
+  - "missing links"
+  - "linking opportunities"
+  - "connection gaps"
+  - "enhance connections"
+  - "should document"
+  - "what's missing"
+  - "topic holes"
 allowed-tools: mcp__smoking-mirror__find_broken_links, mcp__smoking-mirror__get_unlinked_mentions, mcp__smoking-mirror__search_notes
 ---
 

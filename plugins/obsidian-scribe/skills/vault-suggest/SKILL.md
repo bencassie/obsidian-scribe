@@ -13,6 +13,12 @@ trigger_keywords:
   - "find linkable"
   - "linkable entities"
   - "add links to this"
+  - "should be linked"
+  - "linkify"
+  - "autolink"
+  - "link opportunities"
+  - "where to link"
+  - "improve linking"
 allowed-tools: mcp__smoking-mirror__suggest_wikilinks, mcp__smoking-mirror__get_unlinked_mentions, Read, Edit, AskUserQuestion
 ---
 

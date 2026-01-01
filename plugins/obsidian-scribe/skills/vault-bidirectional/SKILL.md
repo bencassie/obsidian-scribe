@@ -10,6 +10,13 @@ trigger_keywords:
   - "reciprocal links"
   - "show bidirectional"
   - "find mutual links"
+  - "linked both ways"
+  - "mutual references"
+  - "back and forth"
+  - "symmetric links"
+  - "cross-linked"
+  - "linked together"
+  - "both link"
 allowed-tools: mcp__smoking-mirror__get_backlinks, mcp__smoking-mirror__get_forward_links
 ---
 

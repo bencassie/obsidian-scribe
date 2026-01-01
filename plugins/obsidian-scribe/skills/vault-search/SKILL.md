@@ -15,6 +15,12 @@ trigger_keywords:
   - "notes about"
   - "notes with"
   - "notes in"
+  - "locate notes"
+  - "where is"
+  - "filter notes"
+  - "query"
+  - "lookup"
+  - "find by"
 allowed-tools: mcp__smoking-mirror__search_notes
 ---
 

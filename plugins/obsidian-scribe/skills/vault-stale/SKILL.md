@@ -11,6 +11,13 @@ trigger_keywords:
   - "inactive notes"
   - "forgotten notes"
   - "show stale"
+  - "need attention"
+  - "dusty notes"
+  - "need review"
+  - "haven't touched"
+  - "untouched notes"
+  - "what needs updating"
+  - "old important notes"
 allowed-tools: mcp__smoking-mirror__get_recent_notes, mcp__smoking-mirror__get_backlinks, mcp__smoking-mirror__search_notes
 ---
 

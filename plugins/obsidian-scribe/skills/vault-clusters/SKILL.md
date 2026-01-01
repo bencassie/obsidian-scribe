@@ -11,6 +11,13 @@ trigger_keywords:
   - "topic clusters"
   - "communities"
   - "note groups"
+  - "knowledge areas"
+  - "related groups"
+  - "knowledge domains"
+  - "topic areas"
+  - "note neighborhoods"
+  - "groupings"
+  - "what topics exist"
 allowed-tools: mcp__smoking-mirror__get_backlinks, mcp__smoking-mirror__get_forward_links, mcp__smoking-mirror__find_hub_notes
 ---
 

@@ -12,6 +12,12 @@ trigger_keywords:
   - "linked from"
   - "links from"
   - "show links"
+  - "what points to"
+  - "references this"
+  - "mentions of"
+  - "incoming links"
+  - "who cites"
+  - "referencing"
 allowed-tools: mcp__smoking-mirror__get_backlinks, mcp__smoking-mirror__get_forward_links, Read
 ---
 

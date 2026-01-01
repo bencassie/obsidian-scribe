@@ -10,6 +10,13 @@ trigger_keywords:
   - "notes with no outlinks"
   - "terminal notes"
   - "find dead ends"
+  - "leaf notes"
+  - "sink notes"
+  - "don't link out"
+  - "only receive links"
+  - "cul-de-sacs"
+  - "no outgoing links"
+  - "end points"
 allowed-tools: mcp__smoking-mirror__get_backlinks, mcp__smoking-mirror__get_forward_links
 ---
 

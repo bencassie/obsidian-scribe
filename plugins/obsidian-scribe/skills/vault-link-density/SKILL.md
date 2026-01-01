@@ -10,6 +10,13 @@ trigger_keywords:
   - "link stats"
   - "analyze links"
   - "link distribution"
+  - "connectivity"
+  - "graph density"
+  - "link metrics"
+  - "how much linking"
+  - "linking behavior"
+  - "connection stats"
+  - "vault connectivity"
 allowed-tools: mcp__smoking-mirror__get_vault_stats, mcp__smoking-mirror__get_folder_structure, mcp__smoking-mirror__search_notes
 ---
 
@@ -32,8 +39,8 @@ Link density analysis reveals:
 **Optimal ranges:**
 - **10-20 links/note**: Well-connected knowledge graph
 - **5-10 links/note**: Moderate connection
-- **<5 links/note**: Under-connected (isolated knowledge)
-- **>20 links/note**: May be over-linking or need restructuring
+- **(5 links/note**: Under-connected (isolated knowledge)
+- **)20 links/note**: May be over-linking or need restructuring
 
 ## Process
 

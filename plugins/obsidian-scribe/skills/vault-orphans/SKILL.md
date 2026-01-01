@@ -13,6 +13,12 @@ trigger_keywords:
   - "find orphans"
   - "show orphans"
   - "lonely notes"
+  - "notes nobody links to"
+  - "floating notes"
+  - "unconnected"
+  - "no links to"
+  - "stranded notes"
+  - "unloved notes"
 allowed-tools: mcp__smoking-mirror__find_orphan_notes, AskUserQuestion
 ---
 

@@ -13,6 +13,12 @@ trigger_keywords:
   - "find mentions"
   - "unlinked references"
   - "references to"
+  - "mentioned but not linked"
+  - "plain text mentions"
+  - "could be linked"
+  - "linkable text"
+  - "should have links"
+  - "potential links"
 allowed-tools: mcp__smoking-mirror__get_unlinked_mentions, Read, Edit, AskUserQuestion
 ---
 

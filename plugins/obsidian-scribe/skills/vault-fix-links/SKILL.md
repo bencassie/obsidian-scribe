@@ -11,6 +11,13 @@ trigger_keywords:
   - "find broken links"
   - "broken wikilinks"
   - "fix wikilinks"
+  - "invalid links"
+  - "dead links"
+  - "link errors"
+  - "repair connections"
+  - "link problems"
+  - "fix references"
+  - "bad links"
 allowed-tools: mcp__smoking-mirror__find_broken_links, Task, TodoWrite
 ---
 

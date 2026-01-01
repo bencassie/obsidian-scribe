@@ -13,6 +13,10 @@ trigger_keywords:
   - "important notes"
   - "central notes"
   - "find hubs"
+  - "key concepts"
+  - "well-linked"
+  - "core ideas"
+  - "knowledge hubs"
 allowed-tools: mcp__smoking-mirror__find_hub_notes
 ---
 
