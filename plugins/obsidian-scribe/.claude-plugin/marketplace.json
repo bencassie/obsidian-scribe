@@ -1,15 +1,16 @@
 {
   "name": "obsidian-scribe",
-  "description": "Wikilink automation, periodic note rollups, and vault health for Obsidian",
-  "version": "1.0.0",
+  "version": "1.0.11",
+  "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
   "owner": {
-    "name": "Ben Cassie"
+    "name": "Ben Cassie",
+    "email": "bencassie@github"
   },
   "plugins": [
     {
       "name": "obsidian-scribe",
-      "source": "./plugins/obsidian-scribe",
-      "description": "Wikilink automation, periodic note rollups, and vault health for Obsidian"
+      "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection",
+      "source": "./plugins/obsidian-scribe"
     }
   ]
 }

@@ -1,17 +1,16 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "obsidian-scribe",
-  "version": "1.0.0",
-  "description": "Claude Code plugins for Obsidian knowledge management and automation",
+  "version": "1.0.11",
+  "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
   "owner": {
     "name": "Ben Cassie",
-    "github": "bencassie"
-  },
-  "metadata": {
-    "homepage": "https://github.com/bencassie/obsidian-scribe",
-    "repository": "https://github.com/bencassie/obsidian-scribe"
+    "email": "bencassie@github"
   },
   "plugins": [
-    "plugins/obsidian-scribe"
+    {
+      "name": "obsidian-scribe",
+      "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection",
+      "source": "./plugins/obsidian-scribe"
+    }
   ]
 }

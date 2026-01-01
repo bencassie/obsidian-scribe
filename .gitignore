@@ -13,3 +13,4 @@ credentials.json
 __pycache__/
 *.pyc
 .obsidian-scribe.local.json
+nul
