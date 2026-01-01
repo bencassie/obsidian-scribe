@@ -36,14 +36,30 @@ Not just search. Write, automate, maintain.
 
 ## Quick Start
 
-**Install the plugin:**
+**1. Install the plugin:**
 
 ```
 /plugin marketplace add bencassie/obsidian-scribe
 /plugin install obsidian-scribe@bencassie/obsidian-scribe
 ```
 
-**Try it:**
+**2. Add `.mcp.json` to your vault root:**
+
+```json
+{
+  "mcpServers": {
+    "smoking-mirror": {
+      "command": "npx",
+      "args": ["-y", "smoking-mirror@latest"],
+      "env": { "OBSIDIAN_VAULT_PATH": "/path/to/your/vault" }
+    }
+  }
+}
+```
+
+> Windows? Use `"command": "cmd"` with `"args": ["/c", "npx", "-y", "smoking-mirror@latest"]`
+
+**3. Try it:**
 
 ```
 > How's my vault looking?
