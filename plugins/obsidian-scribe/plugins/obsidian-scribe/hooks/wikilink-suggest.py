@@ -24,6 +24,12 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
+# Configure UTF-8 output for Windows console
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except AttributeError:
+    pass
+
 
 # Common words to exclude from wikilink suggestions
 EXCLUDE_WORDS = {
@@ -298,8 +304,14 @@ def main():
 
     except json.JSONDecodeError:
         sys.exit(0)
+    except FileNotFoundError as e:
+        print(f"[obsidian-scribe] Wikilink suggest: File not found - {e.filename}", file=sys.stderr)
+        sys.exit(0)
+    except PermissionError as e:
+        print(f"[obsidian-scribe] Wikilink suggest: Permission denied - {e.filename}", file=sys.stderr)
+        sys.exit(0)
     except Exception as e:
-        print(f"Wikilink suggestion error: {e}", file=sys.stderr)
+        print(f"[obsidian-scribe] Wikilink suggest error: {type(e).__name__}: {e}", file=sys.stderr)
         sys.exit(0)
 
 

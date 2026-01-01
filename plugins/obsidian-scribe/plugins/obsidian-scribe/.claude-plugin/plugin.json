@@ -1,6 +1,6 @@
 {
   "name": "obsidian-scribe",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Wikilink automation, periodic note rollups, vault health, and privacy protection for Obsidian vaults",
   "author": {
     "name": "Ben Cassie",
@@ -17,14 +17,12 @@
     "vault-health",
     "automation"
   ],
-  "dependencies": {
-    "python": ">=3.8"
-  },
-  "optionalDependencies": {
-    "smoking-mirror": "For advanced vault analysis features"
-  },
-  "hooks": "../hooks/hooks.json",
-  "skills": "../skills",
-  "rules": "../rules",
-  "agents": "../agents"
+  "skills": "./skills",
+  "agents": [
+    "./agents/rollup/rollup-agent.md",
+    "./agents/rollup/weekly-agent.md",
+    "./agents/rollup/monthly-agent.md",
+    "./agents/rollup/quarterly-agent.md",
+    "./agents/rollup/yearly-agent.md"
+  ]
 }

@@ -17,6 +17,12 @@ import re
 from pathlib import Path
 from datetime import datetime
 
+# Configure UTF-8 output for Windows console
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except AttributeError:
+    pass
+
 # Add parent directory to path for config import
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config.loader import load_config, get_path
@@ -110,6 +116,43 @@ def check_for_achievements(content: str, config: dict) -> list:
     return unique_achievements
 
 
+def normalize_for_comparison(text: str) -> str:
+    """Normalize text for duplicate comparison."""
+    # Remove timestamps like "- 20:11 " or "- 08:42 "
+    text = re.sub(r'^[\d:]+\s*', '', text)
+    # Remove leading dashes, bullets, asterisks
+    text = re.sub(r'^[-*•]\s*', '', text)
+    # Remove wikilink brackets for comparison
+    text = re.sub(r'\[\[([^\]]+)\]\]', r'\1', text)
+    # Remove bold/italic markers
+    text = re.sub(r'\*+', '', text)
+    # Normalize whitespace
+    text = ' '.join(text.split())
+    # Take first 60 chars for fuzzy matching (avoid minor edits creating dupes)
+    return text[:60].lower().strip()
+
+
+def filter_existing_achievements(achievements: list, existing_content: str) -> list:
+    """Filter out achievements that already exist in the file."""
+    # Normalize existing content for comparison
+    existing_normalized = set()
+    for line in existing_content.split('\n'):
+        line = line.strip()
+        if line.startswith('-') or line.startswith('*'):
+            normalized = normalize_for_comparison(line)
+            if len(normalized) > 10:  # Only meaningful lines
+                existing_normalized.add(normalized)
+
+    # Filter achievements
+    new_achievements = []
+    for a in achievements:
+        normalized = normalize_for_comparison(a['line'])
+        if normalized not in existing_normalized:
+            new_achievements.append(a)
+
+    return new_achievements
+
+
 def main():
     try:
         # Read hook input from stdin
@@ -161,6 +204,13 @@ def main():
                 # Read achievements file
                 achievements_content = achievements_file.read_text(encoding='utf-8')
 
+                # CRITICAL: Filter out achievements that already exist in the file
+                new_achievements = filter_existing_achievements(achievements, achievements_content)
+
+                if not new_achievements:
+                    # All achievements already exist - skip silently
+                    sys.exit(0)
+
                 # Find or create current month section
                 month_header = f"### {current_month}"
 
@@ -171,12 +221,12 @@ def main():
                     if next_section == -1:
                         next_section = len(achievements_content)
 
-                    # Insert achievements before next section
+                    # Insert achievements before next section (limit to 3)
                     insert_point = next_section
-                    new_achievements = '\n'.join(f"- {a['line']}" for a in achievements[:3])
+                    new_lines = '\n'.join(f"- {a['line']}" for a in new_achievements[:3])
                     achievements_content = (
                         achievements_content[:insert_point] +
-                        f"\n{new_achievements}\n" +
+                        f"\n{new_lines}\n" +
                         achievements_content[insert_point:]
                     )
                 else:
@@ -189,8 +239,8 @@ def main():
                         if next_year == -1:
                             next_year = len(achievements_content)
 
-                        new_achievements = '\n'.join(f"- {a['line']}" for a in achievements[:3])
-                        new_section = f"\n\n{month_header}\n{new_achievements}\n"
+                        new_lines = '\n'.join(f"- {a['line']}" for a in new_achievements[:3])
+                        new_section = f"\n\n{month_header}\n{new_lines}\n"
 
                         achievements_content = (
                             achievements_content[:next_year] +
@@ -201,9 +251,9 @@ def main():
                 # Write back
                 achievements_file.write_text(achievements_content, encoding='utf-8')
 
-                print(f"\n✓ Auto-Added {len(achievements[:3])} Achievements")
+                print(f"\n✓ Auto-Added {len(new_achievements[:3])} Achievements")
                 print("-" * 50)
-                for a in achievements[:3]:
+                for a in new_achievements[:3]:
                     print(f"  • {a['line'][:80]}{'...' if len(a['line']) > 80 else ''}")
                 print("-" * 50)
                 print(f"Section: {month_header}")
@@ -221,8 +271,17 @@ def main():
 
     except json.JSONDecodeError:
         sys.exit(0)
+    except FileNotFoundError as e:
+        print(f"[obsidian-scribe] Achievement detector: File not found - {e.filename}", file=sys.stderr)
+        sys.exit(0)
+    except PermissionError as e:
+        print(f"[obsidian-scribe] Achievement detector: Permission denied - {e.filename}", file=sys.stderr)
+        sys.exit(0)
+    except ModuleNotFoundError as e:
+        print(f"[obsidian-scribe] Achievement detector: Missing module - {e.name}. Check plugin installation.", file=sys.stderr)
+        sys.exit(0)
     except Exception as e:
-        print(f"Achievement detector error: {e}", file=sys.stderr)
+        print(f"[obsidian-scribe] Achievement detector error: {type(e).__name__}: {e}", file=sys.stderr)
         sys.exit(0)
 
 

@@ -116,7 +116,7 @@ def rebuild_wikilink_cache():
             cwd=str(vault_path),
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=60
         )
         # Return stdout which contains the status message
         return result.stdout.strip() if result.stdout else "Wikilink cache: rebuilt"
@@ -127,31 +127,48 @@ def rebuild_wikilink_cache():
 
 
 def main():
-    config = load_config()
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    try:
+        config = load_config()
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-    daily_status = get_daily_note_status(config)
-    achievements = get_recent_achievements(config)
-    cache_status = rebuild_wikilink_cache()
+        daily_status = get_daily_note_status(config)
+        achievements = get_recent_achievements(config)
+        cache_status = rebuild_wikilink_cache()
 
-    # Use JSON format as recommended by Claude Code docs
-    # SessionStart hooks display additionalContext to users
-    context = f"""Obsidian Scribe - Session started: {current_time}
+        # Use JSON format as recommended by Claude Code docs
+        # SessionStart hooks display additionalContext to users
+        context = f"""Obsidian Scribe - Session started: {current_time}
 
 {daily_status}
 {cache_status}
 
 {achievements}"""
 
-    output = {
-        "hookSpecificOutput": {
-            "hookEventName": "SessionStart",
-            "additionalContext": context
+        output = {
+            "hookSpecificOutput": {
+                "hookEventName": "SessionStart",
+                "additionalContext": context
+            }
         }
-    }
 
-    print(json.dumps(output))
-    sys.exit(0)
+        print(json.dumps(output))
+        sys.exit(0)
+
+    except FileNotFoundError as e:
+        print(f"[obsidian-scribe] Session start: Config file not found. Create .obsidian-scribe.json in vault root.", file=sys.stderr)
+        sys.exit(0)
+    except PermissionError as e:
+        print(f"[obsidian-scribe] Session start: Permission denied - {e.filename}", file=sys.stderr)
+        sys.exit(0)
+    except ModuleNotFoundError as e:
+        print(f"[obsidian-scribe] Session start: Missing module - {e.name}. Check plugin installation.", file=sys.stderr)
+        sys.exit(0)
+    except json.JSONDecodeError as e:
+        print(f"[obsidian-scribe] Session start: Invalid JSON in config - {e.msg} at line {e.lineno}", file=sys.stderr)
+        sys.exit(0)
+    except Exception as e:
+        print(f"[obsidian-scribe] Session start error: {type(e).__name__}: {e}", file=sys.stderr)
+        sys.exit(0)
 
 
 if __name__ == "__main__":

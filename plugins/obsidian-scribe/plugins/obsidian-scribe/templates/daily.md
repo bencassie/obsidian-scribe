@@ -1,6 +1,6 @@
 ---
 type: daily
-date: <% tp.date.now("YYYY-MM-DD") %>
+date: (% tp.date.now("YYYY-MM-DD") %)
 tags:
   - "#daily"
 ---
@@ -8,10 +8,6 @@ tags:
 - [ ] [[Walk]] #habit
 - [ ] [[Stretch]] #habit
 - [ ] [[Vitamins]] #habit
----
-# Food
--
-
 ---
 # Today
 ## Tasks
@@ -28,4 +24,4 @@ if (tasks.length === 0) {
 ```
 ## Log
 
-- <% tp.file.cursor() %>
+- (% tp.file.cursor() %)

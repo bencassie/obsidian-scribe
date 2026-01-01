@@ -2,10 +2,14 @@
   "name": "obsidian-scribe",
   "description": "Wikilink automation, periodic note rollups, and vault health for Obsidian",
   "version": "1.0.0",
+  "owner": {
+    "name": "Ben Cassie"
+  },
   "plugins": [
     {
-      "id": "obsidian-scribe",
-      "path": "."
+      "name": "obsidian-scribe",
+      "source": "./plugins/obsidian-scribe",
+      "description": "Wikilink automation, periodic note rollups, and vault health for Obsidian"
     }
   ]
 }

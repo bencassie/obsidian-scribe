@@ -16,6 +16,12 @@ import sys
 import re
 from pathlib import Path
 
+# Configure UTF-8 output for Windows console
+try:
+    sys.stdout.reconfigure(encoding='utf-8')
+except AttributeError:
+    pass
+
 
 def protect_code_blocks(content: str) -> tuple[str, list]:
     """Extract and protect code blocks, return (content_with_placeholders, code_blocks)."""
@@ -175,9 +181,14 @@ def main():
     except json.JSONDecodeError:
         # No input or invalid JSON - skip silently
         sys.exit(0)
+    except FileNotFoundError as e:
+        print(f"[obsidian-scribe] Syntax validator: File not found - {e.filename}", file=sys.stderr)
+        sys.exit(0)
+    except PermissionError as e:
+        print(f"[obsidian-scribe] Syntax validator: Permission denied - {e.filename}", file=sys.stderr)
+        sys.exit(0)
     except Exception as e:
-        # Don't block on errors - just log
-        print(f"Syntax validator error: {e}", file=sys.stderr)
+        print(f"[obsidian-scribe] Syntax validator error: {type(e).__name__}: {e}", file=sys.stderr)
         sys.exit(0)
 
 

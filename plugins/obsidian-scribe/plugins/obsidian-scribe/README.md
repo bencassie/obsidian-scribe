@@ -30,11 +30,32 @@ Automated aggregation from daily notes up through yearly summaries:
 - **Gap Analysis**: Find topics needing expansion
 - And more...
 
+## Requirements
+
+| Requirement | Notes |
+|-------------|-------|
+| Python 3.8+ | Required for hooks (`python3` command) |
+| Claude Code | With plugin support enabled |
+| smoking-mirror MCP | Required for vault intelligence |
+
 ## Installation
 
-1. Copy `plugins/obsidian-scribe/` to your Claude Code plugins directory
+See **[INSTALLATION.md](INSTALLATION.md)** for detailed platform-specific setup instructions.
+
+**Quick Start:**
+1. Add plugin to Claude Code settings (see INSTALLATION.md)
 2. Create `.obsidian-scribe.json` in your vault root (see Configuration)
-3. Restart Claude Code
+3. Copy rules to your vault (see [rules.md](rules.md))
+4. Restart Claude Code
+
+## Rules (Manual Installation)
+
+Claude Code plugins cannot bundle rules - they must be installed to your project's `.claude/rules/` directory. See **[rules.md](rules.md)** for:
+
+- **obsidian-syntax.md** - Prevents Obsidian-breaking syntax (angle brackets, wrapped wikilinks)
+- **daily-notes.md** - Enforces daily note structure and log formatting
+- **folder-organization.md** - Protects folder hierarchy
+- **platform-requirements.md** - WSL/Windows setup requirements
 
 ## Configuration
 
@@ -123,10 +144,7 @@ plugins/obsidian-scribe/
 │       ├── monthly-agent.md
 │       ├── quarterly-agent.md
 │       └── yearly-agent.md
-├── rules/
-│   ├── obsidian-syntax.md
-│   ├── daily-notes.md
-│   └── folder-organization.md
+├── rules.md              # Documentation for manual rule installation
 └── templates/
     ├── daily.md
     ├── weekly.md
@@ -177,10 +195,9 @@ Autonomous agents for note aggregation:
 | `obsidian-scribe-quarterly-agent` | `2025-Q4` | Monthly → Quarterly aggregation |
 | `obsidian-scribe-yearly-agent` | `2025` | Quarterly → Yearly aggregation |
 
-## Optional Dependencies
+## Required: smoking-mirror MCP
 
-### smoking-mirror MCP
-The vault intelligence skills require the [smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP server for graph queries.
+This plugin requires the [smoking-mirror](https://github.com/bencassie/smoking-mirror) MCP server for vault intelligence and wikilink management.
 
 Add to your Claude settings:
 ```json
